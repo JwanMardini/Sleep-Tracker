@@ -8,10 +8,10 @@ public class registerFrame extends JFrame implements ActionListener {
     Container contentPane;
     JButton registerButton;
     JButton goBackButton;
-    JTextField usernameField;
-    JPasswordField passwordField;
-    JPasswordField confPasswordField;
-    JTextField phoneNumField;
+    private JTextField usernameField;
+    private JPasswordField passwordField;
+    private JPasswordField confPasswordField;
+    private JTextField phoneNumField;
     JLabel label;
     JLabel usernameLabel;
     JLabel passwordLabel;
@@ -22,12 +22,7 @@ public class registerFrame extends JFrame implements ActionListener {
 
 
 
-
-
-
-
-
-    registerFrame(){
+    registerFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(600, 600);
         this.setResizable(false);
@@ -98,7 +93,6 @@ public class registerFrame extends JFrame implements ActionListener {
         goBackButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
 
-
         contentPane = this.getContentPane();
         contentPane.setBackground(Color.DARK_GRAY);
 
@@ -124,21 +118,25 @@ public class registerFrame extends JFrame implements ActionListener {
         this.setVisible(true);
 
 
-
     }
-
-
-
-
-
-
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == goBackButton){
+        if (e.getSource() == goBackButton) {
             this.setVisible(false);
             loginFrame loginFrame = new loginFrame();
+        } else if (e.getSource() == registerButton) {
+            if (usernameField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Text field cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (passwordField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Password field cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }else if (!passwordField.getText().equals(confPasswordField.getText())){
+                JOptionPane.showMessageDialog(this, "Passwords do not match. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+
         }
 
     }
