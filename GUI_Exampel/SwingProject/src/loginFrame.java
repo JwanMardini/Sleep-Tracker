@@ -31,7 +31,7 @@ public class loginFrame extends JFrame implements ActionListener {
         label.setForeground(Color.cyan);
         label.setOpaque(true);
 
-        usernameLabel = new JLabel("Email");
+        usernameLabel = new JLabel("Username");
         usernameLabel.setBounds(180, 125, 250, 50);
         usernameLabel.setBackground(Color.white);
         usernameLabel.setFont(new Font("MV Bold", Font.BOLD, 12));
