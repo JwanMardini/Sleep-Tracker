@@ -27,4 +27,9 @@ public class Main extends Application {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);
     }
+
+
+    public void test(){
+        ;
+    }
 }
