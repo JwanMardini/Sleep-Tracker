@@ -18,7 +18,7 @@
             <Image url="@Logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="36.0" layoutY="135.0" prefHeight="32.0" prefWidth="374.0" text="Welcome to your Sleep Tracker app!" textFill="#bc0bf2">
+      <Label layoutX="36.0" layoutY="135.0" prefHeight="32.0" prefWidth="374.0" text="Welcome to your Sleep Tracker app!" textFill="#813FA9">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -42,12 +42,12 @@
       </Label>
       <CheckBox fx:id="checkBox" layoutX="36.0" layoutY="354.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="106.0" text="Remember me" textOverrun="CLIP" />
       <Hyperlink fx:id="forgotPassword" layoutX="223.0" layoutY="351.0" prefHeight="23.0" prefWidth="112.0" text="  Forgot password?" />
-      <Button fx:id="btn_login" layoutX="36.0" layoutY="394.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #bc0bf2;" text="Log In" textFill="WHITE">
+      <Button fx:id="btn_login" layoutX="36.0" layoutY="394.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #813FA9;" text="Log In" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btn_sign_up" layoutX="36.0" layoutY="479.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #bc0bf2;" text="Create new account" textFill="WHITE">
+      <Button fx:id="btn_sign_up" layoutX="36.0" layoutY="479.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #813FA9;" text="Create new account" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

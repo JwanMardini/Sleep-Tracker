@@ -11,7 +11,7 @@
             <Font name="Arial Rounded MT Bold" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="btn_logout" layoutX="151.0" layoutY="252.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #bc0bf2;" text="Logout" textFill="WHITE">
+      <Button fx:id="btn_logout" layoutX="151.0" layoutY="252.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #813FA9;" text="Logout" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

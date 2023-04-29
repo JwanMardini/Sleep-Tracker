@@ -12,7 +12,7 @@
             <Image url="@Logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="36.0" layoutY="135.0" prefHeight="32.0" prefWidth="374.0" text="Sign up!" textFill="#bc0bf2">
+      <Label layoutX="36.0" layoutY="135.0" prefHeight="32.0" prefWidth="374.0" text="Sign up!" textFill="#813FA9">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -29,12 +29,12 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btn_signup" layoutX="36.0" layoutY="394.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #bc0bf2;" text="Sign Up" textFill="WHITE">
+      <Button fx:id="btn_signup" layoutX="36.0" layoutY="394.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #813FA9;" text="Sign Up" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btn_log_in" layoutX="36.0" layoutY="479.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #bc0bf2;" text="Back to log in" textFill="WHITE">
+      <Button fx:id="btn_log_in" layoutX="36.0" layoutY="479.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #813FA9;" text="Back to log in" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
