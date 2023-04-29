@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="770.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SignUpController">
+   <children>
+      <ImageView fitHeight="124.0" fitWidth="600.0" layoutX="105.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="36.0" layoutY="135.0" prefHeight="32.0" prefWidth="374.0" text="Sign up!" textFill="#bc0bf2">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf_username" layoutX="36.0" layoutY="237.0" prefHeight="32.0" prefWidth="298.0" style="-fx-border-color: #ffffff;" />
+      <PasswordField fx:id="tf_password" layoutX="36.0" layoutY="313.0" prefHeight="32.0" prefWidth="298.0" style="-fx-border-color: #ffffff;" />
+      <Label layoutX="36.0" layoutY="208.0" prefHeight="20.0" prefWidth="87.0" text="Username:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="288.0" prefHeight="21.0" prefWidth="100.0" text="Password:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="btn_signup" layoutX="36.0" layoutY="394.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #bc0bf2;" text="Sign Up" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_log_in" layoutX="36.0" layoutY="479.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #bc0bf2;" text="Back to log in" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="37.0" layoutY="454.0" prefHeight="25.0" prefWidth="173.0" text="Already a member?" />
+   </children>
+</AnchorPane>

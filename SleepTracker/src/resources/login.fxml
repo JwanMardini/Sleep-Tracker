@@ -11,12 +11,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="770.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="541.0" prefWidth="770.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoginController">
    <children>
       <ImageView fitHeight="124.0" fitWidth="600.0" layoutX="105.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@img/Logo.png" />
+            <Image url="@Logo.png" />
          </image>
       </ImageView>
       <Label layoutX="36.0" layoutY="135.0" prefHeight="32.0" prefWidth="374.0" text="Welcome to your Sleep Tracker app!" textFill="#bc0bf2">
@@ -29,8 +28,8 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="username" layoutX="36.0" layoutY="237.0" prefHeight="32.0" prefWidth="298.0" style="-fx-border-color: #ffffff;" />
-      <PasswordField fx:id="password" layoutX="36.0" layoutY="313.0" prefHeight="32.0" prefWidth="298.0" style="-fx-border-color: #ffffff;" />
+      <TextField fx:id="tf_username" layoutX="36.0" layoutY="237.0" prefHeight="32.0" prefWidth="298.0" style="-fx-border-color: #ffffff;" />
+      <PasswordField fx:id="tf_password" layoutX="36.0" layoutY="313.0" prefHeight="32.0" prefWidth="298.0" style="-fx-border-color: #ffffff;" />
       <Label layoutX="36.0" layoutY="208.0" prefHeight="20.0" prefWidth="87.0" text="Username:">
          <font>
             <Font size="15.0" />
@@ -42,22 +41,17 @@
          </font>
       </Label>
       <CheckBox fx:id="checkBox" layoutX="36.0" layoutY="354.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="106.0" text="Remember me" textOverrun="CLIP" />
-      <Hyperlink fx:id="forgotPassword" layoutX="223.0" layoutY="351.0" onAction="#forgotPassword" prefHeight="23.0" prefWidth="112.0" text="  Forgot password?" />
-      <Button fx:id="loginButton" layoutX="36.0" layoutY="394.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #bc0bf2;" text="Log In" textFill="WHITE">
+      <Hyperlink fx:id="forgotPassword" layoutX="223.0" layoutY="351.0" prefHeight="23.0" prefWidth="112.0" text="  Forgot password?" />
+      <Button fx:id="btn_login" layoutX="36.0" layoutY="394.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #bc0bf2;" text="Log In" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="createButton" layoutX="36.0" layoutY="479.0" mnemonicParsing="false" onAction="#createAccount" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #bc0bf2;" text="Create new account" textFill="WHITE">
+      <Button fx:id="btn_sign_up" layoutX="36.0" layoutY="479.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #bc0bf2;" text="Create new account" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
       <Label layoutX="37.0" layoutY="454.0" prefHeight="25.0" prefWidth="173.0" text="Do not have an account?" />
-      <Label fx:id="wrongLabel" layoutX="419.0" layoutY="256.0" prefHeight="32.0" prefWidth="349.0" textFill="#bc0bf2">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
