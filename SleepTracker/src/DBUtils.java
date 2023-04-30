@@ -58,7 +58,7 @@ public class DBUtils {
                     alert.setContentText("You cannot use this username.");
                     alert.show();
                 } else { // If the user doesn't exist, insert the user into the database and change the scene to the logged-in view.
-                    try (PreparedStatement psInsert = connection.prepareStatement("INSERT INTO Users(username, Password) VALUES(?,?)");) {
+                    try (PreparedStatement psInsert = connection.prepareStatement("INSERT INTO Users(username, Password) VALUES(?,?)")) {
                         psInsert.setString(1, username);
                         psInsert.setString(2, password);
                         psInsert.executeUpdate();
