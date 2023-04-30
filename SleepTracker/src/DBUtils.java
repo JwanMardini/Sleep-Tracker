@@ -104,5 +104,20 @@ public class DBUtils {
             e.printStackTrace();
         }
     }
+
+    public static String sendToken(ActionEvent actionEvent, String email){
+        return null;
+    }
+
+
+    public static boolean checkToken(String token){
+        return true;
+    }
+
+    public static void updatePassword(String email, String newPassword){
+
+    }
+
+
 }
 
