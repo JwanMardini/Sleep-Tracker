@@ -49,23 +49,23 @@ public class DBUtils {
     public static void signUpUser(ActionEvent actionEvent, String username, String password) {
         // to close the ResultSet, PreparedStatements, and Connection once the execution is done
         try (Connection connection = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
-             PreparedStatement psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ? ");
-             ResultSet resultSet = psCheckUserExists.executeQuery();) {
+             PreparedStatement psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ? ")) {
             psCheckUserExists.setString(1, username);
-
-            if (resultSet.isBeforeFirst()) {  // If the user already exists, show an error message.
-                System.out.println("User already exists! ");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("You cannot use this username.");
-                alert.show();
-            } else { // If the user doesn't exist, insert the user into the database and change the scene to the logged-in view.
-                try (PreparedStatement psInsert = connection.prepareStatement("INSERT INTO Users(username, Password) VALUES(?,?)");) {
-                    psInsert.setString(1, username);
-                    psInsert.setString(2, password);
-                    psInsert.executeUpdate();
-                    changeScene(actionEvent, "logged-in.fxml", "Welcome!", username);
-                } catch (SQLException e) {
-                    e.printStackTrace();
+            try (ResultSet resultSet = psCheckUserExists.executeQuery()) {
+                if (resultSet.isBeforeFirst()) {  // If the user already exists, show an error message.
+                    System.out.println("User already exists! ");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("You cannot use this username.");
+                    alert.show();
+                } else { // If the user doesn't exist, insert the user into the database and change the scene to the logged-in view.
+                    try (PreparedStatement psInsert = connection.prepareStatement("INSERT INTO Users(username, Password) VALUES(?,?)");) {
+                        psInsert.setString(1, username);
+                        psInsert.setString(2, password);
+                        psInsert.executeUpdate();
+                        changeScene(actionEvent, "logged-in.fxml", "Welcome!", username);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         } catch (SQLException e) {
