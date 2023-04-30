@@ -36,9 +36,6 @@ public class resetPasswordController implements Initializable{
             @Override
             public void handle(ActionEvent event) {
                 String token = DBUtils.sendToken(event, tf_email.getText());
-                if(DBUtils.checkToken(token)){
-                    DBUtils.changeScene(event, "newPassword.fxml", "new password", null);
-                }
             }
         });
 
