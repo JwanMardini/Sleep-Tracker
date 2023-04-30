@@ -46,7 +46,7 @@ public class DBUtils {
     }
 
     // This method signs up a user with the specified username and password.
-    public static void signUpUser(ActionEvent actionEvent, String username, String password) {
+    public static void signUpUser(ActionEvent actionEvent, String username, String password, String email) {
         // to close the ResultSet, PreparedStatements, and Connection once the execution is done
         try (Connection connection = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
              PreparedStatement psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ? ")) {
@@ -58,9 +58,10 @@ public class DBUtils {
                     alert.setContentText("You cannot use this username.");
                     alert.show();
                 } else { // If the user doesn't exist, insert the user into the database and change the scene to the logged-in view.
-                    try (PreparedStatement psInsert = connection.prepareStatement("INSERT INTO Users(username, Password) VALUES(?,?)")) {
+                    try (PreparedStatement psInsert = connection.prepareStatement("INSERT INTO Users(username, Password, email) VALUES(?,?,?)")) {
                         psInsert.setString(1, username);
                         psInsert.setString(2, password);
+                        psInsert.setString(3, email);
                         psInsert.executeUpdate();
                         changeScene(actionEvent, "logged-in.fxml", "Welcome!", username);
                     } catch (SQLException e) {

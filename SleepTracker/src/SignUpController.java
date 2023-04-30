@@ -21,6 +21,9 @@ public class SignUpController implements Initializable {
     private TextField tf_username;
 
     @FXML
+    private TextField tf_email;
+
+    @FXML
     private TextField tf_password;
 
     @Override
@@ -28,8 +31,8 @@ public class SignUpController implements Initializable {
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty()) {
-                    DBUtils.signUpUser(actionEvent, tf_username.getText(), tf_password.getText());
+                if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_email.getText().trim().isEmpty()) {
+                    DBUtils.signUpUser(actionEvent, tf_username.getText(), tf_password.getText(), tf_email.getText());
                 } else {
                     System.out.println("Please fill in all information");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
