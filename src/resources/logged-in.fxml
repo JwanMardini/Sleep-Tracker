@@ -3,21 +3,79 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="541.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedInController">
+<AnchorPane prefHeight="541.0" prefWidth="770.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedInController">
    <children>
-      <ImageView fitHeight="105.0" fitWidth="112.0" layoutX="250.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@sleep.png" />
-         </image>
-      </ImageView>
+      <MenuBar layoutX="177.0" layoutY="157.0" prefHeight="105.0" prefWidth="327.0" style="-fx-background-color: white;">
+        <menus>
+          <Menu mnemonicParsing="false" text="Home">
+               <graphic>
+                  <ImageView fitHeight="130.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <items>
+                  <RadioMenuItem mnemonicParsing="false" text="About &quot;Sleep Tracker&quot;">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="HomeToggle" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem mnemonicParsing="false" text="General recommendations" toggleGroup="$HomeToggle" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Record sleep">
+               <graphic>
+                  <ImageView fitHeight="130.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@sleep.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+          </Menu>
+          <Menu mnemonicParsing="false" text="History">
+            <items>
+                  <RadioMenuItem mnemonicParsing="false" text="1 Week">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="HistoryToggle" />
+                     </toggleGroup>
+                  </RadioMenuItem>
+                  <RadioMenuItem mnemonicParsing="false" text="2 Weeks" toggleGroup="$HistoryToggle" />
+                  <RadioMenuItem mnemonicParsing="false" text="1 Month" toggleGroup="$HistoryToggle" />
+            </items>
+               <graphic>
+                  <ImageView fitHeight="110.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@history.png" />
+                     </image></ImageView>
+               </graphic>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Profile">
+              <items>
+                  <RadioMenuItem mnemonicParsing="false" text="Edit profile">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="ProfileToggle" />
+                     </toggleGroup></RadioMenuItem>
+                  <RadioMenuItem mnemonicParsing="false" text="Log out" toggleGroup="$ProfileToggle" />
+              </items>
+               <graphic>
+                  <ImageView fitHeight="130.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@profile.png" />
+                     </image></ImageView>
+               </graphic>
+            </Menu>
+        </menus>
+      </MenuBar>
       <ImageView fitHeight="124.0" fitWidth="600.0" layoutX="105.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="label_welcome" layoutX="98.0" layoutY="271.0" text="Welcome at Sleep Tracker app!">
+      <Label fx:id="label_welcome" layoutX="286.0" layoutY="309.0" text="Welcome USER!">
          <font>
             <Font name="Arial Rounded MT Bold" size="25.0" />
          </font>
@@ -27,40 +85,26 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <ImageView fitHeight="105.0" fitWidth="112.0" layoutX="83.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@home.jpg" />
-         </image>
-      </ImageView>
-      <Label layoutX="102.0" layoutY="222.0" text="Home">
+      <Label layoutX="204.0" layoutY="240.0" text="Home">
          <font>
-            <Font size="25.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="240.0" layoutY="222.0" prefHeight="36.0" prefWidth="153.0" text="record sleep">
+      <Label layoutX="286.0" layoutY="240.0" prefHeight="36.0" prefWidth="122.0" text="Record sleep">
          <font>
-            <Font size="25.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="95.0" fitWidth="112.0" layoutX="440.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@history.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="440.0" layoutY="230.0" prefHeight="36.0" prefWidth="82.0" text="History">
+      <Label layoutX="416.0" layoutY="240.0" prefHeight="36.0" prefWidth="67.0" text="History">
          <font>
-            <Font size="25.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="95.0" fitWidth="112.0" layoutX="580.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@profile.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="580.0" layoutY="230.0" prefHeight="36.0" prefWidth="82.0" text="Profile">
+      <Label layoutX="524.0" layoutY="240.0" prefHeight="36.0" prefWidth="67.0" text="Profile">
          <font>
-            <Font size="25.0" />
+            <Font size="20.0" />
          </font>
       </Label>
+      <Line endX="718.6666870117188" endY="136.0" startX="70.0" startY="136.0" />
    </children>
 </AnchorPane>
