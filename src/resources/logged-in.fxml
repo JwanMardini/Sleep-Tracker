@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +11,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedInController">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -19,7 +19,7 @@
                     <left>
                         <AnchorPane prefHeight="600.0" prefWidth="222.0" BorderPane.alignment="CENTER">
                             <children>
-                                <AnchorPane layoutX="11.0" layoutY="67.0" prefHeight="600.0" prefWidth="222.0" style="-fx-background-color: #813F9A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <AnchorPane layoutX="11.0" layoutY="67.0" prefHeight="600.0" prefWidth="222.0" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <AnchorPane layoutX="11.0" layoutY="82.0" prefHeight="70.0" prefWidth="222.0" style="-fx-background-color: #5A2B6B;" AnchorPane.bottomAnchor="530.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <children>
@@ -36,7 +36,10 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Label>
-                                        <Button cache="true" layoutX="11.0" layoutY="146.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="Home " textFill="WHITE">
+                                        <Button cache="true" layoutX="10.0" layoutY="199.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="Home " textFill="WHITE">
+                                            <graphic>
+                                                <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="2em" />
+                                            </graphic>
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
@@ -47,7 +50,10 @@
                                                 <ColorAdjust />
                                             </effect>
                                         </Button>
-                                        <Button cache="true" layoutX="11.0" layoutY="207.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="Record Sleep" textFill="WHITE">
+                                        <Button cache="true" layoutX="10.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="Record Sleep" textFill="WHITE">
+                                            <graphic>
+                                                <FontAwesomeIcon fill="WHITE" glyphName="BED" size="2em" />
+                                            </graphic>
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
@@ -58,7 +64,10 @@
                                                 <ColorAdjust />
                                             </effect>
                                         </Button>
-                                        <Button cache="true" layoutX="11.0" layoutY="268.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="History" textFill="WHITE">
+                                        <Button cache="true" layoutX="10.0" layoutY="321.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="History" textFill="WHITE">
+                                            <graphic>
+                                                <FontAwesomeIcon fill="WHITE" glyphName="HISTORY" size="2em" />
+                                            </graphic>
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
@@ -66,7 +75,10 @@
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </Button>
-                                        <Button cache="true" layoutX="11.0" layoutY="329.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="Profile" textFill="WHITE">
+                                        <Button cache="true" layoutX="10.0" layoutY="382.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="Profile" textFill="WHITE">
+                                            <graphic>
+                                                <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
+                                            </graphic>
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
@@ -78,6 +90,9 @@
                                             </effect>
                                         </Button>
                                         <Button fx:id="btn_logout" layoutX="14.0" layoutY="551.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #5A2B6B;" text="Log Out" textFill="WHITE">
+                                            <graphic>
+                                                <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />
+                                            </graphic>
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
@@ -88,6 +103,7 @@
                                                 <ColorAdjust />
                                             </effect>
                                         </Button>
+                                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="79.0" layoutY="175.0" size="5em" />
                                     </children>
                                 </AnchorPane>
                             </children>

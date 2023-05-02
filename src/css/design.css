@@ -1,0 +1,14 @@
+.gradient {
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #813FA9);
+}
+
+.textfield {
+    -fx-background-color: linear-gradient(to bottom right, #813FA9, #5A2B6B);
+    -fx-border-color: #fff;
+    -fx-border-width: .5px;
+}
+
+.textfield:focused {
+    -fx-border-width: 1px;
+}
+
