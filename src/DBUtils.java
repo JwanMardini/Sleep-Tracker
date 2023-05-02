@@ -105,6 +105,21 @@ public class DBUtils {
         }
     }
 
+    public static boolean checkEmail(String email) {
+        boolean exists = false;
+        try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
+             PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM users WHERE email = ?")) {
+            preparedStatement.setString(1, email);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                exists = resultSet.next();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
+
+
     public static String sendToken(ActionEvent actionEvent, String email){
         return null;
     }

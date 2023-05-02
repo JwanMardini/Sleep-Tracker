@@ -44,7 +44,7 @@ public class LoginController implements Initializable {
         forgotPassword.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "resetPassword.fxml", "Reset Password", null);
+                DBUtils.changeScene(event, "resources/resetPassword.fxml", "Reset Password", null);
             }
         });
 
