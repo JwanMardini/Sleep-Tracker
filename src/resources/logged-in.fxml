@@ -1,116 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.RadioMenuItem?>
-<?import javafx.scene.control.ToggleGroup?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="541.0" prefWidth="770.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedInController">
-   <children>
-      <MenuBar layoutX="177.0" layoutY="157.0" prefHeight="105.0" prefWidth="327.0" style="-fx-background-color: white;">
-        <menus>
-          <Menu mnemonicParsing="false" text="Home">
-               <graphic>
-                  <ImageView fitHeight="130.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@home.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <items>
-                  <RadioMenuItem fx:id="about_btn" mnemonicParsing="false" text="About &quot;Sleep Tracker&quot;">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="HomeToggle" />
-                     </toggleGroup>
-                  </RadioMenuItem>
-                  <RadioMenuItem fx:id="recommand_btn" mnemonicParsing="false" text="General recommendations" toggleGroup="$HomeToggle" />
-               </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Record sleep">
-               <graphic>
-                  <ImageView fitHeight="130.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@sleep.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-          </Menu>
-          <Menu mnemonicParsing="false" text="History">
-            <items>
-                  <RadioMenuItem fx:id="week1_btn" mnemonicParsing="false" text="1 Week">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="HistoryToggle" />
-                     </toggleGroup>
-                  </RadioMenuItem>
-                  <RadioMenuItem fx:id="week2_btn" mnemonicParsing="false" text="2 Weeks" toggleGroup="$HistoryToggle" />
-                  <RadioMenuItem fx:id="week3_btn" mnemonicParsing="false" text="1 Month" toggleGroup="$HistoryToggle" />
-            </items>
-               <graphic>
-                  <ImageView fitHeight="110.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@history.png" />
-                     </image></ImageView>
-               </graphic>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Profile">
-              <items>
-                  <RadioMenuItem fx:id="editProfile_btn" mnemonicParsing="false" text="Edit profile">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="ProfileToggle" />
-                     </toggleGroup></RadioMenuItem>
-                  <RadioMenuItem mnemonicParsing="false" text="Log out" toggleGroup="$ProfileToggle" />
-              </items>
-               <graphic>
-                  <ImageView fitHeight="130.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@profile.png" />
-                     </image></ImageView>
-               </graphic>
-            </Menu>
-        </menus>
-      </MenuBar>
-      <ImageView fitHeight="124.0" fitWidth="600.0" layoutX="105.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Logo.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="label_welcome" layoutX="286.0" layoutY="309.0" text="Welcome USER!">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="25.0" />
-         </font>
-      </Label>
-      <Button fx:id="btn_logout" layoutX="250.0" layoutY="482.0" mnemonicParsing="false" onAction="#logout" prefHeight="32.0" prefWidth="298.0" style="-fx-background-color: #813FA9;" text="Logout" textFill="WHITE">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Label layoutX="204.0" layoutY="240.0" text="Home">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="286.0" layoutY="240.0" prefHeight="36.0" prefWidth="122.0" text="Record sleep">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="416.0" layoutY="240.0" prefHeight="36.0" prefWidth="67.0" text="History">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="524.0" layoutY="240.0" prefHeight="36.0" prefWidth="67.0" text="Profile">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <Line endX="718.6666870117188" endY="136.0" startX="70.0" startY="136.0" />
-   </children>
-</AnchorPane>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedInController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <children>
+                <BorderPane layoutX="230.0" layoutY="181.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <left>
+                        <AnchorPane prefHeight="600.0" prefWidth="222.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <AnchorPane layoutX="11.0" layoutY="67.0" prefHeight="600.0" prefWidth="222.0" style="-fx-background-color: #813F9A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <AnchorPane layoutX="11.0" layoutY="82.0" prefHeight="70.0" prefWidth="222.0" style="-fx-background-color: #5A2B6B;" AnchorPane.bottomAnchor="530.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <children>
+                                                <Label layoutX="37.0" layoutY="21.0" text="Sleep Tracker" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="Comic Sans MS" size="20.0" />
+                                                    </font>
+                                                </Label>
+                                                <Line endX="119.40000915527344" endY="3.814697265625E-6" layoutX="102.0" layoutY="69.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
+                                            </children>
+                                        </AnchorPane>
+                                        <Label fx:id="label_welcome" layoutX="20.0" layoutY="76.0" text="Welcome," textFill="WHITE">
+                                            <font>
+                                                <Font size="15.0" />
+                                            </font>
+                                        </Label>
+                                        <Button cache="true" layoutX="11.0" layoutY="146.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="Home " textFill="WHITE">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <ColorAdjust />
+                                            </effect>
+                                        </Button>
+                                        <Button cache="true" layoutX="11.0" layoutY="207.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="Record Sleep" textFill="WHITE">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <ColorAdjust />
+                                            </effect>
+                                        </Button>
+                                        <Button cache="true" layoutX="11.0" layoutY="268.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="History" textFill="WHITE">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                        </Button>
+                                        <Button cache="true" layoutX="11.0" layoutY="329.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="Profile" textFill="WHITE">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <ColorAdjust />
+                                            </effect>
+                                        </Button>
+                                        <Button fx:id="btn_logout" layoutX="14.0" layoutY="551.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #5A2B6B;" text="Log Out" textFill="WHITE">
+                                            <font>
+                                                <Font size="14.0" />
+                                            </font>
+                                            <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                            </cursor>
+                                            <effect>
+                                                <ColorAdjust />
+                                            </effect>
+                                        </Button>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+                    </left>
+                    <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <effect>
+                                <ColorAdjust brightness="0.28" contrast="-0.19" hue="0.22" saturation="0.28" />
+                            </effect>
+                            <children>
+                                <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="600.8" prefWidth="876.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            </children>
+                        </AnchorPane>
+                    </center>
+                </BorderPane>
+            </children>
+        </AnchorPane>
+    </children>
+</StackPane>
