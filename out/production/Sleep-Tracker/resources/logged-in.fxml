@@ -36,7 +36,7 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Label>
-                                        <Button cache="true" layoutX="10.0" layoutY="199.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="Home " textFill="WHITE">
+                                        <Button cache="true" layoutX="10.0" layoutY="199.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="Home " textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="2em" />
                                             </graphic>
@@ -50,7 +50,7 @@
                                                 <ColorAdjust />
                                             </effect>
                                         </Button>
-                                        <Button cache="true" layoutX="10.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="Record Sleep" textFill="WHITE">
+                                        <Button cache="true" layoutX="10.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="Record Sleep" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="WHITE" glyphName="BED" size="2em" />
                                             </graphic>
@@ -64,7 +64,7 @@
                                                 <ColorAdjust />
                                             </effect>
                                         </Button>
-                                        <Button cache="true" layoutX="10.0" layoutY="321.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="History" textFill="WHITE">
+                                        <Button cache="true" layoutX="10.0" layoutY="321.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="History" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="WHITE" glyphName="HISTORY" size="2em" />
                                             </graphic>
@@ -75,7 +75,7 @@
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </Button>
-                                        <Button cache="true" layoutX="10.0" layoutY="382.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-background-color: #5A2B6B;" text="Profile" textFill="WHITE">
+                                        <Button cache="true" layoutX="10.0" layoutY="382.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="Profile" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
                                             </graphic>
