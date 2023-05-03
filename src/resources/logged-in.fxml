@@ -118,7 +118,10 @@
                                 <ColorAdjust brightness="0.28" contrast="-0.19" hue="0.22" saturation="0.28" />
                             </effect>
                             <children>
-                                <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="600.8" prefWidth="876.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="600.8" prefWidth="876.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="1.0" layoutY="5.0" prefHeight="594.0" prefWidth="874.0" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                           </children></AnchorPane>
                             </children>
                         </AnchorPane>
                     </center>
