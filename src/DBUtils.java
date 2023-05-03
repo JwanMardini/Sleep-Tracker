@@ -143,7 +143,7 @@ public class DBUtils {
         String token = String.format("%04d", new Random().nextInt(10000));
 
         // Set up email properties
-        String host = "smtp.mail.yahoo.com";
+        String host = "smtp.mail.gmail.com";
         String emailUsername = "sleep.tracker12@gmail.com";
         String emailPassword = "Sleep.123";
 
