@@ -18,7 +18,7 @@ import javax.mail.internet.*;
 public class DBUtils {
     private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "toor";
+    private static final String DbPassword = "";
 
 
     // This method changes the scene to the specified FXML file with a given title and username.
@@ -46,6 +46,7 @@ public class DBUtils {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setTitle(title);
         stage.setScene(new Scene(root, 800, 600));
+        stage.setResizable(false);
         stage.show();
     }
 

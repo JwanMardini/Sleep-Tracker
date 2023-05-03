@@ -31,14 +31,14 @@
                                                 <Line endX="119.40000915527344" endY="3.814697265625E-6" layoutX="102.0" layoutY="69.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
                                             </children>
                                         </AnchorPane>
-                                        <Label fx:id="label_welcome" layoutX="20.0" layoutY="76.0" text="Welcome," textFill="WHITE">
+                                        <Label fx:id="label_welcome" layoutX="22.0" layoutY="104.0" text="Welcome," textFill="WHITE">
                                             <font>
                                                 <Font size="15.0" />
                                             </font>
                                         </Label>
-                                        <Button cache="true" layoutX="10.0" layoutY="199.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="Home " textFill="WHITE">
+                                        <Button alignment="TOP_LEFT" cache="true" layoutX="13.0" layoutY="246.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="signup-btn" stylesheets="@../css/design.css" text="Home " textFill="WHITE">
                                             <graphic>
-                                                <FontAwesomeIcon fill="WHITE" glyphName="HOME" size="2em" />
+                                                <FontAwesomeIcon fill="#d1b4ed" glyphName="HOME" size="2em" />
                                             </graphic>
                                             <font>
                                                 <Font size="14.0" />
@@ -50,9 +50,9 @@
                                                 <ColorAdjust />
                                             </effect>
                                         </Button>
-                                        <Button cache="true" layoutX="10.0" layoutY="260.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="Record Sleep" textFill="WHITE">
+                                        <Button alignment="TOP_LEFT" cache="true" layoutX="13.0" layoutY="307.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="signup-btn" stylesheets="@../css/design.css" text="Record Sleep" textFill="WHITE">
                                             <graphic>
-                                                <FontAwesomeIcon fill="WHITE" glyphName="BED" size="2em" />
+                                                <FontAwesomeIcon fill="#d1b4ed" glyphName="BED" size="2em" />
                                             </graphic>
                                             <font>
                                                 <Font size="14.0" />
@@ -64,9 +64,9 @@
                                                 <ColorAdjust />
                                             </effect>
                                         </Button>
-                                        <Button cache="true" layoutX="10.0" layoutY="321.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="History" textFill="WHITE">
+                                        <Button alignment="TOP_LEFT" cache="true" layoutX="13.0" layoutY="368.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="signup-btn" stylesheets="@../css/design.css" text="History" textFill="WHITE">
                                             <graphic>
-                                                <FontAwesomeIcon fill="WHITE" glyphName="HISTORY" size="2em" />
+                                                <FontAwesomeIcon fill="#d1b4ed" glyphName="HISTORY" size="2em" />
                                             </graphic>
                                             <font>
                                                 <Font size="14.0" />
@@ -75,9 +75,9 @@
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </Button>
-                                        <Button cache="true" layoutX="10.0" layoutY="382.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="textfield" stylesheets="@../css/design.css" text="Profile" textFill="WHITE">
+                                        <Button alignment="TOP_LEFT" cache="true" layoutX="13.0" layoutY="429.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="signup-btn" stylesheets="@../css/design.css" text="Profile" textFill="WHITE">
                                             <graphic>
-                                                <FontAwesomeIcon fill="WHITE" glyphName="USER" size="2em" />
+                                                <FontAwesomeIcon fill="#d1b4ed" glyphName="USER" size="2em" />
                                             </graphic>
                                             <font>
                                                 <Font size="14.0" />
@@ -103,7 +103,7 @@
                                                 <ColorAdjust />
                                             </effect>
                                         </Button>
-                                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="79.0" layoutY="175.0" size="5em" />
+                                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="79.0" layoutY="205.0" size="5em" />
                                     </children>
                                 </AnchorPane>
                             </children>
