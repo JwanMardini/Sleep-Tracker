@@ -18,7 +18,7 @@ import javax.mail.internet.*;
 public class DBUtils {
     private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "";
+    private static final String DbPassword = "toor";
 
 
     // This method changes the scene to the specified FXML file with a given title and username.
@@ -59,7 +59,9 @@ public class DBUtils {
             try (ResultSet resultSet = psCheckUserExists.executeQuery()) {
                 if (resultSet.isBeforeFirst()) {  // If the user already exists, show an error message.
                     System.out.println("User already exists! ");
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("User already exists");
+                    alert.setHeaderText(null);
                     alert.setContentText("You cannot use this username.");
                     alert.show();
                 } else { // If the user doesn't exist, insert the user into the database and change the scene to the logged-in view.
@@ -88,7 +90,9 @@ public class DBUtils {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (!resultSet.isBeforeFirst()) {
                     System.out.println("User not found in the database!");
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Incorrect Credentials Message");
+                    alert.setHeaderText(null);
                     alert.setContentText("Provided Credentials are incorrect!");
                     alert.show();
                 } else {
@@ -97,8 +101,9 @@ public class DBUtils {
                         if (retrievePassword.equals(password)) {
                             changeScene(actionEvent, "resources/logged-in.fxml", "Welcome!", username);
                         } else {
-                            System.out.println("Password did not match! ");
-                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Incorrect Credentials Message");
+                            alert.setHeaderText(null);
                             alert.setContentText("The provided credentials are incorrect!");
                             alert.show();
                         }
