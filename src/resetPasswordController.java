@@ -6,8 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import javax.mail.MessagingException;
+import org.apache.commons.mail.EmailException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -38,6 +37,8 @@ public class resetPasswordController implements Initializable{
     @FXML
     public Button back_btn;
 
+    private static String token;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -49,6 +50,11 @@ public class resetPasswordController implements Initializable{
                     alert.setContentText("The provided credentials are incorrect!");
                     alert.show();
                 }else{
+                    try {
+                        token = DBUtils.sendToken(event, tf_email.getText());
+                    } catch (EmailException e) {
+                        throw new RuntimeException(e);
+                    }
                     tf_email.setVisible(false);
                     l_label.setVisible(false);
                     btn_send.setVisible(false);
@@ -65,12 +71,6 @@ public class resetPasswordController implements Initializable{
         btn_submit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                String token = null;
-                try {
-                    token = DBUtils.sendToken(actionEvent, tf_email.getText());
-                } catch (MessagingException e) {
-                    throw new RuntimeException(e);
-                }
                 if (!tf_token.getText().trim().equals(token)){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Wrong token");

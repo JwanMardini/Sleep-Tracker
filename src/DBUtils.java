@@ -8,17 +8,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.HtmlEmail;
+
 import java.sql.*;
 import java.io.IOException;
-import java.util.Properties;
 import java.util.Random;
-import javax.mail.*;
-import javax.mail.internet.*;
+
+
 
 public class DBUtils {
     private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "toor";
+    private static final String DbPassword = "Jwan.joan12";
 
 
     // This method changes the scene to the specified FXML file with a given title and username.
@@ -116,61 +118,51 @@ public class DBUtils {
     }
 
     public static boolean checkEmail(String email) {
-        boolean exists = false;
+        String retrieveEmail = null;
         try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
              PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM users WHERE email = ?")) {
             preparedStatement.setString(1, email);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                exists = resultSet.next();
+                while (resultSet.next()){
+                    retrieveEmail = resultSet.getString("email");
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return exists;
+        if(retrieveEmail == null)
+            return false;
+        else {
+            return true;
+        }
     }
 
 
-    public static String sendToken(ActionEvent actionEvent, String email) throws MessagingException{
+    public static String sendToken(ActionEvent actionEvent , String email) throws EmailException {
         // Generate a random token
-        Random random = new Random();
-        String token = String.format("%04d", random.nextInt(10000));
+        String token = String.format("%04d", new Random().nextInt(10000));
 
         // Set up email properties
-        String host = "your-smtp-host.com";
-        String emailUsername = "your-email-username";
-        String emailPassword = "your-email-password";
-        Properties properties = new Properties();
-        properties.put("mail.smtp.host", host);
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.port", "587");
+        String host = "smtp.mail.yahoo.com";
+        String emailUsername = "sleep.tracker12@gmail.com";
+        String emailPassword = "Sleep.123";
 
-        // Create a new session with authentication
-        Session session = Session.getInstance(properties, new Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(emailUsername, emailPassword);
-            }
-        });
-        // Create a new message and set the recipients, subject, and content
-        Message message = new MimeMessage(session);
-
-        message.setFrom(new InternetAddress(emailUsername));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
-        message.setSubject("Your token for verification");
-        message.setText("Your verification token is: " + token);
-
-        // Send the message
-        Transport.send(message);
-
+        // Create the email message
+        HtmlEmail emailMessage = new HtmlEmail();
+        emailMessage.setHostName(host);
+        emailMessage.setSmtpPort(587);
+        emailMessage.setAuthentication(emailUsername, emailPassword);
+        emailMessage.setStartTLSEnabled(true);
+        emailMessage.setFrom(emailUsername);
+        emailMessage.addTo(email);
+        emailMessage.setSubject("Your token for verification");
+        emailMessage.setHtmlMsg("Your verification token is: " + token);
+        // Send the email
+        emailMessage.send();
         // Return the token sent to the email
         return token;
     }
 
-
-
-    public static boolean checkToken(String token){
-        return true;
-    }
 
     public static void updatePassword(String email, String newPassword){
 
