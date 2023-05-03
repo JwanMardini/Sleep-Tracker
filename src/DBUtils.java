@@ -10,6 +10,10 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import java.sql.*;
 import java.io.IOException;
+import java.util.Properties;
+import java.util.Random;
+import javax.mail.*;
+import javax.mail.internet.*;
 
 public class DBUtils {
     private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
@@ -120,9 +124,42 @@ public class DBUtils {
     }
 
 
-    public static String sendToken(ActionEvent actionEvent, String email){
-        return null;
+    public static String sendToken(ActionEvent actionEvent, String email) throws MessagingException{
+        // Generate a random token
+        Random random = new Random();
+        String token = String.format("%04d", random.nextInt(10000));
+
+        // Set up email properties
+        String host = "your-smtp-host.com";
+        String emailUsername = "your-email-username";
+        String emailPassword = "your-email-password";
+        Properties properties = new Properties();
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.port", "587");
+
+        // Create a new session with authentication
+        Session session = Session.getInstance(properties, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(emailUsername, emailPassword);
+            }
+        });
+        // Create a new message and set the recipients, subject, and content
+        Message message = new MimeMessage(session);
+
+        message.setFrom(new InternetAddress(emailUsername));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+        message.setSubject("Your token for verification");
+        message.setText("Your verification token is: " + token);
+
+        // Send the message
+        Transport.send(message);
+
+        // Return the token sent to the email
+        return token;
     }
+
 
 
     public static boolean checkToken(String token){
