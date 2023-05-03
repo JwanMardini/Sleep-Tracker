@@ -22,11 +22,6 @@
       <AnchorPane prefHeight="600.0" prefWidth="400.0" styleClass="gradient" stylesheets="@../css/design.css">
          <children>
             <FontAwesomeIcon fill="WHITE" glyphName="BED" layoutX="124.0" layoutY="244.0" size="10em" />
-            <Label layoutX="124.0" layoutY="431.0" text="Create Account" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
             <Button fx:id="btn_sign_up" layoutX="77.0" layoutY="473.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="230.0" styleClass="signup-btn" stylesheets="@../css/design.css" text="Create new account" textFill="WHITE">
                <font>
                   <Font size="16.0" />
