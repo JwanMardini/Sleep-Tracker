@@ -16,7 +16,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -53,5 +52,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="javax.mail" level="project" />
+    <orderEntry type="library" name="activation-1.1" level="project" />
+    <orderEntry type="library" name="commons-email-1.5" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

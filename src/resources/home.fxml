@@ -12,12 +12,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedInController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedInController">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
             <children>
-                <BorderPane layoutX="230.0" layoutY="181.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <BorderPane layoutX="230.0" layoutY="181.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <left>
                         <AnchorPane prefHeight="600.0" prefWidth="222.0" BorderPane.alignment="CENTER">
                             <children>
@@ -33,11 +34,6 @@
                                                 <Line endX="119.40000915527344" endY="3.814697265625E-6" layoutX="102.0" layoutY="69.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
                                             </children>
                                         </AnchorPane>
-                                        <Label fx:id="label_welcome" layoutX="22.0" layoutY="104.0" text="Welcome," textFill="WHITE">
-                                            <font>
-                                                <Font size="15.0" />
-                                            </font>
-                                        </Label>
                                         <Button fx:id="btn_home" alignment="TOP_LEFT" cache="true" layoutX="12.0" layoutY="251.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Home " textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="HOME" size="2em" />
@@ -132,9 +128,32 @@
                                 <ColorAdjust brightness="0.28" contrast="-0.19" hue="0.22" saturation="0.28" />
                             </effect>
                             <children>
-                                <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="600.8" prefWidth="876.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="600.0" prefWidth="578.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="1.0" layoutY="5.0" prefHeight="594.0" prefWidth="874.0" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                              <AnchorPane layoutX="1.0" layoutY="5.0" prefHeight="594.0" prefWidth="606.0" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="BED" layoutX="23.0" layoutY="162.0" size="15em" />
+                                    <Label layoutX="21.0" layoutY="196.0" text="About the App" textFill="WHITE" underline="true">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <Text fill="WHITE" layoutX="21.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Sleep Tracker app is a powerful tool designed to help you monitor and improve your sleep quality. With its user-friendly interface and advanced tracking features, this app provides you with a comprehensive overview of your sleeping patterns, allowing you to make informed decisions about your sleep habits.&quot; " wrappingWidth="504.13671112060547">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Label layoutX="21.0" layoutY="367.0" text="Recommended Sleep hours" textFill="WHITE" underline="true">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <Text fill="WHITE" layoutX="22.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="According to the National Sleep Foundation, the recommended sleep hours for adults between the ages of 18-64 is 7-9 hours per night, while older adults (65 years and above) may need slightly less, ranging from 7-8 hours per night. However, it's important to note that individual sleep needs can vary based on factors such as age, genetics, lifestyle, and overall health." wrappingWidth="512.8033981323242">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                 </children></AnchorPane>
                            </children></AnchorPane>
                             </children>
                         </AnchorPane>

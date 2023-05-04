@@ -38,7 +38,7 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Label>
-                                        <MenuButton alignment="TOP_LEFT" cache="true" layoutX="12.0" layoutY="251.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Home " textFill="WHITE">
+                                        <Button fx:id="btn_home" alignment="TOP_LEFT" cache="true" layoutX="12.0" layoutY="251.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Home " textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="HOME" size="2em" />
                                             </graphic>
@@ -51,12 +51,8 @@
                                             <effect>
                                                 <ColorAdjust />
                                             </effect>
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" styleClass="background" text="About the App" />
-                                    <MenuItem mnemonicParsing="false" styleClass="background" text="Recomend Slepp Hours" />
-                                 </items>
-                                        </MenuButton>
-                                        <MenuButton alignment="TOP_LEFT" cache="true" layoutX="13.0" layoutY="307.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Record Sleep">
+                                        </Button>
+                                        <MenuButton alignment="TOP_LEFT" cache="true" layoutX="13.0" layoutY="307.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Record Sleep" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="BED" size="2em" />
                                             </graphic>

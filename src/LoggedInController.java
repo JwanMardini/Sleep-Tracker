@@ -20,10 +20,17 @@ public class LoggedInController implements Initializable {
     @FXML
     private Label label_welcome;
 
-
+    @FXML
+    private Button btn_home;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_home.setOnAction((new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScene(actionEvent, "resources/home.fxml", "Home", null);
+            }
+        }));
 
     }
     private  Alert alert;
