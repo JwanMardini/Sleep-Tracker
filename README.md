@@ -20,7 +20,6 @@ Open the MySQL dump file, which includes the table structure and data for a data
 Note: Make sure that the MySQL server you are importing the database into has the same version or a newer version than the one used to create the dump file.
 
 
-
 ## Running the Application
 ### Prerequirements:
 You have to have the following things installed on your computer:
