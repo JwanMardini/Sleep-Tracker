@@ -20,7 +20,7 @@ import java.util.Random;
 public class DBUtils {
     private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "toor";
+    private static final String DbPassword = "m.alloush955";
 
 
     // This method changes the scene to the specified FXML file with a given title and username.
@@ -137,31 +137,6 @@ public class DBUtils {
         }
     }
 
-
-    public static String sendToken(ActionEvent actionEvent , String email) throws EmailException {
-        // Generate a random token
-        String token = String.format("%04d", new Random().nextInt(10000));
-
-        // Set up email properties
-        String host = "smtp.mail.gmail.com";
-        String emailUsername = "sleep.tracker12@gmail.com";
-        String emailPassword = "Sleep.123";
-
-        // Create the email message
-        HtmlEmail emailMessage = new HtmlEmail();
-        emailMessage.setHostName(host);
-        emailMessage.setSmtpPort(587);
-        emailMessage.setAuthentication(emailUsername, emailPassword);
-        emailMessage.setStartTLSEnabled(true);
-        emailMessage.setFrom(emailUsername);
-        emailMessage.addTo(email);
-        emailMessage.setSubject("Your token for verification");
-        emailMessage.setHtmlMsg("Your verification token is: " + token);
-        // Send the email
-        emailMessage.send();
-        // Return the token sent to the email
-        return token;
-    }
 
 
     public static void updatePassword(String email, String newPassword){

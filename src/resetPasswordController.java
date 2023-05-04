@@ -50,20 +50,7 @@ public class resetPasswordController implements Initializable{
                     alert.setContentText("The provided credentials are incorrect!");
                     alert.show();
                 }else{
-                    try {
-                        token = DBUtils.sendToken(event, tf_email.getText());
-                    } catch (EmailException e) {
-                        throw new RuntimeException(e);
-                    }
-                    tf_email.setVisible(false);
-                    l_label.setVisible(false);
-                    btn_send.setVisible(false);
-                    l_email.setVisible(false);
-
-                    l_token.setVisible(true);
-                    tf_token.setVisible(true);
-                    btn_submit.setVisible(true);
-                    l_token2.setVisible(true);
+                    DBUtils.changeScene(event, "resources/newPassword.fxml", null, null);
                 }
             }
         });
