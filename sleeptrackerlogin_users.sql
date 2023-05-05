@@ -27,6 +27,7 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `secQue` varchar(225) not null,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
