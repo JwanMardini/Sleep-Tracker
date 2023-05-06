@@ -42,25 +42,27 @@ public class LoggedInController implements Initializable {
         mychoiceBox.setValue("Home");
         mychoiceBox.getItems().addAll(options);
 
-        mychoiceBox.setOnAction(this::getFood);
+        mychoiceBox.setOnAction(this::getOption);
     }
-    public void getFood(ActionEvent event) {
+    public void getOption(ActionEvent event) {
 
-        String myFood = mychoiceBox.getValue();
+        String myOption = mychoiceBox.getValue();
 
-        if (myFood.equals("About App")) {
+        if (myOption.equals("About App")) {
             about_label.setVisible(true);
             about_text.setVisible(true);
             recommend_label.setVisible(false);
             recommend_text.setVisible(false);
-        }else {
+        } else if (myOption.equals("Recommendation")) {
             about_label.setVisible(false);
             about_text.setVisible(false);
             recommend_label.setVisible(true);
             recommend_text.setVisible(true);
-
-        }
-
+        }else {
+            about_label.setVisible(false);
+            about_text.setVisible(false);
+            recommend_label.setVisible(false);
+            recommend_text.setVisible(false);}
     }
 
 

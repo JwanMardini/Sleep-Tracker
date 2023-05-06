@@ -126,26 +126,27 @@
                            <children>
                               <AnchorPane layoutX="1.0" layoutY="5.0" prefHeight="594.0" prefWidth="874.0" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                                  <children>
-                                    <Label fx:id="about_label" layoutX="14.0" layoutY="14.0" text="About the App" textFill="WHITE" underline="true" visible="false">
+                                    <Label fx:id="about_label" layoutX="29.0" layoutY="215.0" text="About the App" textFill="WHITE" underline="true" visible="false">
                                        <font>
                                           <Font size="25.0" />
                                        </font>
                                     </Label>
-                                    <Text fx:id="about_text" fill="WHITE" layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Sleep Tracker app is a powerful tool designed to help you monitor and improve your sleep quality. With its user-friendly interface and advanced tracking features, this app provides you with a comprehensive overview of your sleeping patterns, allowing you to make informed decisions about your sleep habits.&quot; " visible="false" wrappingWidth="504.13671112060547">
+                                    <Text fx:id="about_text" fill="WHITE" layoutX="29.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Sleep Tracker app is a powerful tool designed to help you monitor and improve your sleep quality. With its user-friendly interface and advanced tracking features, this app provides you with a comprehensive overview of your sleeping patterns, allowing you to make informed decisions about your sleep habits.&quot; " visible="false" wrappingWidth="504.13671112060547">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Text>
-                                    <Text fx:id="recommend_text" fill="WHITE" layoutX="10.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="According to the National Sleep Foundation, the recommended sleep hours for adults between the ages of 18-64 is 7-9 hours per night, while older adults (65 years and above) may need slightly less, ranging from 7-8 hours per night. However, it's important to note that individual sleep needs can vary based on factors such as age, genetics, lifestyle, and overall health." visible="false" wrappingWidth="512.8033981323242">
+                                    <Text fx:id="recommend_text" fill="WHITE" layoutX="29.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="According to the National Sleep Foundation, the recommended sleep hours for adults between the ages of 18-64 is 7-9 hours per night, while older adults (65 years and above) may need slightly less, ranging from 7-8 hours per night. However, it's important to note that individual sleep needs can vary based on factors such as age, genetics, lifestyle, and overall health." visible="false" wrappingWidth="512.8033981323242">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Text>
-                                    <Label fx:id="recommend_label" layoutX="10.0" layoutY="14.0" text="Recommended Sleep hours" textFill="WHITE" underline="true" visible="false">
+                                    <Label fx:id="recommend_label" layoutX="29.0" layoutY="215.0" text="Recommended Sleep hours" textFill="WHITE" underline="true" visible="false">
                                        <font>
                                           <Font size="25.0" />
                                        </font>
                                     </Label>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="BED" layoutX="29.0" layoutY="154.0" size="15em" />
                                  </children></AnchorPane>
                            </children></AnchorPane>
                             </children>
