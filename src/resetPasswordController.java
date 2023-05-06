@@ -30,6 +30,16 @@ public class resetPasswordController implements Initializable{
     @FXML
     private Button checkButton;
 
+    @FXML
+    private Button updButton;
+
+    @FXML
+    private TextField newPass;
+
+    @FXML
+    private TextField confNewPass;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -65,13 +75,31 @@ public class resetPasswordController implements Initializable{
             }
         });
 
-
-
-
         back_btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 DBUtils.changeScene(actionEvent, "resources/login.fxml", null, null);
+            }
+        });
+
+        updButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if(!newPass.getText().trim().isEmpty() && confNewPass.getText().trim().isEmpty()){
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("All fields should be filled.");
+                    alert.show();
+                } else if (!newPass.getText().trim().equals(confNewPass.getText().trim())) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("The confirmed password does not match the new password");
+                    alert.show();
+                }else {
+                    DBUtils.updatePassword(tf_email.getText().trim(), newPass.getText().trim());
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Password updated");
+                    alert.show();
+                    DBUtils.changeScene(actionEvent, "resources/login.fxml", "Log in", null);
+                }
             }
         });
 
