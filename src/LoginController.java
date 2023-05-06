@@ -3,6 +3,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 
@@ -25,6 +26,21 @@ public class LoginController implements Initializable {
     @FXML
     public Hyperlink forgotPassword;
 
+    @FXML
+    private CheckBox showPasswordCheckBox;
+
+    @FXML
+    private void togglePasswordVisibility() {
+        if (showPasswordCheckBox.isSelected()) {
+            tf_password.setPromptText(tf_password.getText());
+            tf_password.setText("");
+        } else {
+            tf_password.setText(tf_password.getPromptText());
+            tf_password.setPromptText("Password");
+        }
+        tf_password.setDisable(showPasswordCheckBox.isSelected());
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_login.setOnAction((new EventHandler<ActionEvent>() {
@@ -45,6 +61,12 @@ public class LoginController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 DBUtils.changeScene(event, "resources/resetPassword.fxml", "Reset Password", null);
+            }
+        });
+        showPasswordCheckBox.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                togglePasswordVisibility();
             }
         });
 
