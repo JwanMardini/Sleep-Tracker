@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.Optional;
@@ -15,24 +17,53 @@ import java.util.ResourceBundle;
 public class LoggedInController implements Initializable {
 
     @FXML
+    private Label about_label;
+
+    @FXML
+    private Text about_text;
+    @FXML
+    private Label recommend_label;
+
+    @FXML
+    private Text recommend_text;
+
+    @FXML
+    private ChoiceBox<String> mychoiceBox;
+    private String[] options = {"About App","Recommendation"};
+
+    @FXML
     private Button btn_logout;
 
     @FXML
     private Label label_welcome;
 
-    @FXML
-    private Button btn_home;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btn_home.setOnAction((new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "resources/home.fxml", "Home", null);
-            }
-        }));
+        mychoiceBox.setValue("Home");
+        mychoiceBox.getItems().addAll(options);
+
+        mychoiceBox.setOnAction(this::getFood);
+    }
+    public void getFood(ActionEvent event) {
+
+        String myFood = mychoiceBox.getValue();
+
+        if (myFood.equals("About App")) {
+            about_label.setVisible(true);
+            about_text.setVisible(true);
+            recommend_label.setVisible(false);
+            recommend_text.setVisible(false);
+        }else {
+            about_label.setVisible(false);
+            about_text.setVisible(false);
+            recommend_label.setVisible(true);
+            recommend_text.setVisible(true);
+
+        }
 
     }
+
+
     private  Alert alert;
     public void logout() {
         try {

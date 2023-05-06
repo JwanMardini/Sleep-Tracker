@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -12,6 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedInController">
     <children>
@@ -38,20 +40,6 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Label>
-                                        <Button fx:id="btn_home" alignment="TOP_LEFT" cache="true" layoutX="12.0" layoutY="251.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Home " textFill="WHITE">
-                                            <graphic>
-                                                <FontAwesomeIcon fill="#d1b4ed" glyphName="HOME" size="2em" />
-                                            </graphic>
-                                            <font>
-                                                <Font size="14.0" />
-                                            </font>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <ColorAdjust />
-                                            </effect>
-                                        </Button>
                                         <MenuButton alignment="TOP_LEFT" cache="true" layoutX="13.0" layoutY="307.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Record Sleep" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="BED" size="2em" />
@@ -118,6 +106,8 @@
                                             </effect>
                                         </Button>
                                         <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="79.0" layoutY="205.0" size="5em" />
+                              <ChoiceBox fx:id="mychoiceBox" layoutX="59.0" layoutY="251.0" prefHeight="40.0" prefWidth="154.0" styleClass="background" stylesheets="@../css/design.css" />
+                                          <FontAwesomeIcon fill="#d1b4ed" glyphName="HOME" layoutX="13.0" layoutY="288.0" selectionEnd="0" size="4em" />
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -134,7 +124,29 @@
                             <children>
                                 <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="600.8" prefWidth="876.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="1.0" layoutY="5.0" prefHeight="594.0" prefWidth="874.0" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                              <AnchorPane layoutX="1.0" layoutY="5.0" prefHeight="594.0" prefWidth="874.0" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                                 <children>
+                                    <Label fx:id="about_label" layoutX="14.0" layoutY="14.0" text="About the App" textFill="WHITE" underline="true" visible="false">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <Text fx:id="about_text" fill="WHITE" layoutX="14.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Sleep Tracker app is a powerful tool designed to help you monitor and improve your sleep quality. With its user-friendly interface and advanced tracking features, this app provides you with a comprehensive overview of your sleeping patterns, allowing you to make informed decisions about your sleep habits.&quot; " visible="false" wrappingWidth="504.13671112060547">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="recommend_text" fill="WHITE" layoutX="10.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="According to the National Sleep Foundation, the recommended sleep hours for adults between the ages of 18-64 is 7-9 hours per night, while older adults (65 years and above) may need slightly less, ranging from 7-8 hours per night. However, it's important to note that individual sleep needs can vary based on factors such as age, genetics, lifestyle, and overall health." visible="false" wrappingWidth="512.8033981323242">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Label fx:id="recommend_label" layoutX="10.0" layoutY="14.0" text="Recommended Sleep hours" textFill="WHITE" underline="true" visible="false">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                 </children></AnchorPane>
                            </children></AnchorPane>
                             </children>
                         </AnchorPane>
