@@ -26,13 +26,16 @@ public class SignUpController implements Initializable {
     @FXML
     private TextField tf_password;
 
+    @FXML
+    private TextField secQue;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_email.getText().trim().isEmpty()) {
-                    DBUtils.signUpUser(actionEvent, tf_username.getText(), tf_password.getText(), tf_email.getText());
+                if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_email.getText().trim().isEmpty() && !secQue.getText().trim().isEmpty()) {
+                    DBUtils.signUpUser(actionEvent, tf_username.getText(), tf_password.getText(), tf_email.getText(), secQue.getText());
                 } else {
                     System.out.println("Please fill in all information");
                     Alert alert = new Alert(Alert.AlertType.ERROR);
