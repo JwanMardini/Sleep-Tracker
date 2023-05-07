@@ -1,65 +1,76 @@
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.stage.Stage;
+import javafx.scene.control.MenuButton;
 
-import java.net.URL;
-import java.util.Optional;
-import java.util.ResourceBundle;
 
-public class LoggedInController implements Initializable {
+import java.io.IOException;
+
+public class LoggedInController {
+
+     @FXML
+    private MenuButton btn_history;
+    @FXML
+    private MenuButton btn_home;
+    @FXML
+    private MenuButton btn_profile;
+    @FXML
+    private MenuButton btn_record_sleep;
+
 
     @FXML
-    private Button btn_logout;
-
+    void btn1MonthClicked(ActionEvent event) throws IOException{
+        Main.changeScene("resources/month1.fxml");
+    }
     @FXML
-    private Label label_welcome;
-
+    void btn1WeekClicked(ActionEvent event) throws IOException{
+        Main.changeScene("resources/week1.fxml");
+    }
     @FXML
-    private Button btn_home;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        btn_home.setOnAction((new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                DBUtils.changeScene(actionEvent, "resources/home.fxml", "Home", null);
-            }
-        }));
+    void btn2WeeksClicked(ActionEvent event) throws IOException{
+        Main.changeScene("resources/weeks2.fxml");
+    }
+    @FXML
+    void btnAboutClicked(ActionEvent event) throws IOException{
+        Main.changeScene("resources/about.fxml");
+    }
+    @FXML
+    void btnEditProfileClicked(ActionEvent event) throws IOException{
+        Main.changeScene("resources/editProfile.fxml");
+    }
+    @FXML
+    void btnGeneralRecommendationsClicked(ActionEvent event) throws IOException{
+        Main.changeScene("resources/generalRecommendations.fxml");
+    }
+    @FXML
+    void btnHistoryClicked(ActionEvent event) {
+        btn_history.show();
+    }
+    @FXML
+    void btnHomeClicked(ActionEvent event) {
+        btn_home.show();
+    }
+    @FXML
+    void btnLogOutClicked(ActionEvent event) throws IOException {
+        Main.changeScene("resources/login.fxml");
+    }
+    @FXML
+    void btnProfileClicked(ActionEvent event) {
+        btn_profile.show();
+    }
+    @FXML
+    void btnRecordSleepClicked(ActionEvent event) {
+        btn_record_sleep.show();
+    }
+    @FXML
+    void btnRecordSleepTimeClicked(ActionEvent event) throws IOException{
+        Main.changeScene("resources/recordSleepTime.fxml");
+    }
+    @FXML
+    void btnResourceClicked(ActionEvent event) throws IOException{
+        Main.changeScene("resources/resources.fxml");
 
     }
-    private  Alert alert;
-    public void logout() {
-        try {
-            alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmation Message");
-            alert.setHeaderText(null);
-            alert.setContentText("Are you sure you want to logout?");
-            Optional<ButtonType> option = alert.showAndWait();
 
-            if(option.get().equals(ButtonType.OK)) {
-                Parent root = FXMLLoader.load(getClass().getResource("resources/login.fxml"));
-                Stage stage = new Stage();
-                Scene scene = new Scene(root);
-
-                stage.setScene(scene);
-                stage.show();
-
-                btn_logout.getScene().getWindow().hide();
-            }
-
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void setUserInformation(String username){
-        label_welcome.setText("Welcome  " + username + "!");
-    }
 }
+
+

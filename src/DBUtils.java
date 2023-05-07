@@ -18,9 +18,9 @@ import java.util.Random;
 
 
 public class DBUtils {
-    private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
+    private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptracker";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "m.alloush955";
+    private static final String DbPassword = "sql@2023";
 
 
     // This method changes the scene to the specified FXML file with a given title and username.
@@ -32,7 +32,9 @@ public class DBUtils {
                 FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
                 root = loader.load();
                 LoggedInController loggedInController = loader.getController();
-                loggedInController.setUserInformation(username);
+
+                //loggedInController.setUserInformation(username);  //I just takes out this line
+
             } catch (IOException e) {
                 e.printStackTrace();
 
