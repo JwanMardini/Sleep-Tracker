@@ -153,9 +153,13 @@ public class DBUtils {
         PreparedStatement preparedStatement = conn.prepareStatement("UPDATE users SET Password = ? WHERE email = ?")){
             preparedStatement.setString(1, newPassword);
             preparedStatement.setString(2, email);
+            try{
+                ResultSet resultSet = preparedStatement.executeQuery();
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
         }catch (SQLException e){
             e.printStackTrace();
         }
     }
 }
-
