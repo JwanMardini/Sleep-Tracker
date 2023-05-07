@@ -149,9 +149,13 @@ public class DBUtils {
 
 
     public static void updatePassword(String email, String newPassword){
-
+        try(Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
+        PreparedStatement preparedStatement = conn.prepareStatement("UPDATE users SET Password = ? WHERE email = ?")){
+            preparedStatement.setString(1, newPassword);
+            preparedStatement.setString(2, email);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
-
-
 }
 
