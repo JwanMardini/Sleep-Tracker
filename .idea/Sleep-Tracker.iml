@@ -25,36 +25,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/commons-email-1.5.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/javax.mail.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/activation-1.1.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="javax.mail" level="project" />
-    <orderEntry type="library" name="activation-1.1" level="project" />
-    <orderEntry type="library" name="commons-email-1.5" level="project" />
+    <orderEntry type="library" name="fontawesomefx-8.2" level="project" />
+    <orderEntry type="library" name="mysql-connector-j-8.0.33" level="project" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="module-library">

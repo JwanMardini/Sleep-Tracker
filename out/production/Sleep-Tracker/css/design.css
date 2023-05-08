@@ -26,7 +26,7 @@
     -fx-font-size: 14px;
 }
 
-.login-btn: hover {
+.login-btn:hover {
     -fx-background-color: linear-gradient(to bottom right, #9a7bb8, #831ceb);
 }
 
@@ -39,7 +39,7 @@
 
 }
 
-.signup-btn: hover {
+.signup-btn:hover {
     -fx-background-color: #fff;
     -fx-text-fill: #000;
 }
@@ -58,27 +58,5 @@
 }
 
 .background {
-    -fx-background-color:  linear-gradient(to bottom right, #30619d
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    , #fff);
+    -fx-background-color:  linear-gradient(to bottom right, #30619d, #fff);
 }
