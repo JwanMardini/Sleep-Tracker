@@ -34,7 +34,7 @@
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="8.0" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />

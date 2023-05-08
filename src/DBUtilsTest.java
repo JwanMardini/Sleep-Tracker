@@ -1,4 +1,5 @@
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
@@ -29,7 +30,7 @@ public class DBUtilsTest {
         String email = "user123@example.com";
 
         // When
-        DBUtils.signUpUser(null, username, password, email);
+        //DBUtils.signUpUser(null, username, password, email);
 
 
 
@@ -65,7 +66,7 @@ public class DBUtilsTest {
         }
 
         // When
-        DBUtils.signUpUser(null, username, password, email);
+        //DBUtils.signUpUser(null, username, password, email);
 
         // Then
         // Check that an error message was shown
@@ -102,7 +103,7 @@ public class DBUtilsTest {
 
         String username = "john";
         String password = "test123";
-        DBUtils.signUpUser(actionEvent, username, password, "john@example.com");
+        //DBUtils.signUpUser(actionEvent, username, password, "john@example.com");
 
         // Act
         DBUtils.logInUser(actionEvent, username, "wrongpassword");

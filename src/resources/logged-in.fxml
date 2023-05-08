@@ -2,7 +2,6 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -38,26 +37,24 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Label>
-                                        <Button fx:id="btn_home" alignment="TOP_LEFT" cache="true" layoutX="12.0" layoutY="251.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Home " textFill="WHITE">
+                                        <MenuButton fx:id="btn_home" layoutX="12.0" layoutY="279.0" mnemonicParsing="false" onAction="#btnHomeClicked" prefHeight="43.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Home" textFill="WHITE">
+                                            <items>
+                                                <MenuItem fx:id="btn_about" mnemonicParsing="false" onAction="#btnAboutClicked" styleClass="background" text="About ST" />
+                                                <MenuItem fx:id="btn_resource" mnemonicParsing="false" onAction="#btnResourceClicked" styleClass="background" text="Resources" />
+                                            </items>
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="HOME" size="2em" />
                                             </graphic>
                                             <font>
-                                                <Font size="14.0" />
+                                                <Font name="System Bold" size="14.0" />
                                             </font>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <ColorAdjust />
-                                            </effect>
-                                        </Button>
-                                        <MenuButton alignment="TOP_LEFT" cache="true" layoutX="13.0" layoutY="307.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Record Sleep" textFill="WHITE">
+                                        </MenuButton>
+                                        <MenuButton fx:id="btn_record_sleep" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="352.0" mnemonicParsing="false" onAction="#btnRecordSleepClicked" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Record Sleep" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="BED" size="2em" />
                                             </graphic>
                                             <font>
-                                                <Font size="14.0" />
+                                                <Font name="System Bold" size="14.0" />
                                             </font>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -65,32 +62,33 @@
                                             <effect>
                                                 <ColorAdjust />
                                             </effect>
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" styleClass="background" text="Record your sleep hours" />
-                                    <MenuItem mnemonicParsing="false" styleClass="background" text="Option2" />
-                                 </items>
+                                            <items>
+                                                <MenuItem fx:id="btn_record_sleep_time" mnemonicParsing="false" onAction="#btnRecordSleepTimeClicked" styleClass="background" text="Record sleep time" />
+                                                <MenuItem fx:id="btn_general_recommendations" mnemonicParsing="false" onAction="#btnGeneralRecommendationsClicked" styleClass="background" text="General Recommendations" />
+                                            </items>
                                         </MenuButton>
-                                        <MenuButton alignment="TOP_LEFT" cache="true" layoutX="13.0" layoutY="368.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="History" textFill="WHITE">
+                                        <MenuButton fx:id="btn_history" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="423.0" mnemonicParsing="false" onAction="#btnHistoryClicked" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="History" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="HISTORY" size="2em" />
                                             </graphic>
                                             <font>
-                                                <Font size="14.0" />
+                                                <Font name="System Bold" size="14.0" />
                                             </font>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" styleClass="background" text="Daily Sleep Hours" />
-                                    <MenuItem mnemonicParsing="false" styleClass="background" text="Monthly Hours" />
-                                 </items>
+                                            <items>
+                                                <MenuItem fx:id="btn_1week" mnemonicParsing="false" onAction="#btn1WeekClicked" styleClass="background" text="1 week" />
+                                                <MenuItem fx:id="btn_2weeks" mnemonicParsing="false" onAction="#btn2WeeksClicked" styleClass="background" text="2 weeks" />
+                                                <MenuItem fx:id="btn_1month" mnemonicParsing="false" onAction="#btn1MonthClicked" styleClass="background" text="1 month" />
+                                            </items>
                                         </MenuButton>
-                                        <MenuButton alignment="TOP_LEFT" cache="true" layoutX="13.0" layoutY="429.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Profile" textFill="WHITE">
+                                        <MenuButton fx:id="btn_profile" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="484.0" mnemonicParsing="false" onAction="#btnProfileClicked" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Profile" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="USER" size="2em" />
                                             </graphic>
                                             <font>
-                                                <Font size="14.0" />
+                                                <Font name="System Bold" size="14.0" />
                                             </font>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -98,26 +96,12 @@
                                             <effect>
                                                 <ColorAdjust />
                                             </effect>
-                                 <items>
-                                    <MenuItem mnemonicParsing="false" styleClass="background" text="Edit your profile" />
-                                    <MenuItem mnemonicParsing="false" styleClass="background" text="Option2" />
-                                 </items>
+                                            <items>
+                                                <MenuItem fx:id="btn_edit_profile" mnemonicParsing="false" onAction="#btnEditProfileClicked" styleClass="background" text="Edit profile" />
+                                                <MenuItem fx:id="btn_log_out" mnemonicParsing="false" onAction="#btnLogOutClicked" styleClass="background" text="Log out " />
+                                            </items>
                                         </MenuButton>
-                                        <Button fx:id="btn_logout" layoutX="14.0" layoutY="551.0" mnemonicParsing="false" onAction="#logout" styleClass="background" text="Log Out" textFill="WHITE">
-                                            <graphic>
-                                                <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" size="2em" />
-                                            </graphic>
-                                            <font>
-                                                <Font size="14.0" />
-                                            </font>
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor>
-                                            <effect>
-                                                <ColorAdjust />
-                                            </effect>
-                                        </Button>
-                                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="79.0" layoutY="205.0" size="5em" />
+                                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="79.0" layoutY="212.0" size="5em" />
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -133,9 +117,9 @@
                             </effect>
                             <children>
                                 <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="600.8" prefWidth="876.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <AnchorPane layoutX="1.0" layoutY="5.0" prefHeight="594.0" prefWidth="874.0" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
-                           </children></AnchorPane>
+                                    <children>
+                                        <AnchorPane layoutX="1.0" layoutY="5.0" prefHeight="594.0" prefWidth="874.0" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                                    </children></AnchorPane>
                             </children>
                         </AnchorPane>
                     </center>
