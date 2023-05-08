@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 import java.sql.*;
 import java.io.IOException;
 
-
-
 public class DBUtils {
     private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptracker";
     private static final String DbUsername = "root";

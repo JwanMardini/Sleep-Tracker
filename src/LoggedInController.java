@@ -1,9 +1,8 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;
-
-
 import java.io.IOException;
+
 
 public class LoggedInController {
 
