@@ -18,9 +18,9 @@ import javafx.scene.control.Alert;
 
 
 public class DBUtilsTest {
-    private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptracker";
+    private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "sql@2023";
+    private static final String DbPassword = "Jwan.joan12";
 
     @Test
     public void testSignUpUserWithValidData() {
@@ -28,6 +28,7 @@ public class DBUtilsTest {
         String username = "user123";
         String password = "password";
         String email = "user123@example.com";
+        String seQue = "HKR";
 
         // When
         //DBUtils.signUpUser(null, username, password, email);
@@ -54,12 +55,14 @@ public class DBUtilsTest {
         String username = "user456";
         String password = "password";
         String email = "user456@example.com";
+        String seQue = "HKR";
         // Insert a user with the same username into the database
         try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
-             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO Users(username, Password, email) VALUES(?,?,?)")) {
+             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO Users(username, Password, email, secQue) VALUES(?,?,?,?)")) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             preparedStatement.setString(3, email);
+            preparedStatement.setString(4, seQue);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,10 +83,11 @@ public class DBUtilsTest {
         String password = "password";
         // Insert a user into the database
         try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
-             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO Users(username, Password, email) VALUES(?,?,?)")) {
+             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO Users(username, Password, email, secQue) VALUES(?,?,?,?)")) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             preparedStatement.setString(3, "user789@example.com");
+            preparedStatement.setString(4, "HKR");
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
