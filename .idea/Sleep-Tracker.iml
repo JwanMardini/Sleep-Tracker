@@ -44,7 +44,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="junit4" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
