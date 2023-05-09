@@ -15,7 +15,7 @@
    <children>
       <TextField fx:id="tf_username" layoutX="480.0" layoutY="240.0" prefHeight="30.0" prefWidth="230.0" promptText="Username" styleClass="textfield" stylesheets="@../css/design.css" />
       <PasswordField fx:id="tf_password" layoutX="480.0" layoutY="290.0" prefHeight="30.0" prefWidth="230.0" promptText="Password" styleClass="textfield" stylesheets="@../css/design.css" />
-      <Hyperlink fx:id="forgotPassword" layoutX="598.0" layoutY="320.0" prefHeight="23.0" prefWidth="112.0" text="Forgot password?" />
+      <Hyperlink fx:id="forgot_password" layoutX="598.0" layoutY="320.0" prefHeight="23.0" prefWidth="112.0" text="Forgot password?" />
       <Button fx:id="btn_login" layoutX="480.0" layoutY="397.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="230.0" styleClass="login-btn" stylesheets="@../css/design.css" text="Log In" textFill="WHITE">
          <font>
             <Font size="16.0" />
