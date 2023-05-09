@@ -47,9 +47,9 @@
                         <Font name="System Bold" size="21.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="182.0" layoutY="170.0" prefHeight="25.0" prefWidth="273.0" style="-fx-alignment: rgba;" styleClass="background" />
-                  <TextField layoutX="182.0" layoutY="222.0" prefHeight="25.0" prefWidth="273.0" styleClass="background" />
-                  <TextField layoutX="182.0" layoutY="398.0" prefHeight="25.0" prefWidth="273.0" styleClass="background" />
+                  <TextField fx:id="nameID" layoutX="182.0" layoutY="170.0" prefHeight="25.0" prefWidth="273.0" style="-fx-alignment: rgba;" styleClass="background" />
+                  <TextField fx:id="usernameID" layoutX="182.0" layoutY="222.0" prefHeight="25.0" prefWidth="273.0" styleClass="background" />
+                  <TextField fx:id="emailID" layoutX="182.0" layoutY="398.0" prefHeight="25.0" prefWidth="273.0" styleClass="background" />
                   <Label layoutX="52.0" layoutY="174.0" text="Name" textFill="WHITE">
                      <font>
                         <Font size="13.0" />
@@ -70,7 +70,7 @@
                         <Font name="System Bold" size="21.0" />
                      </font>
                   </Label>
-                  <Button layoutX="258.0" layoutY="517.0" mnemonicParsing="false" style="-fx-background-color: #acaaf2;" text="Save Change" textFill="#f9f9fb">
+                  <Button fx:id="saveButton" layoutX="258.0" layoutY="517.0" mnemonicParsing="false" style="-fx-background-color: #acaaf2;" text="Save Change" textFill="#f9f9fb">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
