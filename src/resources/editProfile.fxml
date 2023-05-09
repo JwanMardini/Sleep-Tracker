@@ -23,7 +23,7 @@
                         </Button>
                   <AnchorPane layoutX="17.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="215.0" fitWidth="213.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="215.0" fitWidth="213.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@editProfileLogo.png" />
                            </image>
@@ -47,7 +47,7 @@
                         <Font name="System Bold" size="21.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nameID" layoutX="182.0" layoutY="170.0" prefHeight="25.0" prefWidth="273.0" style="-fx-alignment: rgba;" styleClass="background" />
+                  <TextField fx:id="nameID" layoutX="182.0" layoutY="170.0" prefHeight="25.0" prefWidth="273.0" styleClass="background" />
                   <TextField fx:id="usernameID" layoutX="182.0" layoutY="222.0" prefHeight="25.0" prefWidth="273.0" styleClass="background" />
                   <TextField fx:id="emailID" layoutX="182.0" layoutY="398.0" prefHeight="25.0" prefWidth="273.0" styleClass="background" />
                   <Label layoutX="52.0" layoutY="174.0" text="Name" textFill="WHITE">

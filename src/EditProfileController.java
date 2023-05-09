@@ -1,3 +1,4 @@
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,13 +25,23 @@ public class EditProfileController {
     private TextField emailID;
 
 
-
     @FXML
     void btnBackToHome(ActionEvent event) throws IOException {
         Main.changeScene("resources/logged-in.fxml");
 
     }
 
+    @FXML
+    void saveChanges(ActionEvent event) {
+        String newName = nameID.getText();
+        String newUsername = usernameID.getText();
+        String newEmail = emailID.getText();
 
+
+        System.out.println("New name: " + newName);
+        System.out.println("New username: " + newUsername);
+        System.out.println("New email: " + newEmail);
+
+    }
 
 }
