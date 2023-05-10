@@ -54,43 +54,9 @@ public class RecordSleepTimeController {
 
     }
 
-    public LocalDateTime getDateTime() {
-        // Combine the date from the date picker and the time from the time field
-        String time = start_time.getText();
-        int hours = Integer.parseInt(time.substring(0, 2));
-        int minutes = Integer.parseInt(time.substring(3, 5));
-        int seconds = Integer.parseInt(time.substring(6, 8));
-        LocalDateTime dateTime = start_date.getValue().atTime(hours, minutes, seconds);
-        return dateTime;
-    }
-
 
     @FXML
-    public void handleSaveButton(ActionEvent event) throws SQLException {
-        // Get the selected date and time
-        LocalDateTime dateTime = getDateTime();
-
-        // Save the date and time to the database
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sleeptrackerlogin", "root", "toor");
-
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO datetime (date, time) VALUES (?, ?)")) {
-            stmt.setString(1, dateTime.toLocalDate().toString());
-            stmt.setString(2, dateTime.toLocalTime().toString());
-            stmt.executeUpdate();
-
-            // Show a confirmation message
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Save");
-            alert.setHeaderText(null);
-            alert.setContentText("Date and time saved to database.");
-            alert.showAndWait();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    public void handleSaveButton2(ActionEvent actionEvent) {
+    public void handleSaveButton(ActionEvent actionEvent) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sleeptrackerlogin", "root", "toor");
              PreparedStatement psGetUserId = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
              PreparedStatement psInsertDateTime = connection.prepareStatement("INSERT INTO DateTime(start_date, start_time, end_date, end_time, duration, user_id) VALUES (?, ?, ?, ?, ?, ?)")) {

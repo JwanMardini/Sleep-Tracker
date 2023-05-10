@@ -12,6 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
+
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedInController">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -32,7 +33,7 @@
                                                 <Line endX="119.40000915527344" endY="3.814697265625E-6" layoutX="102.0" layoutY="69.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
                                             </children>
                                         </AnchorPane>
-                                        <Label fx:id="label_welcome" layoutX="22.0" layoutY="104.0" text="Welcome," textFill="WHITE">
+                                        <Label fx:id="label_welcome" layoutX="22.0" layoutY="104.0" text="Welcome" textFill="WHITE">
                                             <font>
                                                 <Font size="15.0" />
                                             </font>

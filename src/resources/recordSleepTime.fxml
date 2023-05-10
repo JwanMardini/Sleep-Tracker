@@ -36,7 +36,7 @@
                         </Label>
                         <DatePicker fx:id="start_date" layoutX="189.0" layoutY="169.0" prefHeight="25.0" prefWidth="240.0" promptText="Date" />
                         <TextField fx:id="start_time" layoutX="189.0" layoutY="204.0" prefHeight="25.0" prefWidth="240.0" promptText="HH:mm:ss" stylesheets="@../css/design.css" />
-                        <Button fx:id="btn_save" layoutX="209.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleSaveButton2" prefHeight="27.0" prefWidth="151.0" styleClass="background" stylesheets="@../css/design.css" text="Save" />
+                        <Button fx:id="btn_save" layoutX="209.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="27.0" prefWidth="151.0" styleClass="background" stylesheets="@../css/design.css" text="Save" />
                         <TextField fx:id="username" layoutX="141.0" layoutY="125.0" prefHeight="28.0" prefWidth="288.0" promptText="Enter your Username" styleClass="signup-btn" stylesheets="@../css/design.css" />
                         <DatePicker fx:id="end_date" layoutX="189.0" layoutY="271.0" prefHeight="25.0" prefWidth="240.0" promptText="Date" />
                         <TextField fx:id="end_time" layoutX="189.0" layoutY="307.0" prefHeight="25.0" prefWidth="240.0" promptText="HH:mm:ss" stylesheets="@../css/design.css" />
