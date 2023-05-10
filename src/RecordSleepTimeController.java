@@ -41,7 +41,7 @@ public class RecordSleepTimeController {
 
     @FXML
     void btnBackToHome(ActionEvent event) throws IOException {
-        Main.changeScene("resources/logged-in.fxml");
+        //Main.changeScene("resources/logged-in.fxml");
     }
 
     @FXML
