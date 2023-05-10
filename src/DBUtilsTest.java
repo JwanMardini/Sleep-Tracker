@@ -20,7 +20,7 @@ import javafx.scene.control.Alert;
 public class DBUtilsTest {
     private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "Jwan.joan12";
+    private static final String DbPassword = "toor";
 
     @Test
     public void testSignUpUserWithValidData() {

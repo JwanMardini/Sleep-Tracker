@@ -27,7 +27,6 @@
     </orderEntry>
     <orderEntry type="library" name="fontawesomefx-8.2" level="project" />
     <orderEntry type="library" name="mysql-connector-j-8.0.33" level="project" />
-    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -53,5 +52,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="junit5" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
