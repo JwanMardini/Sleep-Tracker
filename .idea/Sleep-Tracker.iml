@@ -38,16 +38,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="file://$USER_HOME$/Downloads/junit5" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://$USER_HOME$/Downloads/junit5" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
       <library name="JUnit5.8.1">
         <CLASSES>
           <root url="jar://$MAVEN_REPOSITORY$/org/junit/jupiter/junit-jupiter/5.8.1/junit-jupiter-5.8.1.jar!/" />

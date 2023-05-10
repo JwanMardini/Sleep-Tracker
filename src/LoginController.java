@@ -24,7 +24,7 @@ public class LoginController implements Initializable {
     private TextField tf_password;
 
     @FXML
-    public Hyperlink forgot_password;
+    private Hyperlink forgot_password;
 
     @FXML
     private CheckBox showPasswordCheckBox;
@@ -57,12 +57,13 @@ public class LoginController implements Initializable {
             }
         });
 
-        forgot_password.setOnAction(new EventHandler<ActionEvent>() {
+        /*forgot_password.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
-                DBUtils.changeScene(event, "resources/resetPassword.fxml", "Reset Password", null);
+            public void handle(ActionEvent actionEvent) {
+                DBUtils.changeScene(actionEvent, "resources/resetPassword.fxml", "Reset Password", null  );
             }
-        });
+        });*/
+
         showPasswordCheckBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {

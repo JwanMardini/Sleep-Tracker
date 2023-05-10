@@ -1,5 +1,6 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import java.io.IOException;
 
@@ -14,6 +15,11 @@ public class LoggedInController {
     private MenuButton btn_profile;
     @FXML
     private MenuButton btn_record_sleep;
+
+    @FXML
+    private Label label_welcome;
+
+    private String userInfo;
 
 
     @FXML
@@ -70,6 +76,10 @@ public class LoggedInController {
 
     }
 
+    public void setUserInfo(String userInfo) {
+        this.userInfo = userInfo;
+        label_welcome.setText(label_welcome.getText() +" " + userInfo);
+    }
 }
 
 
