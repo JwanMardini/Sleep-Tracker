@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RecordSleepTimeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedInController">
     <children>
         <SplitPane dividerPositions="0.29797979797979796" layoutX="-11.0" prefHeight="602.0" prefWidth="819.0">
             <items>
@@ -37,13 +37,11 @@
                         <DatePicker fx:id="start_date" layoutX="189.0" layoutY="169.0" prefHeight="25.0" prefWidth="240.0" promptText="Date" />
                         <TextField fx:id="start_time" layoutX="189.0" layoutY="204.0" prefHeight="25.0" prefWidth="240.0" promptText="HH:mm:ss" stylesheets="@../css/design.css" />
                         <Button fx:id="btn_save" layoutX="209.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="27.0" prefWidth="151.0" styleClass="background" stylesheets="@../css/design.css" text="Save" />
-                        <TextField fx:id="username" layoutX="141.0" layoutY="125.0" prefHeight="28.0" prefWidth="288.0" promptText="Enter your Username" styleClass="signup-btn" stylesheets="@../css/design.css" />
                         <DatePicker fx:id="end_date" layoutX="189.0" layoutY="271.0" prefHeight="25.0" prefWidth="240.0" promptText="Date" />
                         <TextField fx:id="end_time" layoutX="189.0" layoutY="307.0" prefHeight="25.0" prefWidth="240.0" promptText="HH:mm:ss" stylesheets="@../css/design.css" />
                         <Label layoutX="141.0" layoutY="169.0" text="Start:" textFill="WHITE" />
                         <Label layoutX="144.0" layoutY="276.0" text="End:" textFill="WHITE" />
                         <Label fx:id="sleepDurationLabel" layoutX="195.0" layoutY="359.0" textFill="WHITE" />
-                  <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="406.0" layoutY="145.0" size="1.5em" />
                     </children>
                 </AnchorPane>
             </items>

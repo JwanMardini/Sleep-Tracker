@@ -14,7 +14,7 @@ import java.io.IOException;
 public class DBUtils {
     private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "Jwan.joan12";
+    private static final String DbPassword = "toor";
 
 
     // This method changes the scene to the specified FXML file with a given title and username.
@@ -159,4 +159,6 @@ public class DBUtils {
             e.printStackTrace();
         }
     }
+
+
 }
