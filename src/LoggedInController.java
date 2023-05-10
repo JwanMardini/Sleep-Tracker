@@ -1,16 +1,12 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ResourceBundle;
 
 
 public class LoggedInController {
@@ -23,7 +19,7 @@ public class LoggedInController {
     private MenuButton btn_record_sleep;
 
     @FXML
-    private MenuButton btn_history;
+    private Button btn_history;
 
     @FXML
     private MenuButton btn_profile;
@@ -100,25 +96,8 @@ public class LoggedInController {
     @FXML
     private Button btn_back_to_home;
 
-    private LoginController loginController;
-
-
     private String userInfo;
 
-
-
-    @FXML
-    void btn1MonthClicked(ActionEvent event) throws IOException{
-        Main.changeScene("resources/month1.fxml", userInfo);
-    }
-    @FXML
-    void btn1WeekClicked(ActionEvent event) throws IOException{
-        Main.changeScene( "resources/week1.fxml", userInfo);
-    }
-    @FXML
-    void btn2WeeksClicked(ActionEvent event) throws IOException{
-        Main.changeScene("resources/weeks2.fxml", userInfo);
-    }
     @FXML
     void btnAboutClicked(ActionEvent event) throws IOException{
         Main.changeScene("resources/about.fxml", userInfo);
@@ -133,24 +112,30 @@ public class LoggedInController {
     }
     @FXML
     void btnHistoryClicked(ActionEvent event) {
-        btn_history.show();
+        DBUtils.changeScene(event, "resources/history.fxml", "History", userInfo);
     }
+
+
     @FXML
     void btnHomeClicked(ActionEvent event) {
         btn_home.show();
     }
+
     @FXML
     void btnLogOutClicked(ActionEvent event) throws IOException {
         DBUtils.changeScene(event, "resources/login.fxml", "log in", null);
     }
+
     @FXML
     void btnProfileClicked(ActionEvent event) {
         btn_profile.show();
     }
+
     @FXML
     void btnRecordSleepClicked(ActionEvent event) {
         btn_record_sleep.show();
     }
+
     @FXML
     void btnRecordSleepTimeClicked(ActionEvent event) throws IOException{
         Main.changeScene("resources/recordSleepTime.fxml", userInfo);
@@ -158,7 +143,6 @@ public class LoggedInController {
     @FXML
     void btnResourceClicked(ActionEvent event) throws IOException{
         Main.changeScene("resources/resources.fxml", userInfo);
-
     }
 
     public void setUserInfo(String userInfo) {
@@ -171,7 +155,6 @@ public class LoggedInController {
     @FXML
     void btnBackToHome(ActionEvent event) throws IOException {
         DBUtils.changeScene(event, "resources/logged-in.fxml", "Home", userInfo);
-
     }
 
     @FXML
