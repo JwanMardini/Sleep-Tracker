@@ -96,37 +96,49 @@ public class LoggedInController implements Initializable {
 
 
     public void handleSaveButton(ActionEvent actionEvent) {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sleeptrackerlogin", "root", "toor");
-             PreparedStatement psGetUserId = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
-             PreparedStatement psInsertDateTime = connection.prepareStatement("INSERT INTO DateTime(start_date, start_time, end_date, end_time, duration, user_id) VALUES (?, ?, ?, ?, ?, ?)")) {
+        try {
 
-            // Get the user ID for the logged-in user from the Users table
-            psGetUserId.setString(1, userInfo);
-            try (ResultSet rs = psGetUserId.executeQuery()) {
-                if (rs.next()) {
-                    int userId = rs.getInt("id");
+            try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sleeptrackerlogin", "root", "toor");
+                 PreparedStatement psGetUserId = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
+                 PreparedStatement psInsertDateTime = connection.prepareStatement("INSERT INTO DateTime(start_date, start_time, end_date, end_time, duration, user_id) VALUES (?, ?, ?, ?, ?, ?)")) {
 
-                    // Calculate duration
-                    LocalDateTime startTime = LocalDateTime.of(start_date.getValue(), LocalTime.parse(start_time.getText()));
-                    LocalDateTime endTime = LocalDateTime.of(end_date.getValue(), LocalTime.parse(end_time.getText()));
-                    Duration duration = Duration.between(startTime, endTime);
+                // Get the user ID for the logged-in user from the Users table
+                psGetUserId.setString(1, userInfo);
+                try (ResultSet rs = psGetUserId.executeQuery()) {
+                    if (rs.next()) {
+                        int userId = rs.getInt("id");
 
-                    // Insert a new row into the DateTime table with the date, time, duration, and user ID
-                    psInsertDateTime.setDate(1, java.sql.Date.valueOf(start_date.getValue()));
-                    psInsertDateTime.setTime(2, java.sql.Time.valueOf(start_time.getText()));
-                    psInsertDateTime.setDate(3, java.sql.Date.valueOf(end_date.getValue()));
-                    psInsertDateTime.setTime(4, java.sql.Time.valueOf(end_time.getText()));
-                    psInsertDateTime.setLong(5, duration.toHours());
-                    psInsertDateTime.setInt(6, userId);
-                    psInsertDateTime.executeUpdate();
+                        // Calculate duration
+                        LocalDateTime startTime = LocalDateTime.of(start_date.getValue(), LocalTime.parse(start_time.getText()));
+                        LocalDateTime endTime = LocalDateTime.of(end_date.getValue(), LocalTime.parse(end_time.getText()));
+                        Duration duration = Duration.between(startTime, endTime);
 
-                    // Display duration in label
-                    sleepDurationLabel.setText("Duration: " + duration.toHours() + " hours " + (duration.toMinutes() % 60) + " minutes");
+                        // Insert a new row into the DateTime table with the date, time, duration, and user ID
+                        psInsertDateTime.setDate(1, java.sql.Date.valueOf(start_date.getValue()));
+                        psInsertDateTime.setTime(2, java.sql.Time.valueOf(start_time.getText()));
+                        psInsertDateTime.setDate(3, java.sql.Date.valueOf(end_date.getValue()));
+                        psInsertDateTime.setTime(4, java.sql.Time.valueOf(end_time.getText()));
+                        psInsertDateTime.setLong(5, duration.toHours());
+                        psInsertDateTime.setInt(6, userId);
+                        psInsertDateTime.executeUpdate();
+
+                        // Display duration in label
+                        sleepDurationLabel.setText("Duration: " + duration.toHours() + " hours " + (duration.toMinutes() % 60) + " minutes");
+                        alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Saved!");
+
+                        alert.setHeaderText(null);
+                        alert.setContentText("Your sleep record has been saved successfully. \nYour sleep duration is: " + duration.toHours() + " hours " + (duration.toMinutes() % 60) + " minutes");
+                        alert.showAndWait();
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } catch (SQLException e) {
+
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }
