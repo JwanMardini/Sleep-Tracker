@@ -53,9 +53,11 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="lib3" level="project" />
-    <orderEntry type="library" name="junit5" level="project" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="ojdbc10-19.3.0.0" level="project" />
     <orderEntry type="library" name="lib1" level="project" />
+    <orderEntry type="library" name="jfreechart-1.0.19" level="project" />
+    <orderEntry type="library" name="ojdbc" level="project" />
+    <orderEntry type="library" name="junit5" level="project" />
   </component>
 </module>

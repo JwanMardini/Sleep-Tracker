@@ -75,7 +75,7 @@
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </Button>
-                                        <Button fx:id="btn_profile" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="425.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Profile" textFill="WHITE">
+                                        <Button fx:id="btn_profile" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="425.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Profile" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="USER" size="2em" />
                                             </graphic>
@@ -167,6 +167,49 @@
                                         <NumberAxis side="LEFT" />
                                       </yAxis>
                                     </BarChart>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="profile_form" prefHeight="600.8" prefWidth="576.8" styleClass="gradient" stylesheets="@../css/design.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="76.0" layoutY="14.0" prefHeight="46.0" prefWidth="185.0" text="Profile settings" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="52.0" layoutY="124.0" text="Profile details" textFill="#fbf9f9">
+                                       <font>
+                                          <Font name="System Bold" size="21.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="nameID" layoutX="182.0" layoutY="170.0" prefHeight="25.0" prefWidth="273.0" styleClass="background" />
+                                    <TextField fx:id="usernameID" layoutX="182.0" layoutY="222.0" prefHeight="25.0" prefWidth="273.0" styleClass="background" />
+                                    <TextField fx:id="emailID" layoutX="182.0" layoutY="398.0" prefHeight="25.0" prefWidth="273.0" styleClass="background" />
+                                    <Label layoutX="52.0" layoutY="174.0" text="Name" textFill="WHITE">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="52.0" layoutY="226.0" text="Username" textFill="#f4f0f0">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="54.0" layoutY="402.0" text="Email" textFill="#f6f4f4">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="52.0" layoutY="338.0" text="Contact info" textFill="#f4f1f1">
+                                       <font>
+                                          <Font name="System Bold" size="21.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="saveButton" layoutX="258.0" layoutY="517.0" mnemonicParsing="false" style="-fx-background-color: #acaaf2;" text="Save Change" textFill="#f9f9fb">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Button>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="EDIT" layoutX="14.0" layoutY="65.0" size="5em" />
                                  </children>
                               </AnchorPane>
                                     </children></AnchorPane>

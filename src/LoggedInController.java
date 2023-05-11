@@ -57,6 +57,8 @@ public class LoggedInController implements Initializable {
 
     //Profile
     @FXML
+    private AnchorPane profile_form;
+    @FXML
     private Button btn_profile;
     @FXML
     private Button saveButton;
@@ -152,20 +154,28 @@ public class LoggedInController implements Initializable {
             home_form.setVisible(true);
             history_form.setVisible(false);
             record_sleep_form.setVisible(false);
+            profile_form.setVisible(false);
 
         } else if (event.getSource() == btn_record_sleep) {
             home_form.setVisible(false);
             history_form.setVisible(false);
             record_sleep_form.setVisible(true);
-
+            profile_form.setVisible(false);
             setDefaultDateTime();
 
         } else if (event.getSource() == btn_history) {
             home_form.setVisible(false);
             history_form.setVisible(true);
             record_sleep_form.setVisible(false);
-
+            profile_form.setVisible(false);
             displayChart();
+
+        } else if (event.getSource() == btn_profile) {
+            home_form.setVisible(false);
+            history_form.setVisible(true);
+            record_sleep_form.setVisible(false);
+            profile_form.setVisible(true);
+
         }
     }
 
