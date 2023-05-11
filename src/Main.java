@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import java.io.IOException;
 
 
-
 public class Main extends Application {
     private static Stage stg;  //creating fake stage b/c we want the variables to change scenes
     @Override

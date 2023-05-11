@@ -8,96 +8,67 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-
 public class LoggedInController {
-
-    // Main page
     @FXML
     private MenuButton btn_home;
-
     @FXML
     private MenuButton btn_record_sleep;
-
     @FXML
     private Button btn_history;
-
     @FXML
     private MenuButton btn_profile;
-
     @FXML
     private Label label_welcome;
-
 
     //Home -> About controller
     @FXML
     private Button btn_back_to_home1;
 
-
     //Profile controller
     @FXML
     private Button btn_back_to_home2;
-
     @FXML
     private Button saveButton;
-
     @FXML
     private TextField nameID;
-
     @FXML
     private TextField usernameID;
-
     @FXML
     private TextField emailID;
-
 
     // General recommendation controller
     @FXML
     private Button btn_back_to_home3;
-
     // month1 controller
     @FXML
     private Button btn_back_to_home4;
-
     // Resources controller
     @FXML
     private Button btn_back_to_home5;
-
     // week 1 Controller
     @FXML
     private Button btn_back_to_home6;
-
     // week 2 controller
     @FXML
     private Button btn_back_to_home7;
-
-
     //Record sleep timer
     @FXML
     private TextField username;
-
     @FXML
     private DatePicker start_date;
-
     @FXML
     private TextField start_time;
-
     @FXML
     private DatePicker end_date;
-
     @FXML
     private TextField end_time;
-
     @FXML
     private Label sleepDurationLabel;
-
     @FXML
     private Button btn_save;
-
     @FXML
     private Button btn_back_to_home;
-
     private String userInfo;
-
     @FXML
     void btnAboutClicked(ActionEvent event) throws IOException{
         Main.changeScene("resources/about.fxml", userInfo);

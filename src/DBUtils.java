@@ -12,9 +12,9 @@ import java.sql.*;
 import java.io.IOException;
 
 public class DBUtils {
-    private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
+    private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptracker";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "toor";
+    private static final String DbPassword = "sql@2023";
 
 
     // This method changes the scene to the specified FXML file with a given title and username.
@@ -142,7 +142,6 @@ public class DBUtils {
         }
         return ans.equals(response);
     }
-
 
 
     public static void updatePassword(String email, String newPassword){
