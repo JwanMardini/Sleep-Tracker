@@ -96,7 +96,7 @@ public class LoggedInController implements Initializable {
 
 
     public void handleSaveButton(ActionEvent actionEvent) {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sleeptrackerlogin", "root", "toor");
+        try (Connection connection = DBUtils.getConnection();
              PreparedStatement psGetUserId = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
              PreparedStatement psInsertDateTime = connection.prepareStatement("INSERT INTO DateTime(start_date, start_time, end_date, end_time, duration, user_id) VALUES (?, ?, ?, ?, ?, ?)")) {
 
@@ -133,7 +133,7 @@ public class LoggedInController implements Initializable {
 
 
     public void displayChart() {
-        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sleeptrackerlogin", "root", "toor");
+        try (Connection connection = DBUtils.getConnection();
              PreparedStatement psChartSql = connection.prepareStatement("SELECT end_date, SUM(duration) FROM DateTime GROUP BY end_date ORDER BY TIMESTAMP(end_date) ASC LIMIT 8");
              ResultSet rs = psChartSql.executeQuery()) {
 
