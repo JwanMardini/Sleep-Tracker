@@ -17,6 +17,7 @@ import java.sql.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -103,14 +104,6 @@ public class LoggedInController implements Initializable {
 
 
 
-
-
-
-
-
-
-
-
     public void setUserInfo(String userInfo) {
         this.userInfo = userInfo;
         if (label_welcome != null) {
@@ -145,7 +138,7 @@ public class LoggedInController implements Initializable {
                     psInsertDateTime.setTime(2, java.sql.Time.valueOf(start_time.getText()));
                     psInsertDateTime.setDate(3, java.sql.Date.valueOf(end_date.getValue()));
                     psInsertDateTime.setTime(4, java.sql.Time.valueOf(end_time.getText()));
-                    psInsertDateTime.setLong(5, duration.toMinutes());
+                    psInsertDateTime.setLong(5, duration.toHours());
                     psInsertDateTime.setInt(6, userId);
                     psInsertDateTime.executeUpdate();
 
@@ -215,12 +208,12 @@ public class LoggedInController implements Initializable {
                 // TO HIDE MAIN FORM
                 btn_logout.getScene().getWindow().hide();
 
-                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("resources/login.fxml"));
 
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
 
-                stage.setTitle("Cafe Shop Management System");
+                stage.setTitle("Sleep Tracker");
 
                 stage.setScene(scene);
                 stage.show();
@@ -235,6 +228,11 @@ public class LoggedInController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Set the default value for the date picker
+        start_date.setValue(LocalDateTime.now().toLocalDate());
+
+        // Set the default value for the time field
+        start_time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
 
     }
 }
