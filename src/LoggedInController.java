@@ -1,5 +1,4 @@
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,8 +9,6 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.time.Duration;
@@ -151,7 +148,6 @@ public class LoggedInController implements Initializable {
 
 
     public void switchForm(ActionEvent event) {
-
         if (event.getSource() == btn_home) {
             home_form.setVisible(true);
             history_form.setVisible(false);
@@ -196,13 +192,11 @@ public class LoggedInController implements Initializable {
 
                 stage.setScene(scene);
                 stage.show();
-
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public void setDefaultDateTime () {
@@ -217,7 +211,6 @@ public class LoggedInController implements Initializable {
 
         // Set the default value for the time field
         end_time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-
     }
 
 
