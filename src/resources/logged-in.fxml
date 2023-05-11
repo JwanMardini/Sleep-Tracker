@@ -157,7 +157,7 @@
                                     <Label fx:id="sleepDurationLabel" layoutX="195.0" layoutY="359.0" textFill="WHITE" />
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="history_form" prefHeight="601.3333333333334" prefWidth="576.6666666666666" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="history_form" prefHeight="601.3333333333334" prefWidth="576.6666666666666" stylesheets="@../css/design.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <BarChart fx:id="barChart" layoutX="38.0" layoutY="113.0" title="Sleep Hours Chart">
                                       <xAxis>

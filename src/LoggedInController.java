@@ -23,67 +23,18 @@ import java.util.ResourceBundle;
 
 public class LoggedInController implements Initializable {
 
-    //Forms
-    @FXML
-    private AnchorPane history_form;
-
+    //Home
     @FXML
     private AnchorPane home_form;
-
-    @FXML
-    private AnchorPane record_sleep_form;
-
-    @FXML
-    private BarChart<?, ?> barChart;
-
-    @FXML
-    private Button btn_logout;
-
     @FXML
     private Button btn_home;
+
+
+    //Record Sleep
+    @FXML
+    private AnchorPane record_sleep_form;
     @FXML
     private Button btn_record_sleep;
-    @FXML
-    private Button btn_history;
-    @FXML
-    private Button btn_profile;
-    @FXML
-    private Label label_welcome;
-
-    //Home -> About controller
-    @FXML
-    private Button btn_back_to_home1;
-
-    //Profile controller
-    @FXML
-    private Button btn_back_to_home2;
-    @FXML
-    private Button saveButton;
-    @FXML
-    private TextField nameID;
-    @FXML
-    private TextField usernameID;
-    @FXML
-    private TextField emailID;
-
-    // General recommendation controller
-    @FXML
-    private Button btn_back_to_home3;
-    // month1 controller
-    @FXML
-    private Button btn_back_to_home4;
-    // Resources controller
-    @FXML
-    private Button btn_back_to_home5;
-    // week 1 Controller
-    @FXML
-    private Button btn_back_to_home6;
-    // week 2 controller
-    @FXML
-    private Button btn_back_to_home7;
-    //Record sleep timer
-    @FXML
-    private TextField username;
     @FXML
     private DatePicker start_date;
     @FXML
@@ -96,12 +47,43 @@ public class LoggedInController implements Initializable {
     private Label sleepDurationLabel;
     @FXML
     private Button btn_save;
+
+
+    //History
     @FXML
-    private Button btn_back_to_home;
+    private AnchorPane history_form;
+    @FXML
+    private Button btn_history;
+    @FXML
+    private BarChart<?, ?> barChart;
+
+
+    //Profile
+    @FXML
+    private Button btn_profile;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private TextField nameID;
+    @FXML
+    private TextField usernameID;
+    @FXML
+    private TextField emailID;
+
+
+    //Logout
+    @FXML
+    private Button btn_logout;
+
+
+    //Welcoming
+    @FXML
+    private Label label_welcome;
+
+
+    //Other
     private String userInfo;
     private Alert alert;
-
-
 
 
     public void setUserInfo(String userInfo) {
@@ -109,11 +91,6 @@ public class LoggedInController implements Initializable {
         if (label_welcome != null) {
             label_welcome.setText("Welcome " + userInfo);
         }
-    }
-
-    @FXML
-    void btnBackToHome(ActionEvent event) throws IOException {
-        DBUtils.changeScene(event, "resources/logged-in.fxml", "Home", userInfo);
     }
 
 
@@ -152,6 +129,7 @@ public class LoggedInController implements Initializable {
             e.printStackTrace();
         }
     }
+
 
     public void displayChart() {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sleeptrackerlogin", "root", "toor");
@@ -193,10 +171,9 @@ public class LoggedInController implements Initializable {
         }
     }
 
+
     public void logout() {
-
         try {
-
             alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Error Message");
             alert.setHeaderText(null);
@@ -226,6 +203,7 @@ public class LoggedInController implements Initializable {
 
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Set the default value for the date picker
@@ -233,6 +211,12 @@ public class LoggedInController implements Initializable {
 
         // Set the default value for the time field
         start_time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+
+        // Set the default value for the date picker
+        end_date.setValue(LocalDateTime.now().toLocalDate());
+
+        // Set the default value for the time field
+        end_time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
 
     }
 }
