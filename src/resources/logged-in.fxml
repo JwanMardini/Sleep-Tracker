@@ -109,7 +109,7 @@
                                 <ColorAdjust brightness="0.28" contrast="-0.19" hue="0.22" saturation="0.28" />
                             </effect>
                             <children>
-                                <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="600.8" prefWidth="876.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="600.8" prefWidth="876.8" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <AnchorPane fx:id="home_form" layoutX="1.0" layoutY="5.0" prefHeight="601.3333333333334" prefWidth="576.6666666666666" styleClass="gradient" stylesheets="@../css/design.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -210,6 +210,37 @@
                                        </font>
                                     </Button>
                                     <FontAwesomeIcon fill="WHITE" glyphName="EDIT" layoutX="14.0" layoutY="65.0" size="5em" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="main_form" prefHeight="600.8" prefWidth="576.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="185.0" layoutY="145.0" prefHeight="46.0" prefWidth="164.0" text="How it is made" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Line endX="154.0" endY="23.0" layoutX="262.0" layoutY="111.0" startX="-150.6000213623047" startY="23.0" stroke="WHITE" strokeWidth="2.0" />
+                                    <FontAwesomeIcon fill="WHITE" glyphName="BED" layoutX="183.0" layoutY="117.0" size="10em" />
+                                    <Text fill="WHITE" layoutX="173.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This sleep tracking application was developed by a team of students: Solomon W., Jwan M., Omar Z., Mohamad A., and Rosol H. The project was completed as a requirement for the Agile Development Method course at Kristianstad University, Sweden." wrappingWidth="206.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="173.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Through collaboration and innovative thinking, the team was able to create an application that enables users to track and enhance their sleep patterns." wrappingWidth="206.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Label layoutX="206.0" layoutY="98.0" prefHeight="36.0" prefWidth="91.0" text="Sleep Tracker" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Text fill="WHITE" layoutX="91.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are now welcome to navigate through our bar's side menu. We hope you enjoy it!" textAlignment="CENTER" wrappingWidth="393.1999969482422">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
                                  </children>
                               </AnchorPane>
                                     </children></AnchorPane>

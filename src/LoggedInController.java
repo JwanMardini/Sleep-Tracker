@@ -81,6 +81,8 @@ public class LoggedInController implements Initializable {
 
 
     //Other
+    @FXML
+    private AnchorPane main_form;
     private String userInfo;
     private Alert alert;
 
@@ -155,12 +157,17 @@ public class LoggedInController implements Initializable {
             history_form.setVisible(false);
             record_sleep_form.setVisible(false);
             profile_form.setVisible(false);
+            main_form.setVisible(false);
+
+
 
         } else if (event.getSource() == btn_record_sleep) {
             home_form.setVisible(false);
             history_form.setVisible(false);
             record_sleep_form.setVisible(true);
             profile_form.setVisible(false);
+            main_form.setVisible(false);
+
             setDefaultDateTime();
 
         } else if (event.getSource() == btn_history) {
@@ -168,6 +175,8 @@ public class LoggedInController implements Initializable {
             history_form.setVisible(true);
             record_sleep_form.setVisible(false);
             profile_form.setVisible(false);
+            main_form.setVisible(false);
+
             displayChart();
 
         } else if (event.getSource() == btn_profile) {
@@ -175,6 +184,8 @@ public class LoggedInController implements Initializable {
             history_form.setVisible(true);
             record_sleep_form.setVisible(false);
             profile_form.setVisible(true);
+            main_form.setVisible(false);
+
 
         }
     }
