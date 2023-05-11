@@ -162,6 +162,8 @@ public class LoggedInController implements Initializable {
             history_form.setVisible(false);
             record_sleep_form.setVisible(true);
 
+            setDefaultDateTime();
+
         } else if (event.getSource() == btn_history) {
             home_form.setVisible(false);
             history_form.setVisible(true);
@@ -203,9 +205,7 @@ public class LoggedInController implements Initializable {
 
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void setDefaultDateTime () {
         // Set the default value for the date picker
         start_date.setValue(LocalDateTime.now().toLocalDate());
 
@@ -217,6 +217,12 @@ public class LoggedInController implements Initializable {
 
         // Set the default value for the time field
         end_time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 }
