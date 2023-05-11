@@ -2,18 +2,21 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<?import javafx.scene.control.Button?>
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LoggedInController">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -39,19 +42,15 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Label>
-                                        <MenuButton fx:id="btn_home" layoutX="12.0" layoutY="279.0" mnemonicParsing="false" onAction="#btnHomeClicked" prefHeight="43.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Home" textFill="WHITE">
-                                            <items>
-                                                <MenuItem fx:id="btn_about" mnemonicParsing="false" onAction="#btnAboutClicked" styleClass="background" text="About ST" />
-                                                <MenuItem fx:id="btn_resource" mnemonicParsing="false" onAction="#btnResourceClicked" styleClass="background" text="Resources" />
-                                            </items>
-                                            <graphic>
-                                                <FontAwesomeIcon fill="#d1b4ed" glyphName="HOME" size="2em" />
-                                            </graphic>
+                                        <Button fx:id="btn_home" alignment="BASELINE_LEFT" layoutX="11.0" layoutY="275.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Home" textFill="WHITE">
                                             <font>
                                                 <Font name="System Bold" size="14.0" />
                                             </font>
-                                        </MenuButton>
-                                        <MenuButton fx:id="btn_record_sleep" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="352.0" mnemonicParsing="false" onAction="#btnRecordSleepClicked" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Record Sleep" textFill="WHITE">
+                                 <graphic>
+                                              <FontAwesomeIcon fill="#d1b4ed" glyphName="HOME" size="2em" text="" />
+                                 </graphic>
+                                        </Button>
+                                        <Button fx:id="btn_record_sleep" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Record Sleep" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="BED" size="2em" />
                                             </graphic>
@@ -64,12 +63,8 @@
                                             <effect>
                                                 <ColorAdjust />
                                             </effect>
-                                            <items>
-                                                <MenuItem fx:id="btn_record_sleep_time" mnemonicParsing="false" onAction="#btnRecordSleepTimeClicked" styleClass="background" text="Record sleep time" />
-                                                <MenuItem fx:id="btn_general_recommendations" mnemonicParsing="false" onAction="#btnGeneralRecommendationsClicked" styleClass="background" text="General Recommendations" />
-                                            </items>
-                                        </MenuButton>
-                                        <Button fx:id="btn_history" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="423.0" mnemonicParsing="false" onAction="#btnHistoryClicked" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="History" textFill="WHITE">
+                                        </Button>
+                                        <Button fx:id="btn_history" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="375.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="History" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="HISTORY" size="2em" />
                                             </graphic>
@@ -80,7 +75,7 @@
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </Button>
-                                        <MenuButton fx:id="btn_profile" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="484.0" mnemonicParsing="false" onAction="#btnProfileClicked" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Profile" textFill="WHITE">
+                                        <Button fx:id="btn_profile" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="425.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Profile" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="USER" size="2em" />
                                             </graphic>
@@ -93,12 +88,13 @@
                                             <effect>
                                                 <ColorAdjust />
                                             </effect>
-                                            <items>
-                                                <MenuItem fx:id="btn_edit_profile" mnemonicParsing="false" onAction="#btnEditProfileClicked" styleClass="background" text="Edit profile" />
-                                                <MenuItem fx:id="btn_log_out" mnemonicParsing="false" onAction="#btnLogOutClicked" styleClass="background" text="Log out " />
-                                            </items>
-                                        </MenuButton>
+                                        </Button>
                                         <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="79.0" layoutY="212.0" size="5em" />
+                              <Button fx:id="btn_logout" layoutX="17.0" layoutY="559.0" mnemonicParsing="false" onAction="#logout" styleClass="signup-btn" stylesheets="@../css/design.css" text="Logout">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" text="" />
+                                 </graphic>
+                              </Button>
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -115,7 +111,64 @@
                             <children>
                                 <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="600.8" prefWidth="876.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                                        <AnchorPane layoutX="1.0" layoutY="5.0" prefHeight="594.0" prefWidth="874.0" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+                                        <AnchorPane fx:id="home_form" layoutX="1.0" layoutY="5.0" prefHeight="601.3333333333334" prefWidth="576.6666666666666" styleClass="gradient" stylesheets="@../css/design.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="40.0" layoutY="153.0" prefHeight="46.0" prefWidth="281.0" text="About sleep tracker" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="26.0" />
+                                       </font>
+                                    </Label>
+                                    <Text fill="WHITE" layoutX="40.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The sleep tracker application provides a user-friendly and intuitive interface that helps to track and monitor your sleep habits. At the heart of our sleep tracker application is a powerful algorithm that analyzes your sleep patterns and provides personalized insights and recommendations based on your individual needs." wrappingWidth="496.6666158040367">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="40.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This application can be useful for individuals who want to optimize their sleep habits and understand their sleep patterns better. It can also be helpful for people who have sleep disorders or other conditions that affect their sleep." wrappingWidth="496.6666158040368">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" layoutX="40.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This sleep tracker application is a desktop application that is designed to track and monitor the quality and quantity of your sleep. The sleep tracker applications provides insights into your sleep behavior,  including how long you should sleep, and the quality of your sleep. It also provide tips and recommendations to help improve your sleep hygiene and overall sleep quality." wrappingWidth="496.6666158040366">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="BED" layoutX="40.0" layoutY="135.0" size="10em" />
+                                    <Text fill="WHITE" layoutX="40.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="However, note that this sleep tracker application is not medical device and should not be used to diagnose or treat any sleep-related conditions." wrappingWidth="496.6666158040367">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children></AnchorPane>
+                              <AnchorPane fx:id="record_sleep_form" prefHeight="601.3333333333334" prefWidth="576.6666666666666" styleClass="gradient" stylesheets="@../css/design.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="26.0" layoutY="37.0" prefHeight="46.0" prefWidth="343.0" text="Record your sleep time" textFill="WHITE">
+                                       <font>
+                                          <Font size="23.0" />
+                                       </font>
+                                    </Label>
+                                    <DatePicker fx:id="start_date" layoutX="189.0" layoutY="169.0" prefHeight="25.0" prefWidth="240.0" promptText="Date" />
+                                    <TextField fx:id="start_time" layoutX="189.0" layoutY="204.0" prefHeight="25.0" prefWidth="240.0" promptText="HH:mm:ss" stylesheets="@../css/design.css" />
+                                    <Button fx:id="btn_save" layoutX="209.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="27.0" prefWidth="151.0" styleClass="background" stylesheets="@../css/design.css" text="Save" />
+                                    <DatePicker fx:id="end_date" layoutX="189.0" layoutY="271.0" prefHeight="25.0" prefWidth="240.0" promptText="Date" />
+                                    <TextField fx:id="end_time" layoutX="189.0" layoutY="307.0" prefHeight="25.0" prefWidth="240.0" promptText="HH:mm:ss" stylesheets="@../css/design.css" />
+                                    <Label layoutX="141.0" layoutY="169.0" text="Start:" textFill="WHITE" />
+                                    <Label layoutX="144.0" layoutY="276.0" text="End:" textFill="WHITE" />
+                                    <Label fx:id="sleepDurationLabel" layoutX="195.0" layoutY="359.0" textFill="WHITE" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="history_form" prefHeight="601.3333333333334" prefWidth="576.6666666666666" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <BarChart fx:id="barChart" layoutX="38.0" layoutY="113.0" title="Sleep Hours Chart">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </BarChart>
+                                 </children>
+                              </AnchorPane>
                                     </children></AnchorPane>
                             </children>
                         </AnchorPane>

@@ -1,22 +1,51 @@
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.*;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class LoggedInController {
+public class LoggedInController implements Initializable {
+
+    //Forms
     @FXML
-    private MenuButton btn_home;
+    private AnchorPane history_form;
+
     @FXML
-    private MenuButton btn_record_sleep;
+    private AnchorPane home_form;
+
+    @FXML
+    private AnchorPane record_sleep_form;
+
+    @FXML
+    private BarChart<?, ?> barChart;
+
+    @FXML
+    private Button btn_logout;
+
+    @FXML
+    private Button btn_home;
+    @FXML
+    private Button btn_record_sleep;
     @FXML
     private Button btn_history;
     @FXML
-    private MenuButton btn_profile;
+    private Button btn_profile;
     @FXML
     private Label label_welcome;
 
@@ -69,52 +98,18 @@ public class LoggedInController {
     @FXML
     private Button btn_back_to_home;
     private String userInfo;
-    @FXML
-    void btnAboutClicked(ActionEvent event) throws IOException{
-        Main.changeScene("resources/about.fxml", userInfo);
-    }
-    @FXML
-    void btnEditProfileClicked(ActionEvent event) throws IOException{
-        Main.changeScene( "resources/editProfile.fxml",  userInfo);
-    }
-    @FXML
-    void btnGeneralRecommendationsClicked(ActionEvent event) throws IOException{
-        Main.changeScene( "resources/generalRecommendations.fxml", userInfo);
-    }
-    @FXML
-    void btnHistoryClicked(ActionEvent event) {
-        DBUtils.changeScene(event, "resources/history.fxml", "History", userInfo);
-    }
+    private Alert alert;
 
 
-    @FXML
-    void btnHomeClicked(ActionEvent event) {
-        btn_home.show();
-    }
 
-    @FXML
-    void btnLogOutClicked(ActionEvent event) throws IOException {
-        DBUtils.changeScene(event, "resources/login.fxml", "log in", null);
-    }
 
-    @FXML
-    void btnProfileClicked(ActionEvent event) {
-        btn_profile.show();
-    }
 
-    @FXML
-    void btnRecordSleepClicked(ActionEvent event) {
-        btn_record_sleep.show();
-    }
 
-    @FXML
-    void btnRecordSleepTimeClicked(ActionEvent event) throws IOException{
-        Main.changeScene("resources/recordSleepTime.fxml", userInfo);
-    }
-    @FXML
-    void btnResourceClicked(ActionEvent event) throws IOException{
-        Main.changeScene("resources/resources.fxml", userInfo);
-    }
+
+
+
+
+
 
     public void setUserInfo(String userInfo) {
         this.userInfo = userInfo;
@@ -128,7 +123,7 @@ public class LoggedInController {
         DBUtils.changeScene(event, "resources/logged-in.fxml", "Home", userInfo);
     }
 
-    @FXML
+
     public void handleSaveButton(ActionEvent actionEvent) {
         try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sleeptrackerlogin", "root", "toor");
              PreparedStatement psGetUserId = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
@@ -163,6 +158,84 @@ public class LoggedInController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void displayChart() {
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/sleeptrackerlogin", "root", "toor");
+             PreparedStatement psChartSql = connection.prepareStatement("SELECT end_date, SUM(duration) FROM DateTime GROUP BY end_date ORDER BY TIMESTAMP(end_date) ASC LIMIT 8");
+             ResultSet rs = psChartSql.executeQuery()) {
+
+            XYChart.Series chartData = new XYChart.Series();
+
+            while (rs.next()) {
+                chartData.getData().add(new XYChart.Data(rs.getString(1), rs.getInt(2))); // 1 is date, 2 is duration
+            }
+
+            barChart.getData().add(chartData);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void switchForm(ActionEvent event) {
+
+        if (event.getSource() == btn_home) {
+            home_form.setVisible(true);
+            history_form.setVisible(false);
+            record_sleep_form.setVisible(false);
+
+        } else if (event.getSource() == btn_record_sleep) {
+            home_form.setVisible(false);
+            history_form.setVisible(false);
+            record_sleep_form.setVisible(true);
+
+        } else if (event.getSource() == btn_history) {
+            home_form.setVisible(false);
+            history_form.setVisible(true);
+            record_sleep_form.setVisible(false);
+
+            displayChart();
+        }
+    }
+
+    public void logout() {
+
+        try {
+
+            alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Error Message");
+            alert.setHeaderText(null);
+            alert.setContentText("Are you sure you want to logout?");
+            Optional<ButtonType> option = alert.showAndWait();
+
+            if (option.get().equals(ButtonType.OK)) {
+
+                // TO HIDE MAIN FORM
+                btn_logout.getScene().getWindow().hide();
+
+                Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+
+                stage.setTitle("Cafe Shop Management System");
+
+                stage.setScene(scene);
+                stage.show();
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 }
 
