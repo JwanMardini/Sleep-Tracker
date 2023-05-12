@@ -37,12 +37,12 @@
                                                 <Line endX="119.40000915527344" endY="3.814697265625E-6" layoutX="102.0" layoutY="69.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
                                             </children>
                                         </AnchorPane>
-                                        <Label fx:id="label_welcome" layoutX="22.0" layoutY="104.0" text="Welcome" textFill="WHITE">
+                                        <Label fx:id="label_welcome" layoutX="20.0" layoutY="82.0" text="Welcome" textFill="WHITE">
                                             <font>
-                                                <Font size="15.0" />
+                                                <Font name="Arial" size="15.0" />
                                             </font>
                                         </Label>
-                                        <Button fx:id="btn_home" alignment="BASELINE_LEFT" layoutX="11.0" layoutY="275.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="  Home" textFill="WHITE">
+                                        <Button fx:id="btn_home" alignment="BASELINE_LEFT" layoutX="12.0" layoutY="245.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="  Home" textFill="WHITE">
                                             <font>
                                                 <Font name="System Bold" size="14.0" />
                                             </font>
@@ -53,7 +53,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                                         </Button>
-                                        <Button fx:id="btn_record_sleep" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text=" Record Sleep" textFill="WHITE">
+                                        <Button fx:id="btn_record_sleep" alignment="TOP_LEFT" cache="true" layoutX="12.0" layoutY="295.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text=" Record Sleep" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="BED" size="2em" />
                                             </graphic>
@@ -67,20 +67,20 @@
                                                 <ColorAdjust />
                                             </effect>
                                         </Button>
-                                        <Button fx:id="btn_history" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="375.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="  History" textFill="WHITE">
-                                            <graphic>
-                                                <FontAwesomeIcon fill="#d1b4ed" glyphName="HISTORY" size="2em" />
-                                            </graphic>
+                                        <Button fx:id="btn_history" alignment="TOP_LEFT" cache="true" layoutX="12.0" layoutY="345.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="  History" textFill="WHITE">
                                             <font>
                                                 <Font name="System Bold" size="14.0" />
                                             </font>
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
+                                 <graphic>
+                                    <FontAwesomeIcon fill="#d1b4ed" glyphName="BAR_CHART" size="2em" text="" />
+                                 </graphic>
                                         </Button>
-                                        <Button fx:id="btn_profile" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="475.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="  Profile" textFill="WHITE">
+                                        <Button fx:id="btn_profile" alignment="TOP_LEFT" cache="true" layoutX="12.0" layoutY="445.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="  Edit Profile" textFill="WHITE">
                                             <graphic>
-                                                <FontAwesomeIcon fill="#d1b4ed" glyphName="USER" size="2em" />
+                                                <FontAwesomeIcon fill="#d1b4ed" glyphName="COG" size="2em" />
                                             </graphic>
                                             <font>
                                                 <Font name="System Bold" size="14.0" />
@@ -92,13 +92,13 @@
                                                 <ColorAdjust />
                                             </effect>
                                         </Button>
-                                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="79.0" layoutY="212.0" size="5em" />
+                                        <FontAwesomeIcon fill="#d1b4ed" glyphName="BED" layoutX="52.0" layoutY="215.0" size="7em" />
                               <Button fx:id="btn_logout" layoutX="17.0" layoutY="559.0" mnemonicParsing="false" onAction="#logout" styleClass="signup-btn" stylesheets="@../css/design.css" text="Logout">
                                  <graphic>
                                     <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" text="" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="btn_recommend" alignment="TOP_LEFT" layoutX="11.0" layoutY="425.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text=" Recommandtion" textFill="WHITE">
+                              <Button fx:id="btn_recommend" alignment="TOP_LEFT" layoutX="12.0" layoutY="395.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text=" Recommendtions" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -241,33 +241,28 @@
                               </AnchorPane>
                               <AnchorPane fx:id="main_form" prefHeight="600.8" prefWidth="576.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label layoutX="185.0" layoutY="145.0" prefHeight="46.0" prefWidth="164.0" text="How it is made" textFill="WHITE">
+                                    <Label layoutX="192.0" layoutY="145.0" prefHeight="46.0" prefWidth="142.0" text="Meet Our Team" textFill="WHITE">
                                        <font>
-                                          <Font name="System Bold" size="20.0" />
+                                          <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
                                     <Line endX="154.0" endY="23.0" layoutX="262.0" layoutY="111.0" startX="-150.6000213623047" startY="23.0" stroke="WHITE" strokeWidth="2.0" />
-                                    <FontAwesomeIcon fill="WHITE" glyphName="BED" layoutX="183.0" layoutY="117.0" size="10em" />
-                                    <Text fill="WHITE" layoutX="173.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This sleep tracking application was developed by a team of students: Solomon W., Jwan M., Omar Z., Mohamad A., and Rosol H. The project was completed as a requirement for the Agile Development Method course at Kristianstad University, Sweden." wrappingWidth="206.0">
+                                    <Text fill="WHITE" layoutX="159.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Our sleep tracking application was created by a group of innovative students: Solomon W., Jwan M., Omar Z., Mohamad A., and Rosol H. They developed this project as part of the Agile Development Method course at Kristianstad University in Sweden." wrappingWidth="234.79998779296875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Text fill="WHITE" layoutX="173.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Through collaboration and innovative thinking, the team was able to create an application that enables users to track and enhance their sleep patterns." wrappingWidth="206.0">
+                                    <Text fill="WHITE" layoutX="159.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="By working collaboratively and utilizing their creativity, the team successfully designed an application that empowers users to monitor and optimize their sleep patterns." wrappingWidth="206.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Label layoutX="206.0" layoutY="98.0" prefHeight="36.0" prefWidth="91.0" text="Sleep Tracker" textFill="WHITE">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Text fill="WHITE" layoutX="91.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are now welcome to navigate through our bar's side menu. We hope you enjoy it!" textAlignment="CENTER" wrappingWidth="393.1999969482422">
+                                    <Text fill="WHITE" layoutX="91.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are now welcome to navigate through our bar's side menu. We hope you enjoy it!" textAlignment="CENTER" wrappingWidth="393.1999969482422">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="GROUP" layoutX="159.0" layoutY="177.0" size="2em" />
                                  </children>
                               </AnchorPane>
                                     </children></AnchorPane>

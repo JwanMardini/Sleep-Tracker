@@ -71,7 +71,7 @@ public class LoggedInController implements Initializable {
     private TextField emailID;
 
 
-    //Recommundation
+    //Recommendation
     @FXML
     private AnchorPane recommendations_form;
     @FXML
@@ -122,7 +122,7 @@ public class LoggedInController implements Initializable {
     public void setUserInfo(String userInfo) {
         this.userInfo = userInfo;
         if (label_welcome != null) {
-            label_welcome.setText("Welcome " + userInfo);
+            label_welcome.setText("Welcome " + userInfo + "!");
         }
     }
 
@@ -203,7 +203,6 @@ public class LoggedInController implements Initializable {
             ResultSet rs = psChartSql.executeQuery();
 
 
-
             while (rs.next()) {
                 chartData.getData().add(new XYChart.Data(rs.getString(1), rs.getInt(2))); // 1 is date, 2 is duration
 
@@ -215,6 +214,9 @@ public class LoggedInController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+
 
 
     public void switchForm(ActionEvent event) {
@@ -244,6 +246,7 @@ public class LoggedInController implements Initializable {
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
             displayChart();
+
 
         } else if (event.getSource() == btn_profile) {
             home_form.setVisible(false);
