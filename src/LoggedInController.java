@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
+import javafx.scene.text.Text;
 public class LoggedInController implements Initializable {
 
     //Home
@@ -86,8 +86,16 @@ public class LoggedInController implements Initializable {
     private AnchorPane main_form;
     private String userInfo;
     private Alert alert;
-
     private int userID;
+    @FXML
+    private AnchorPane recommendations_form;
+
+    @FXML
+    private Button btn_recommend;
+    @FXML
+    private Text total_text;
+    @FXML
+    private Text average_text;
 
     public void setUserID(String username) {
 
@@ -211,7 +219,7 @@ public class LoggedInController implements Initializable {
             record_sleep_form.setVisible(false);
             profile_form.setVisible(false);
             main_form.setVisible(false);
-
+            recommendations_form.setVisible(false);
 
 
         } else if (event.getSource() == btn_record_sleep) {
@@ -220,7 +228,7 @@ public class LoggedInController implements Initializable {
             record_sleep_form.setVisible(true);
             profile_form.setVisible(false);
             main_form.setVisible(false);
-
+            recommendations_form.setVisible(false);
             setDefaultDateTime();
 
         } else if (event.getSource() == btn_history) {
@@ -229,16 +237,27 @@ public class LoggedInController implements Initializable {
             record_sleep_form.setVisible(false);
             profile_form.setVisible(false);
             main_form.setVisible(false);
-
+            recommendations_form.setVisible(false);
             displayChart();
 
         } else if (event.getSource() == btn_profile) {
             home_form.setVisible(false);
-            history_form.setVisible(true);
+            history_form.setVisible(false);
             record_sleep_form.setVisible(false);
             profile_form.setVisible(true);
             main_form.setVisible(false);
+            recommendations_form.setVisible(false);
 
+
+        } else if (event.getSource() == btn_recommend) {
+            home_form.setVisible(false);
+            history_form.setVisible(false);
+            record_sleep_form.setVisible(false);
+            profile_form.setVisible(false);
+            main_form.setVisible(false);
+            recommendations_form.setVisible(true);
+
+            displayRecommendations();
 
         }
     }
@@ -285,6 +304,45 @@ public class LoggedInController implements Initializable {
 
         // Set the default value for the time field
         end_time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+    }
+
+    public void displayRecommendations() {
+        Connection connection = DBUtils.getConnection();
+        try {
+            PreparedStatement psSleepSql = connection.prepareStatement("SELECT SUM(duration) FROM DateTime WHERE user_id = ?");
+            psSleepSql.setInt(1, userID);
+            ResultSet rs = psSleepSql.executeQuery();
+            if (rs.next()) {
+                int totalSleep = rs.getInt(1); // Total sleep in hours
+
+                // Calculate average sleep duration over the past week
+                PreparedStatement psAvgSleepSql = connection.prepareStatement("SELECT AVG(duration) FROM DateTime WHERE user_id = ? AND end_date BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW()");
+                psAvgSleepSql.setInt(1, userID);
+                ResultSet avgRs = psAvgSleepSql.executeQuery();
+                if (avgRs.next()) {
+                    int avgSleep = (int) Math.round(avgRs.getDouble(1)); // Average sleep in hours
+                    if (avgSleep < 7) {
+                        average_text.setText("(You are not getting enough sleep. Aim for at least 7 hours of sleep per night");
+
+                    } else if (avgSleep > 9) {
+                        average_text.setText("You are getting more than enough sleep. Consider adjusting your bedtime or waking up earlier.");
+
+                    } else {
+                        average_text.setText("Your sleep habits seem to be on track! Keep up the good work.");
+                    }
+                }
+
+                // Calculate total sleep debt
+                int sleepDebt = totalSleep - (8 * 7); // Assumes 8 hours of sleep per night
+                if (sleepDebt > 0) {
+                    total_text.setText("You have a sleep debt of " + sleepDebt + " hours. Consider going to bed earlier or taking a nap to catch up.");
+                } else {
+                    total_text.setText("You do not have a sleep debt. Keep up the good work!");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

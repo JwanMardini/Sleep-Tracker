@@ -95,6 +95,8 @@
                                     <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" text="" />
                                  </graphic>
                               </Button>
+                              <Button fx:id="btn_recommend" layoutX="15.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="26.0" prefWidth="185.0" text="Recommandtion" />
+                              <FontAwesomeIcon glyphName="HEART" layoutX="29.0" layoutY="505.0" />
                                     </children>
                                 </AnchorPane>
                             </children>
@@ -111,6 +113,20 @@
                             <children>
                                 <AnchorPane layoutX="25.0" layoutY="14.0" prefHeight="600.8" prefWidth="876.8" styleClass="gradient" stylesheets="@../css/design.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
+                              <AnchorPane fx:id="recommendations_form" prefHeight="600.8" prefWidth="576.8" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Text fx:id="average_text" layoutX="69.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="438.13670349121094">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="total_text" layoutX="69.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="438.13670349121094">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
                                         <AnchorPane fx:id="home_form" layoutX="1.0" layoutY="5.0" prefHeight="601.3333333333334" prefWidth="576.6666666666666" styleClass="gradient" stylesheets="@../css/design.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <Label layoutX="40.0" layoutY="153.0" prefHeight="46.0" prefWidth="281.0" text="About sleep tracker" textFill="WHITE">
