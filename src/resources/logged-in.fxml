@@ -159,9 +159,9 @@
                               </AnchorPane>
                               <AnchorPane fx:id="history_form" prefHeight="601.3333333333334" prefWidth="576.6666666666666" stylesheets="@../css/design.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <BarChart fx:id="barChart" alternativeColumnFillVisible="true" layoutX="38.0" layoutY="113.0" title="Sleep Hours Chart">
+                                    <BarChart fx:id="barChart" alternativeColumnFillVisible="true" layoutX="4.0" layoutY="113.0" prefHeight="422.0" prefWidth="569.0" title="Sleep Hours Chart">
                                       <xAxis>
-                                        <CategoryAxis prefHeight="25.0" prefWidth="444.0" side="BOTTOM" tickLabelFill="WHITE" />
+                                        <CategoryAxis prefHeight="45.0" prefWidth="444.0" tickLabelFill="WHITE" />
                                       </xAxis>
                                       <yAxis>
                                         <NumberAxis side="LEFT" tickLabelFill="WHITE" />

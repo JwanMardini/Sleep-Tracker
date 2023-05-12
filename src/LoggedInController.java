@@ -15,6 +15,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -124,30 +125,38 @@ public class LoggedInController implements Initializable {
                 try (ResultSet rs = psGetUserId.executeQuery()) {
                     if (rs.next()) {
                         int userId = rs.getInt("id");
+                        try {
+                            // Calculate duration
+                            LocalDateTime startTime = LocalDateTime.of(start_date.getValue(), LocalTime.parse(start_time.getText()));
+                            LocalDateTime endTime = LocalDateTime.of(end_date.getValue(), LocalTime.parse(end_time.getText()));
+                            Duration duration = Duration.between(startTime, endTime);
 
+                            // Insert a new row into the DateTime table with the date, time, duration, and user ID
+                            psInsertDateTime.setDate(1, java.sql.Date.valueOf(start_date.getValue()));
+                            psInsertDateTime.setTime(2, java.sql.Time.valueOf(start_time.getText()));
+                            psInsertDateTime.setDate(3, java.sql.Date.valueOf(end_date.getValue()));
+                            psInsertDateTime.setTime(4, java.sql.Time.valueOf(end_time.getText()));
+                            psInsertDateTime.setLong(5, duration.toHours());
+                            psInsertDateTime.setInt(6, userId);
+                            psInsertDateTime.executeUpdate();
 
-                        // Calculate duration
-                        LocalDateTime startTime = LocalDateTime.of(start_date.getValue(), LocalTime.parse(start_time.getText()));
-                        LocalDateTime endTime = LocalDateTime.of(end_date.getValue(), LocalTime.parse(end_time.getText()));
-                        Duration duration = Duration.between(startTime, endTime);
+                            // Display duration in label
+                            sleepDurationLabel.setText("Duration: " + duration.toHours() + " hours " + (duration.toMinutes() % 60) + " minutes");
+                            alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Saved!");
 
-                        // Insert a new row into the DateTime table with the date, time, duration, and user ID
-                        psInsertDateTime.setDate(1, java.sql.Date.valueOf(start_date.getValue()));
-                        psInsertDateTime.setTime(2, java.sql.Time.valueOf(start_time.getText()));
-                        psInsertDateTime.setDate(3, java.sql.Date.valueOf(end_date.getValue()));
-                        psInsertDateTime.setTime(4, java.sql.Time.valueOf(end_time.getText()));
-                        psInsertDateTime.setLong(5, duration.toHours());
-                        psInsertDateTime.setInt(6, userId);
-                        psInsertDateTime.executeUpdate();
+                            alert.setHeaderText(null);
+                            alert.setContentText("Your sleep record has been saved successfully. \nYour sleep duration is: " + duration.toHours() + " hours " + (duration.toMinutes() % 60) + " minutes");
+                            alert.showAndWait();
 
-                        // Display duration in label
-                        sleepDurationLabel.setText("Duration: " + duration.toHours() + " hours " + (duration.toMinutes() % 60) + " minutes");
-                        alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setTitle("Saved!");
-
-                        alert.setHeaderText(null);
-                        alert.setContentText("Your sleep record has been saved successfully. \nYour sleep duration is: " + duration.toHours() + " hours " + (duration.toMinutes() % 60) + " minutes");
-                        alert.showAndWait();
+                            // Handle invalid date/time format
+                        }catch (DateTimeParseException e) {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Error");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Please enter valid date/time values.");
+                            alert.showAndWait();
+                        }
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -163,22 +172,23 @@ public class LoggedInController implements Initializable {
 
 
     public void displayChart() {
-        try (Connection connection = DBUtils.getConnection();
-             PreparedStatement psChartSql = connection.prepareStatement("SELECT end_date, SUM(duration) FROM DateTime WHERE user_id = ? GROUP BY end_date ORDER BY TIMESTAMP(end_date) ASC LIMIT 8"))
-        {
+        XYChart.Series chartData = new XYChart.Series();
+        Connection connection = DBUtils.getConnection();
+        try {
+            PreparedStatement psChartSql = connection.prepareStatement("SELECT end_date, SUM(duration) FROM DateTime WHERE user_id = ? GROUP BY end_date ORDER BY TIMESTAMP(end_date) ASC LIMIT 8");
             psChartSql.setInt(1, userID);
             ResultSet rs = psChartSql.executeQuery();
 
-            XYChart.Series chartData = new XYChart.Series();
+
 
             while (rs.next()) {
                 chartData.getData().add(new XYChart.Data(rs.getString(1), rs.getInt(2))); // 1 is date, 2 is duration
 
             }
-
+            // TO GET THE DATA FROM THE DATABASE VIA XYCHART
             barChart.getData().add(chartData);
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
