@@ -131,6 +131,16 @@ public class LoggedInController implements Initializable {
                             LocalDateTime endTime = LocalDateTime.of(end_date.getValue(), LocalTime.parse(end_time.getText()));
                             Duration duration = Duration.between(startTime, endTime);
 
+                            // Check if duration is negative
+                            if (duration.isNegative()) {
+                                Alert alert = new Alert(Alert.AlertType.ERROR);
+                                alert.setTitle("Error");
+                                alert.setHeaderText(null);
+                                alert.setContentText("The sleep duration cannot be negative. Please enter valid date/time values.");
+                                alert.showAndWait();
+                                return; // Exit the method without inserting the new row
+                            }
+
                             // Insert a new row into the DateTime table with the date, time, duration, and user ID
                             psInsertDateTime.setDate(1, java.sql.Date.valueOf(start_date.getValue()));
                             psInsertDateTime.setTime(2, java.sql.Time.valueOf(start_time.getText()));
