@@ -27,6 +27,7 @@ public class DBUtils {
                 root = loader.load();
                 LoggedInController loggedInController = loader.getController();
                 loggedInController.setUserInfo(username);
+                loggedInController.setUserID(username);
             } catch (IOException e) {
                 e.printStackTrace();
             }
