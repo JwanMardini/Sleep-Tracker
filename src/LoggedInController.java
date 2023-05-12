@@ -86,6 +86,24 @@ public class LoggedInController implements Initializable {
     private String userInfo;
     private Alert alert;
 
+    private int userID;
+
+    public void setUserID(String username) {
+
+        String query = "SELECT id FROM users WHERE username = ?";
+        try (Connection connection = DBUtils.getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                this.userID = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     public void setUserInfo(String userInfo) {
         this.userInfo = userInfo;
@@ -97,7 +115,6 @@ public class LoggedInController implements Initializable {
 
     public void handleSaveButton(ActionEvent actionEvent) {
         try {
-
             try (Connection connection = DBUtils.getConnection();
                  PreparedStatement psGetUserId = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
                  PreparedStatement psInsertDateTime = connection.prepareStatement("INSERT INTO DateTime(start_date, start_time, end_date, end_time, duration, user_id) VALUES (?, ?, ?, ?, ?, ?)")) {
@@ -107,6 +124,7 @@ public class LoggedInController implements Initializable {
                 try (ResultSet rs = psGetUserId.executeQuery()) {
                     if (rs.next()) {
                         int userId = rs.getInt("id");
+
 
                         // Calculate duration
                         LocalDateTime startTime = LocalDateTime.of(start_date.getValue(), LocalTime.parse(start_time.getText()));
@@ -146,13 +164,16 @@ public class LoggedInController implements Initializable {
 
     public void displayChart() {
         try (Connection connection = DBUtils.getConnection();
-             PreparedStatement psChartSql = connection.prepareStatement("SELECT end_date, SUM(duration) FROM DateTime GROUP BY end_date ORDER BY TIMESTAMP(end_date) ASC LIMIT 8");
-             ResultSet rs = psChartSql.executeQuery()) {
+             PreparedStatement psChartSql = connection.prepareStatement("SELECT end_date, SUM(duration) FROM DateTime WHERE user_id = ? GROUP BY end_date ORDER BY TIMESTAMP(end_date) ASC LIMIT 8"))
+        {
+            psChartSql.setInt(1, userID);
+            ResultSet rs = psChartSql.executeQuery();
 
             XYChart.Series chartData = new XYChart.Series();
 
             while (rs.next()) {
                 chartData.getData().add(new XYChart.Data(rs.getString(1), rs.getInt(2))); // 1 is date, 2 is duration
+
             }
 
             barChart.getData().add(chartData);
