@@ -42,15 +42,18 @@
                                                 <Font size="15.0" />
                                             </font>
                                         </Label>
-                                        <Button fx:id="btn_home" alignment="BASELINE_LEFT" layoutX="11.0" layoutY="275.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Home" textFill="WHITE">
+                                        <Button fx:id="btn_home" alignment="BASELINE_LEFT" layoutX="11.0" layoutY="275.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="  Home" textFill="WHITE">
                                             <font>
                                                 <Font name="System Bold" size="14.0" />
                                             </font>
                                  <graphic>
                                               <FontAwesomeIcon fill="#d1b4ed" glyphName="HOME" size="2em" text="" />
                                  </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                                         </Button>
-                                        <Button fx:id="btn_record_sleep" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Record Sleep" textFill="WHITE">
+                                        <Button fx:id="btn_record_sleep" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="325.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text=" Record Sleep" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="BED" size="2em" />
                                             </graphic>
@@ -64,7 +67,7 @@
                                                 <ColorAdjust />
                                             </effect>
                                         </Button>
-                                        <Button fx:id="btn_history" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="375.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="History" textFill="WHITE">
+                                        <Button fx:id="btn_history" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="375.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="  History" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="HISTORY" size="2em" />
                                             </graphic>
@@ -75,7 +78,7 @@
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </Button>
-                                        <Button fx:id="btn_profile" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="425.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="Profile" textFill="WHITE">
+                                        <Button fx:id="btn_profile" alignment="TOP_LEFT" cache="true" layoutX="11.0" layoutY="475.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="  Profile" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="USER" size="2em" />
                                             </graphic>
@@ -95,8 +98,16 @@
                                     <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" text="" />
                                  </graphic>
                               </Button>
-                              <Button fx:id="btn_recommend" layoutX="15.0" layoutY="488.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="26.0" prefWidth="185.0" text="Recommandtion" />
-                              <FontAwesomeIcon glyphName="HEART" layoutX="29.0" layoutY="505.0" />
+                              <Button fx:id="btn_recommend" alignment="TOP_LEFT" layoutX="11.0" layoutY="425.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text=" Recommandtion" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIcon fill="#d1b4ed" glyphName="HEART" size="2em" />
+                                 </graphic>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
                                     </children>
                                 </AnchorPane>
                             </children>

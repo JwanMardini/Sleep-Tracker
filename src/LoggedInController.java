@@ -71,6 +71,17 @@ public class LoggedInController implements Initializable {
     private TextField emailID;
 
 
+    //Recommundation
+    @FXML
+    private AnchorPane recommendations_form;
+    @FXML
+    private Button btn_recommend;
+    @FXML
+    private Text total_text;
+    @FXML
+    private Text average_text;
+
+
     //Logout
     @FXML
     private Button btn_logout;
@@ -87,15 +98,9 @@ public class LoggedInController implements Initializable {
     private String userInfo;
     private Alert alert;
     private int userID;
-    @FXML
-    private AnchorPane recommendations_form;
 
-    @FXML
-    private Button btn_recommend;
-    @FXML
-    private Text total_text;
-    @FXML
-    private Text average_text;
+
+
 
     public void setUserID(String username) {
 
