@@ -236,6 +236,7 @@ public class LoggedInController implements Initializable {
             profile_form.setVisible(false);
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
+
             setDefaultDateTime();
 
         } else if (event.getSource() == btn_history) {
@@ -245,6 +246,7 @@ public class LoggedInController implements Initializable {
             profile_form.setVisible(false);
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
+
             displayChart();
 
 
@@ -255,8 +257,10 @@ public class LoggedInController implements Initializable {
             profile_form.setVisible(true);
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
+
             usernameID.setText(userInfo);
             emailID.setText(DBUtils.getEmail(userInfo));
+
         } else if (event.getSource() == btn_recommend) {
             home_form.setVisible(false);
             history_form.setVisible(false);

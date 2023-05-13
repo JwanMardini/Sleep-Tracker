@@ -27,6 +27,10 @@ public class SignUpController implements Initializable {
     private TextField tf_password;
 
     @FXML
+    private TextField tf_age;
+
+
+    @FXML
     private TextField secQue;
 
     @Override
@@ -34,14 +38,26 @@ public class SignUpController implements Initializable {
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_email.getText().trim().isEmpty() && !secQue.getText().trim().isEmpty()) {
-                    DBUtils.signUpUser(actionEvent, tf_username.getText(), tf_password.getText(), tf_email.getText(), secQue.getText());
-                } else {
-                    System.out.println("Please fill in all information");
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Please fill in all information to sign up!");
-                    alert.show();
-                }
+                // convert the input to an integer
+              try {
+                  String ageString = tf_age.getText();
+                  int age = Integer.parseInt(ageString);
+
+
+                  if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_email.getText().trim().isEmpty() && !secQue.getText().trim().isEmpty()) {
+                      DBUtils.signUpUser(actionEvent, tf_username.getText(), tf_password.getText(), tf_email.getText(), secQue.getText(), age);
+                  } else {
+                      System.out.println("Please fill in all information");
+                      Alert alert = new Alert(Alert.AlertType.ERROR);
+                      alert.setContentText("Please fill in all information to sign up!");
+                      alert.show();
+                  }
+              } catch (NumberFormatException e) {
+                  // handle the exception by displaying an error message
+                  Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid age.");
+                  alert.showAndWait();
+              }
+
             }
         });
         btn_log_in.setOnAction(new EventHandler<ActionEvent>() {
