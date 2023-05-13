@@ -224,7 +224,7 @@
                                           <Font name="System Bold" size="24.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="151.0" layoutY="119.0" text="Profile details" textFill="WHITE">
+                                    <Label layoutX="106.0" layoutY="118.0" text="Profile details" textFill="WHITE">
                                        <font>
                                           <Font size="21.0" />
                                        </font>
@@ -241,30 +241,50 @@
                                     <FontAwesomeIcon fill="WHITE" glyphName="COG" layoutX="14.0" layoutY="54.0" size="4em" />
                                     <TextField fx:id="username_profile" layoutX="151.0" layoutY="170.0" prefHeight="30.0" prefWidth="273.0" promptText="Username" />
                                     <TextField fx:id="age_profile" layoutX="151.0" layoutY="270.0" prefHeight="30.0" prefWidth="273.0" promptText="Age" />
-                                    <FontAwesomeIcon fill="WHITE" glyphName="ENVELOPE" layoutX="115.0" layoutY="366.0" size="2em" />
-                                    <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="118.0" layoutY="143.0" size="2em" />
-                                    <Label layoutX="151.0" layoutY="341.0" text="Contact Info" textFill="WHITE">
+                                    <FontAwesomeIcon fill="WHITE" glyphName="ENVELOPE" layoutX="70.0" layoutY="365.0" size="2em" />
+                                    <FontAwesomeIcon fill="WHITE" glyphName="USER" layoutX="73.0" layoutY="142.0" size="2em" />
+                                    <Label layoutX="106.0" layoutY="340.0" text="Contact Info" textFill="WHITE">
                                        <font>
                                           <Font size="21.0" />
                                        </font>
                                     </Label>
                                     <PasswordField fx:id="password_profile" layoutX="151.0" layoutY="220.0" prefHeight="30.0" prefWidth="273.0" promptText="Password" />
+                                    <Label layoutX="71.0" layoutY="175.0" text="Username:" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="73.0" layoutY="225.0" text="Password:" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="73.0" layoutY="275.0" text="Age:" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="83.0" layoutY="386.0" text="Email:" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="main_form" prefHeight="600.8" prefWidth="576.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label layoutX="192.0" layoutY="145.0" prefHeight="46.0" prefWidth="142.0" text="Meet Our Team" textFill="WHITE">
+                                    <Label layoutX="204.0" layoutY="147.0" prefHeight="46.0" prefWidth="142.0" text="Meet Our Team" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Line endX="154.0" endY="23.0" layoutX="262.0" layoutY="111.0" startX="-150.6000213623047" startY="23.0" stroke="WHITE" strokeWidth="2.0" />
-                                    <Text fill="WHITE" layoutX="159.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Our sleep tracking application was created by a group of innovative students: Solomon W., Jwan M., Omar Z., Mohamad A., and Rosol H. They developed this project as part of the Agile Development Method course at Kristianstad University in Sweden." wrappingWidth="234.79998779296875">
+                                    <Line endX="154.0" endY="23.0" layoutX="272.0" layoutY="110.0" startX="-150.6000213623047" startY="23.0" stroke="WHITE" strokeWidth="2.0" />
+                                    <Text fill="WHITE" layoutX="171.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Our sleep tracking application was created by a group of innovative students: Solomon W., Jwan M., Omar Z., Mohamad A., and Rosol H. They developed this project as part of the Agile Development Method course at Kristianstad University in Sweden." wrappingWidth="234.79998779296875">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <Text fill="WHITE" layoutX="159.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="By working collaboratively and utilizing their creativity, the team successfully designed an application that empowers users to monitor and optimize their sleep patterns." wrappingWidth="206.0">
+                                    <Text fill="WHITE" layoutX="171.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="By working collaboratively and utilizing their creativity, the team successfully designed an application that empowers users to monitor and optimize their sleep patterns." wrappingWidth="206.0">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -274,7 +294,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <FontAwesomeIcon fill="WHITE" glyphName="GROUP" layoutX="159.0" layoutY="177.0" size="2em" />
+                                    <FontAwesomeIcon fill="WHITE" glyphName="GROUP" layoutX="171.0" layoutY="179.0" size="2em" />
                                  </children>
                               </AnchorPane>
                                     </children></AnchorPane>
