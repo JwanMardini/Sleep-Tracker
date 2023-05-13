@@ -126,14 +126,9 @@
                                     <children>
                               <AnchorPane fx:id="recommendations_form" prefHeight="600.8" prefWidth="576.8" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Text fx:id="average_text" layoutX="69.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="438.13670349121094">
+                                    <Text fx:id="tf_recommend" layoutX="7.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="562.1367645263672">
                                        <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Text>
-                                    <Text fx:id="total_text" layoutX="69.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="438.13670349121094">
-                                       <font>
-                                          <Font size="20.0" />
+                                          <Font size="14.0" />
                                        </font>
                                     </Text>
                                  </children>

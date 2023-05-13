@@ -30,6 +30,8 @@ public class DBUtils {
                 LoggedInController loggedInController = loader.getController();
                 loggedInController.setUserInfo(username);
                 loggedInController.setUserID(username);
+                loggedInController.setUserAge(username);
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

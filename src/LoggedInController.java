@@ -76,10 +76,9 @@ public class LoggedInController implements Initializable {
     private AnchorPane recommendations_form;
     @FXML
     private Button btn_recommend;
+
     @FXML
-    private Text total_text;
-    @FXML
-    private Text average_text;
+    private Text tf_recommend;
 
 
     //Logout
@@ -98,6 +97,9 @@ public class LoggedInController implements Initializable {
     private String userInfo;
     private Alert alert;
     private int userID;
+    private int age;
+
+
 
 
 
@@ -269,7 +271,7 @@ public class LoggedInController implements Initializable {
             main_form.setVisible(false);
             recommendations_form.setVisible(true);
 
-            displayRecommendations();
+            checkSleepDuration();
 
         }
     }
@@ -318,30 +320,13 @@ public class LoggedInController implements Initializable {
         end_time.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
     }
 
-    public void displayRecommendations() {
+    public void checkSleepDuration() {
         Connection connection = DBUtils.getConnection();
-        // Check if the user has recorded their sleep hours for the past 7 days
-        if (hasRecordedSleepHoursForPastWeek()) {
-            // Get the total sleep duration for the user over the past week and calculate recommendations
-            // ...
-        } else {
-            // Alert the user that they haven't recorded their sleep hours for the past week
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Missing Sleep Records");
-            alert.setHeaderText(null);
-            alert.setContentText("You have not entered your sleep hours for the past 7 days, or there is a gap in your records. As a result, we are unable to generate any recommendations for you at this time. Please make sure to enter your sleep records daily to receive accurate recommendations.");
-            alert.showAndWait();
-            return;
-        }
         try {
-            // Get the user's age from the database
-            PreparedStatement psAgeSql = connection.prepareStatement("SELECT age FROM Users WHERE username = ?");
-            psAgeSql.setString(1, userInfo);
-            ResultSet ageRs = psAgeSql.executeQuery();
-            int age = 0;
-            if (ageRs.next()) {
-                age = ageRs.getInt(1);
-            }
+            // Get the recommended sleep duration based on the user's age
+            int[] recommendedSleepDuration = getRecommendedSleepDuration(age);
+            int recommendedSleepDurationMin = recommendedSleepDuration[0];
+            int recommendedSleepDurationMax = recommendedSleepDuration[1];
 
             // Get the total sleep duration for the user over the past week
             PreparedStatement psSleepSql = connection.prepareStatement("SELECT SUM(duration) FROM DateTime WHERE user_id = ? AND end_date BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW()");
@@ -352,29 +337,34 @@ public class LoggedInController implements Initializable {
 
                 // Calculate average sleep duration over the past week
                 int avgSleep = (int) Math.round(totalSleepWeek / 7.0); // Average sleep in hours over the past week
-                if (avgSleep < getRecommendedSleepDuration(age)[0]) {
-                    average_text.setText("(You are not getting enough sleep. Aim for at least " + getRecommendedSleepDuration(age)[0] + " hours of sleep per night for your age category.");
+                if (avgSleep < recommendedSleepDurationMin) {
+                    tf_recommend.setText("You are not getting enough sleep. Aim for at least " + recommendedSleepDurationMin + " to " + recommendedSleepDurationMax + " hours of sleep per night for your age category. " );
 
-                } else if (avgSleep > getRecommendedSleepDuration(age)[1]) {
-                    average_text.setText("You are getting more than enough sleep. Consider adjusting your bedtime or waking up earlier for your age category.");
-
+                    // Get the sleep records for the past week
+                    PreparedStatement psSleepRecordsSql = connection.prepareStatement("SELECT start_time, end_time, duration FROM DateTime WHERE user_id = ? AND end_date BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW() ORDER BY end_date DESC");
+                    psSleepRecordsSql.setInt(1, userID);
+                    ResultSet sleepRecordsRs = psSleepRecordsSql.executeQuery();
+                    String recommendation = "";
+                    while (sleepRecordsRs.next()) {
+                        String startTime = sleepRecordsRs.getString("start_time");
+                        String endTime = sleepRecordsRs.getString("end_time");
+                        int duration = sleepRecordsRs.getInt("duration");
+                        recommendation += "Start Time: " + startTime + ", End Time: " + endTime + ", Duration: " + duration + "\n";
+                    }
+                    tf_recommend.setText(tf_recommend.getText() + "\n" + recommendation);
+                    tf_recommend.setWrappingWidth(400);
                 } else {
-                    average_text.setText("Your sleep habits seem to be on track! Keep up the good work for your age category.");
-                }
-
-                // Calculate total sleep debt based on user's age category
-                int[] recommendedSleepDuration = getRecommendedSleepDuration(age);
-                int sleepDebt = totalSleepWeek - (recommendedSleepDuration[0] * 7); // Assumes recommended sleep per night, for 7 days
-                if (sleepDebt > 0) {
-                    total_text.setText("You have a sleep debt of " + sleepDebt + " hours. Consider going to bed earlier or taking a nap to catch up. Recommended sleep duration for your age category is between " + recommendedSleepDuration[0] + " to " + recommendedSleepDuration[1] + " hours per night.");
-                } else {
-                    total_text.setText("You do not have a sleep debt. Keep up the good work! Recommended sleep duration for your age category is between " + recommendedSleepDuration[0] + " to " + recommendedSleepDuration[1] + " hours per night.");
+                    tf_recommend.setText("Your sleep habits seem to be on track! Keep up the good work for your age category.");
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
+
+
 
 
     public int[] getRecommendedSleepDuration(int age) {
@@ -410,25 +400,23 @@ public class LoggedInController implements Initializable {
 
         return recommendedSleepDuration;
     }
-    public boolean hasRecordedSleepHoursForPastWeek() {
+
+    public void setUserAge(String username) {
         Connection connection = DBUtils.getConnection();
         try {
-            // Loop through past 7 days and check if there are sleep records for each day
-            for (int i = 0; i < 7; i++) {
-                PreparedStatement psSql = connection.prepareStatement("SELECT COUNT(*) FROM DateTime WHERE user_id = ? AND DATE(end_date) = DATE_SUB(NOW(), INTERVAL ? DAY)");
-                psSql.setInt(1, userID);
-                psSql.setInt(2, i);
-                ResultSet rs = psSql.executeQuery();
-                if (rs.next() && rs.getInt(1) == 0) {
-                    return false; // If there are no sleep records for any day, return false
-                }
+            PreparedStatement psAgeSql = connection.prepareStatement("SELECT age FROM Users WHERE username = ?");
+            psAgeSql.setString(1, username);
+            ResultSet ageRs = psAgeSql.executeQuery();
+            if (ageRs.next()) {
+                this.age = ageRs.getInt("age");
             }
-            return true; // If there are sleep records for every day, return true
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+
     }
+
+
 
 
 
