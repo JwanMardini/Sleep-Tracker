@@ -101,6 +101,25 @@ public class LoggedInController implements Initializable {
     private int userID;
     private int age;
 
+    private  String password;
+
+
+    public void getPassword(String username) {
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement("SELECT Password FROM users WHERE username = ?");
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                this.password = rs.getString("Password");
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 
@@ -282,6 +301,7 @@ public class LoggedInController implements Initializable {
         email_profile.setText(DBUtils.getEmail(userInfo));
         String ageString = Integer.toString(age);
         age_profile.setText(ageString);
+        password_profile.setText(password);
 
     }
     public void saveUserInfo(ActionEvent actionEvent) {
@@ -312,6 +332,7 @@ public class LoggedInController implements Initializable {
             pstmt.setString(5, userInfo);
             pstmt.executeUpdate();
             conn.close();
+            label_welcome.setText("Welcome " + userNAME + "!");
 
             // Show confirmation message
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

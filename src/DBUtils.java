@@ -31,6 +31,7 @@ public class DBUtils {
                 loggedInController.setUserInfo(username);
                 loggedInController.setUserID(username);
                 loggedInController.setUserAge(username);
+                loggedInController.getPassword(username);
 
             } catch (IOException e) {
                 e.printStackTrace();

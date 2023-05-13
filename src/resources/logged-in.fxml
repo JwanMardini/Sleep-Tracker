@@ -79,7 +79,7 @@
                                     <FontAwesomeIcon fill="#d1b4ed" glyphName="BAR_CHART" size="2em" text="" />
                                  </graphic>
                                         </Button>
-                                        <Button fx:id="btn_profile" alignment="TOP_LEFT" cache="true" layoutX="12.0" layoutY="445.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="  Edit Profile" textFill="WHITE">
+                                        <Button fx:id="btn_profile" alignment="TOP_LEFT" cache="true" layoutX="12.0" layoutY="445.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="200.0" styleClass="background" stylesheets="@../css/design.css" text="  My Profile" textFill="WHITE">
                                             <graphic>
                                                 <FontAwesomeIcon fill="#d1b4ed" glyphName="COG" size="2em" />
                                             </graphic>
