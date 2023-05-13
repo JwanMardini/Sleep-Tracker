@@ -60,3 +60,13 @@
 .background {
     -fx-background-color:  linear-gradient(to bottom right, #30619d, #fff);
 }
+.active-button {
+    background-color: #007bff; /* Blue color */
+    color: #fff; /* White text */
+}
+
+.button:pressed, .button.active {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}
+

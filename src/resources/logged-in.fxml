@@ -127,11 +127,17 @@
                                     <children>
                               <AnchorPane fx:id="recommendations_form" prefHeight="600.8" prefWidth="576.8" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Text fx:id="tf_recommend" fill="WHITE" layoutX="7.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="562.1367645263672">
+                                    <Text fx:id="tf_recommend" fill="WHITE" layoutX="30.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="490.9368133544922">
                                        <font>
-                                          <Font size="18.0" />
+                                          <Font size="15.0" />
                                        </font>
                                     </Text>
+                                    <Label layoutX="74.0" layoutY="14.0" prefHeight="46.0" prefWidth="216.0" text="Recommendations" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="HEART" layoutX="20.0" layoutY="54.0" size="4em" />
                                  </children>
                               </AnchorPane>
                                         <AnchorPane fx:id="home_form" layoutX="1.0" layoutY="5.0" prefHeight="601.3333333333334" prefWidth="576.6666666666666" styleClass="gradient" stylesheets="@../css/design.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -165,17 +171,15 @@
                                  </children></AnchorPane>
                               <AnchorPane fx:id="record_sleep_form" prefHeight="601.3333333333334" prefWidth="576.6666666666666" styleClass="gradient" stylesheets="@../css/design.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label layoutX="26.0" layoutY="37.0" prefHeight="46.0" prefWidth="343.0" text="Record your sleep time" textFill="WHITE">
-                                       <font>
-                                          <Font size="23.0" />
-                                       </font>
-                                    </Label>
                                     <DatePicker fx:id="start_date" layoutX="189.0" layoutY="169.0" prefHeight="30.0" prefWidth="240.0" promptText="Date" />
                                     <TextField fx:id="start_time" layoutX="189.0" layoutY="209.0" prefHeight="30.0" prefWidth="240.0" promptText="HH:mm:ss" stylesheets="@../css/design.css" />
-                                    <Button fx:id="btn_save" layoutX="240.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="37.0" prefWidth="118.0" styleClass="background" stylesheets="@../css/design.css" text="Save" textFill="WHITE">
+                                    <Button fx:id="btn_save" layoutX="238.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleSaveButton" prefHeight="37.0" prefWidth="118.0" styleClass="background" stylesheets="@../css/design.css" text="Save" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="16.0" />
-                                       </font></Button>
+                                       </font>
+                                       <graphic>
+                                          <FontAwesomeIcon fill="WHITE" glyphName="REFRESH" wrappingWidth="13.485726356506348" />
+                                       </graphic></Button>
                                     <DatePicker fx:id="end_date" layoutX="189.0" layoutY="271.0" prefHeight="30.0" prefWidth="240.0" promptText="Date" />
                                     <TextField fx:id="end_time" layoutX="189.0" layoutY="311.0" prefHeight="30.0" prefWidth="240.0" promptText="HH:mm:ss" stylesheets="@../css/design.css" />
                                     <Label layoutX="141.0" layoutY="169.0" text="Start:" textFill="WHITE">
@@ -187,11 +191,17 @@
                                           <Font size="14.0" />
                                        </font></Label>
                                     <Label fx:id="sleepDurationLabel" layoutX="195.0" layoutY="359.0" textFill="WHITE" />
+                                    <Label layoutX="82.0" layoutY="23.0" prefHeight="46.0" prefWidth="275.0" text="Record your sleep time" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="LIST" layoutX="24.0" layoutY="64.0" size="4em" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="history_form" prefHeight="601.3333333333334" prefWidth="576.6666666666666" stylesheets="@../css/design.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <BarChart fx:id="barChart" alternativeColumnFillVisible="true" layoutX="4.0" layoutY="113.0" prefHeight="422.0" prefWidth="569.0" title="Sleep Hours Chart">
+                                    <BarChart fx:id="barChart" alternativeColumnFillVisible="true" layoutX="4.0" layoutY="113.0" prefHeight="422.0" prefWidth="569.0">
                                       <xAxis>
                                         <CategoryAxis prefHeight="45.0" prefWidth="444.0" tickLabelFill="WHITE" />
                                       </xAxis>
@@ -199,6 +209,12 @@
                                         <NumberAxis side="LEFT" tickLabelFill="WHITE" />
                                       </yAxis>
                                     </BarChart>
+                                    <Label layoutX="81.0" layoutY="15.0" prefHeight="46.0" prefWidth="235.0" text="Sleep hours chart" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="BAR_CHART" layoutX="14.0" layoutY="55.0" size="4em" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="profile_form" prefHeight="600.8" prefWidth="576.8" styleClass="gradient" stylesheets="@../css/design.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

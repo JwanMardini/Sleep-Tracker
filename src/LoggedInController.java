@@ -243,6 +243,14 @@ public class LoggedInController implements Initializable {
 
 
     public void switchForm(ActionEvent event) {
+
+        // Remove "active-button" class from all buttons
+        btn_home.getStyleClass().remove("active");
+        btn_record_sleep.getStyleClass().remove("active");
+        btn_history.getStyleClass().remove("active");
+        btn_profile.getStyleClass().remove("active");
+        btn_recommend.getStyleClass().remove("active");
+
         if (event.getSource() == btn_home) {
             home_form.setVisible(true);
             history_form.setVisible(false);
@@ -250,6 +258,10 @@ public class LoggedInController implements Initializable {
             profile_form.setVisible(false);
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
+
+            // Add active class to button
+            btn_home.getStyleClass().add("active");
+
 
 
         } else if (event.getSource() == btn_record_sleep) {
@@ -260,6 +272,9 @@ public class LoggedInController implements Initializable {
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
 
+            // Add active class to button
+            btn_record_sleep.getStyleClass().add("active");
+
             setDefaultDateTime();
 
         } else if (event.getSource() == btn_history) {
@@ -269,6 +284,9 @@ public class LoggedInController implements Initializable {
             profile_form.setVisible(false);
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
+
+            // Add active class to button
+            btn_history.getStyleClass().add("active");
 
             displayChart();
 
@@ -281,6 +299,9 @@ public class LoggedInController implements Initializable {
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
 
+            // Add active class to button
+            btn_profile.getStyleClass().add("active");
+
             setProfileInfo();
 
 
@@ -291,6 +312,9 @@ public class LoggedInController implements Initializable {
             profile_form.setVisible(false);
             main_form.setVisible(false);
             recommendations_form.setVisible(true);
+
+            // Add active class to button
+            btn_recommend.getStyleClass().add("active");
 
             checkSleepDuration();
 
@@ -414,21 +438,22 @@ public class LoggedInController implements Initializable {
                 // Calculate average sleep duration over the past week
                 int avgSleep = (int) Math.round(totalSleepWeek / 7.0); // Average sleep in hours over the past week
                 if (avgSleep < recommendedSleepDurationMin) {
-                    tf_recommend.setText("You are not getting enough sleep. Aim for at least " + recommendedSleepDurationMin + " to " + recommendedSleepDurationMax + " hours of sleep per night for your age category. " );
+                    tf_recommend.setText("You are not getting enough sleep. Aim for at least " + recommendedSleepDurationMin + " to " + recommendedSleepDurationMax + " hours of sleep per night for your age category. \n \nThis recommendation is based on your sleep records from the past week. Following list displays these days: \n" );
 
                     // Get the sleep records for the past week
                     PreparedStatement psSleepRecordsSql = connection.prepareStatement("SELECT start_time, end_time, duration FROM DateTime WHERE user_id = ? AND end_date BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW() ORDER BY end_date DESC");
                     psSleepRecordsSql.setInt(1, userID);
                     ResultSet sleepRecordsRs = psSleepRecordsSql.executeQuery();
                     String recommendation = "";
+                    int day = 1;
                     while (sleepRecordsRs.next()) {
                         String startTime = sleepRecordsRs.getString("start_time");
                         String endTime = sleepRecordsRs.getString("end_time");
                         int duration = sleepRecordsRs.getInt("duration");
-                        recommendation += "Start Time: " + startTime + ", End Time: " + endTime + ", Duration: " + duration + "\n";
+                        recommendation += day++ + ":   Start Time: " + startTime + ", End Time: " + endTime + ", Duration: " + duration + " hours \n";
                     }
                     tf_recommend.setText(tf_recommend.getText() + "\n" + recommendation);
-                    tf_recommend.setWrappingWidth(450);
+                    tf_recommend.setWrappingWidth(475);
                 } else {
                     tf_recommend.setText("Your sleep habits seem to be on track! Keep up the good work for your age category.");
 
