@@ -62,13 +62,15 @@ public class LoggedInController implements Initializable {
     @FXML
     private Button btn_profile;
     @FXML
-    private Button saveButton;
+    private Button save_profile;
     @FXML
-    private TextField nameID;
+    private TextField age_profile;
     @FXML
-    private TextField usernameID;
+    private TextField email_profile;
     @FXML
-    private TextField emailID;
+    private PasswordField password_profile;
+    @FXML
+    private TextField username_profile;
 
 
     //Recommendation
@@ -260,8 +262,8 @@ public class LoggedInController implements Initializable {
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
 
-            usernameID.setText(userInfo);
-            emailID.setText(DBUtils.getEmail(userInfo));
+            setProfileInfo();
+
 
         } else if (event.getSource() == btn_recommend) {
             home_form.setVisible(false);
@@ -275,6 +277,59 @@ public class LoggedInController implements Initializable {
 
         }
     }
+    public  void setProfileInfo() {
+        username_profile.setText(userInfo);
+        email_profile.setText(DBUtils.getEmail(userInfo));
+        String ageString = Integer.toString(age);
+        age_profile.setText(ageString);
+
+    }
+    public void saveUserInfo(ActionEvent actionEvent) {
+        // Get the updated user information from the form
+        String email = email_profile.getText();
+        String ageString = age_profile.getText();
+        int ageInt = Integer.parseInt(ageString);
+        String userNAME = username_profile.getText();
+        String password = password_profile.getText();
+
+        // Check if any of the fields are empty
+        if (email.isEmpty() || ageString.isEmpty() || userNAME.isEmpty() || password.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please fill out all fields.");
+            alert.showAndWait();
+            return;
+        }
+
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE users SET username=?, age=?, email=?, password=? WHERE username=?");
+            pstmt.setString(1, userNAME);
+            pstmt.setInt(2, ageInt);
+            pstmt.setString(3, email);
+            pstmt.setString(4, password);
+            pstmt.setString(5, userInfo);
+            pstmt.executeUpdate();
+            conn.close();
+
+            // Show confirmation message
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("User information updated successfully.");
+            alert.showAndWait();
+        } catch (SQLException e) {
+            // Handle any errors that occur during the update process
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("An error occurred while updating user information.");
+            alert.showAndWait();
+        }
+    }
+
 
 
     public void logout() {
@@ -352,9 +407,10 @@ public class LoggedInController implements Initializable {
                         recommendation += "Start Time: " + startTime + ", End Time: " + endTime + ", Duration: " + duration + "\n";
                     }
                     tf_recommend.setText(tf_recommend.getText() + "\n" + recommendation);
-                    tf_recommend.setWrappingWidth(400);
+                    tf_recommend.setWrappingWidth(450);
                 } else {
                     tf_recommend.setText("Your sleep habits seem to be on track! Keep up the good work for your age category.");
+
                 }
             }
         } catch (Exception e) {
