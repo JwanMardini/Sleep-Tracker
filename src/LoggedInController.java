@@ -120,11 +120,6 @@ public class LoggedInController implements Initializable {
     }
 
 
-
-
-
-
-
     public void setUserID(String username) {
 
         String query = "SELECT id FROM users WHERE username = ?";
@@ -521,12 +516,6 @@ public class LoggedInController implements Initializable {
         }
 
     }
-
-
-
-
-
-
 
 
 

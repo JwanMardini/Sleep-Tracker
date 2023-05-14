@@ -48,7 +48,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="forgotPass_send_btn" layoutX="76.0" layoutY="393.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="230.0" styleClass="login-btn" stylesheets="@../css/design.css" text="Send" textFill="WHITE">
+            <Button fx:id="forgotPass_send_btn" layoutX="76.0" layoutY="393.0" mnemonicParsing="false" onAction="#forgotPassword" prefHeight="40.0" prefWidth="230.0" styleClass="login-btn" stylesheets="@../css/design.css" text="Send" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -69,7 +69,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="resetPass_btn" layoutX="76.0" layoutY="393.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="230.0" styleClass="login-btn" stylesheets="@../css/design.css" text="Reset my password" textFill="WHITE">
+            <Button fx:id="resetPass_btn" layoutX="76.0" layoutY="393.0" mnemonicParsing="false" onAction="#resetPassword" prefHeight="40.0" prefWidth="230.0" styleClass="login-btn" stylesheets="@../css/design.css" text="Reset my password" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
