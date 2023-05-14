@@ -39,6 +39,7 @@
             </Button>
             <PasswordField fx:id="tf_password" layoutX="76.0" layoutY="278.0" prefHeight="30.0" prefWidth="230.0" promptText="Password" styleClass="textfield" stylesheets="@../css/design.css" />
             <TextField fx:id="tf_username" layoutX="76.0" layoutY="240.0" prefHeight="30.0" prefWidth="230.0" promptText="Username" styleClass="textfield" stylesheets="@../css/design.css" />
+            <TextField fx:id="tf_passwordShow" layoutX="76.0" layoutY="278.0" prefHeight="30.0" prefWidth="230.0" styleClass="textfield" stylesheets="@../css/design.css" visible="false" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="forgotPass_form" layoutX="400.0" layoutY="-1.0" prefHeight="600.0" prefWidth="370.0" visible="false">
