@@ -29,6 +29,10 @@ public class LoginController implements Initializable {
     private TextField tf_username;
     @FXML
     private TextField tf_password;
+
+    @FXML
+    private TextField tf_passwordShow;
+
     @FXML
     private Hyperlink forgot_password;
     @FXML
@@ -65,7 +69,7 @@ public class LoginController implements Initializable {
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
-    private Statement statement;
+
 
     public void switchForm(ActionEvent event) {
 
@@ -131,14 +135,17 @@ public class LoginController implements Initializable {
     }
 
 
+
     @FXML
     private void togglePasswordVisibility() {
         if (showPasswordCheckBox.isSelected()) {
-            tf_password.setPromptText(tf_password.getText());
-            tf_password.setText("");
+            tf_passwordShow.setText(tf_password.getText());
+            tf_passwordShow.setVisible(true);
+            tf_password.setVisible(false);
         } else {
-            tf_password.setText(tf_password.getPromptText());
-            tf_password.setPromptText("Password");
+            tf_password.setText(tf_passwordShow.getText());
+            tf_passwordShow.setVisible(false);
+            tf_password.setVisible(true);
         }
         tf_password.setDisable(showPasswordCheckBox.isSelected());
     }
