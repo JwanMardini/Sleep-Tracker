@@ -437,9 +437,13 @@ public class LoggedInController implements Initializable {
 
                 // Calculate average sleep duration over the past week
                 int avgSleep = (int) Math.round(totalSleepWeek / 7.0); // Average sleep in hours over the past week
-                if (avgSleep < recommendedSleepDurationMin) {
-                    tf_recommend.setText("You are not getting enough sleep. Aim for at least " + recommendedSleepDurationMin + " to " + recommendedSleepDurationMax + " hours of sleep per night for your age category. \n \nThis recommendation is based on your sleep records from the past week. Following list displays these days: \n" );
+                if (avgSleep < recommendedSleepDurationMin ) {
+                    if (avgSleep == 0) {
+                        tf_recommend.setText("It appears that your average sleep duration is 0. This could be because you may not have recorded your sleep hours accurately or consistently last week");
 
+                    }else {
+                        tf_recommend.setText("You are not getting enough sleep. Aim for at least " + recommendedSleepDurationMin + " to " + recommendedSleepDurationMax + " hours of sleep per night for your age category. \n \nThis recommendation is based on your sleep records from the past week. Following list displays these days: \n");
+                    }
                     // Get the sleep records for the past week
                     PreparedStatement psSleepRecordsSql = connection.prepareStatement("SELECT start_time, end_time, duration FROM DateTime WHERE user_id = ? AND end_date BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW() ORDER BY end_date DESC");
                     psSleepRecordsSql.setInt(1, userID);

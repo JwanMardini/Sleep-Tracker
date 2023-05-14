@@ -52,7 +52,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="ojdbc" level="project" />
     <orderEntry type="module-library">
       <library>
@@ -64,7 +63,6 @@
         <jarDirectory url="file://$MODULE_DIR$/lib/ojdbc" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="junit5" level="project" />
     <orderEntry type="library" name="jfreechart-1.0.19" level="project" />
     <orderEntry type="module-library">
       <library name="JUnit4">
@@ -76,5 +74,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="junit5" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
