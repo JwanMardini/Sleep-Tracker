@@ -135,6 +135,10 @@ public class LoginController implements Initializable {
 
     }
 
-    public void handleLoginButtonAction() {
+
+    public void forgotPassword(ActionEvent actionEvent) {
+    }
+
+    public void resetPassword(ActionEvent actionEvent) {
     }
 }
