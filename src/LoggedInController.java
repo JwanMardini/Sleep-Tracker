@@ -353,6 +353,7 @@ public class LoggedInController implements Initializable {
             conn.close();
             label_welcome.setText("Welcome " + userNAME + "!");
             this.userInfo = userNAME;
+            this.age = ageInt;
 
             // Show confirmation message
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
