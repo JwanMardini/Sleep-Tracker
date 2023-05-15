@@ -120,11 +120,6 @@ public class LoggedInController implements Initializable {
     }
 
 
-
-
-
-
-
     public void setUserID(String username) {
 
         String query = "SELECT id FROM users WHERE username = ?";
@@ -357,6 +352,7 @@ public class LoggedInController implements Initializable {
             pstmt.executeUpdate();
             conn.close();
             label_welcome.setText("Welcome " + userNAME + "!");
+            this.userInfo = userNAME;
 
             // Show confirmation message
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -521,12 +517,6 @@ public class LoggedInController implements Initializable {
         }
 
     }
-
-
-
-
-
-
 
 
 

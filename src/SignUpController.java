@@ -44,7 +44,7 @@ public class SignUpController implements Initializable {
                   int age = Integer.parseInt(ageString);
 
 
-                  if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_email.getText().trim().isEmpty() && !secQue.getText().trim().isEmpty() && tf_age.getText().isEmpty()) {
+                  if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_email.getText().trim().isEmpty() && !secQue.getText().trim().isEmpty() && !tf_age.getText().trim().isEmpty()) {
                       DBUtils.signUpUser(actionEvent, tf_username.getText(), tf_password.getText(), tf_email.getText(), secQue.getText(), age);
                   } else {
                       System.out.println("Please fill in all information");

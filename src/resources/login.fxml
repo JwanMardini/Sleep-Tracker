@@ -39,6 +39,7 @@
             </Button>
             <PasswordField fx:id="tf_password" layoutX="76.0" layoutY="278.0" prefHeight="30.0" prefWidth="230.0" promptText="Password" styleClass="textfield" stylesheets="@../css/design.css" />
             <TextField fx:id="tf_username" layoutX="76.0" layoutY="240.0" prefHeight="30.0" prefWidth="230.0" promptText="Username" styleClass="textfield" stylesheets="@../css/design.css" />
+            <TextField fx:id="tf_passwordShow" layoutX="76.0" layoutY="278.0" prefHeight="30.0" prefWidth="230.0" styleClass="textfield" stylesheets="@../css/design.css" visible="false" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="forgotPass_form" layoutX="400.0" layoutY="-1.0" prefHeight="600.0" prefWidth="370.0" visible="false">
@@ -48,7 +49,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="forgotPass_send_btn" layoutX="76.0" layoutY="393.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="230.0" styleClass="login-btn" stylesheets="@../css/design.css" text="Send" textFill="WHITE">
+            <Button fx:id="forgotPass_send_btn" layoutX="76.0" layoutY="393.0" mnemonicParsing="false" onAction="#forgotPassword" prefHeight="40.0" prefWidth="230.0" styleClass="login-btn" stylesheets="@../css/design.css" text="Send" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>
@@ -69,7 +70,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="resetPass_btn" layoutX="76.0" layoutY="393.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="40.0" prefWidth="230.0" styleClass="login-btn" stylesheets="@../css/design.css" text="Reset my password" textFill="WHITE">
+            <Button fx:id="resetPass_btn" layoutX="76.0" layoutY="393.0" mnemonicParsing="false" onAction="#resetPassword" prefHeight="40.0" prefWidth="230.0" styleClass="login-btn" stylesheets="@../css/design.css" text="Reset my password" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font>

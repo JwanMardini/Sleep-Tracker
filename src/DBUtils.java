@@ -118,53 +118,6 @@ public class DBUtils {
         }
     }
 
-    public static boolean checkEmail(String email) {
-        String retrieveEmail = null;
-        try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
-             PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM users WHERE email = ?")) {
-            preparedStatement.setString(1, email);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()){
-                    retrieveEmail = resultSet.getString("email");
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return retrieveEmail != null;
-    }
-
-    public static boolean checkSecQue(String response, String email){
-        String ans = null;
-        try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
-             PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM users WHERE email = ?")) {
-            preparedStatement.setString(1, email);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                while (resultSet.next()){
-                    ans = resultSet.getString("secQue");
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return ans.equals(response);
-    }
-
-
-    public static void updatePassword(String email, String newPassword){
-        try(Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
-        PreparedStatement preparedStatement = conn.prepareStatement("UPDATE users SET Password = ? WHERE email = ?")){
-            preparedStatement.setString(1, newPassword);
-            preparedStatement.setString(2, email);
-            try{
-                ResultSet resultSet = preparedStatement.executeQuery();
-            }catch (SQLException e){
-                e.printStackTrace();
-            }
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
 
     public static Connection getConnection() {
         Connection conn = null;
