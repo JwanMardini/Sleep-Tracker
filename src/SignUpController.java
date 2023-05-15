@@ -12,26 +12,26 @@ import java.util.ResourceBundle;
 public class SignUpController implements Initializable {
 
     @FXML
-    private Button btn_signup;
+    Button btn_signup;
 
     @FXML
-    private Button btn_log_in;
+    Button btn_log_in;
 
     @FXML
-    private TextField tf_username;
+    TextField tf_username;
 
     @FXML
-    private TextField tf_email;
+    TextField tf_email;
 
     @FXML
-    private TextField tf_password;
+    TextField tf_password;
 
     @FXML
-    private TextField tf_age;
+    TextField tf_age;
 
 
     @FXML
-    private TextField secQue;
+    TextField secQue;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
