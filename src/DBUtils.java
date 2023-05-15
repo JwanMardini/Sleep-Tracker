@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import oracle.ucp.proxy.annotation.Pre;
+
 
 import java.sql.*;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.io.IOException;
 public class DBUtils {
     private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "toor";
+    private static final String DbPassword = "Danmark";
 
 
     // This method changes the scene to the specified FXML file with a given title and username.

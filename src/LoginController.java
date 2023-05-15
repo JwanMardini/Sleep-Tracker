@@ -13,32 +13,32 @@ public class LoginController implements Initializable {
 
     //Login
     @FXML
-    private AnchorPane login_form;
+    AnchorPane login_form;
     @FXML
-    private AnchorPane login_left_form;
+    AnchorPane login_left_form;
     @FXML
-    private Button btn_login;
+    Button btn_login;
     @FXML
-    private Button btn_sign_up;
+    Button btn_sign_up;
     @FXML
-    private TextField tf_username;
+    TextField tf_username;
     @FXML
-    private TextField tf_password;
+    TextField tf_password;
     @FXML
     private Hyperlink forgot_password;
     @FXML
-    private CheckBox showPasswordCheckBox;
+    CheckBox showPasswordCheckBox;
 
 
     //Forgot Password
     @FXML
-    private AnchorPane forgotPass_form;
+    AnchorPane forgotPass_form;
     @FXML
-    private AnchorPane pass_left_form;
+    AnchorPane pass_left_form;
     @FXML
-    private Button back_btn;
+    Button back_btn;
     @FXML
-    private Button forgotPass_send_btn;
+    Button forgotPass_send_btn;
     @FXML
     private TextField secQue;
     @FXML
@@ -47,9 +47,9 @@ public class LoginController implements Initializable {
 
     //Reset Password
     @FXML
-    private AnchorPane resetPass_form;
+    AnchorPane resetPass_form;
     @FXML
-    private Button resetPass_btn;
+    Button resetPass_btn;
     @FXML
     private PasswordField tf_confResetPass;
     @FXML
@@ -88,7 +88,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void togglePasswordVisibility() {
+    void togglePasswordVisibility() {
         if (showPasswordCheckBox.isSelected()) {
             tf_password.setPromptText(tf_password.getText());
             tf_password.setText("");
@@ -133,5 +133,8 @@ public class LoginController implements Initializable {
 
 
 
+    }
+
+    public void handleLoginButtonAction() {
     }
 }
