@@ -101,7 +101,7 @@ public class LoggedInController implements Initializable {
     private int userID;
     private int age;
 
-    private String password;
+    private  String password;
 
 
     public void getPassword(String username) {
@@ -134,6 +134,7 @@ public class LoggedInController implements Initializable {
             e.printStackTrace();
         }
     }
+
 
 
     public void setUserInfo(String userInfo) {
@@ -190,7 +191,7 @@ public class LoggedInController implements Initializable {
                             alert.showAndWait();
 
                             // Handle invalid date/time format
-                        } catch (DateTimeParseException e) {
+                        }catch (DateTimeParseException e) {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("Error");
                             alert.setHeaderText(null);
@@ -205,7 +206,7 @@ public class LoggedInController implements Initializable {
                 e.printStackTrace();
             }
 
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -233,6 +234,9 @@ public class LoggedInController implements Initializable {
     }
 
 
+
+
+
     public void switchForm(ActionEvent event) {
 
         // Remove "active-button" class from all buttons
@@ -252,6 +256,7 @@ public class LoggedInController implements Initializable {
 
             // Add active class to button
             btn_home.getStyleClass().add("active");
+
 
 
         } else if (event.getSource() == btn_record_sleep) {
@@ -310,8 +315,7 @@ public class LoggedInController implements Initializable {
 
         }
     }
-
-    public void setProfileInfo() {
+    public  void setProfileInfo() {
         username_profile.setText(userInfo);
         email_profile.setText(DBUtils.getEmail(userInfo));
         String ageString = Integer.toString(age);
@@ -319,7 +323,6 @@ public class LoggedInController implements Initializable {
         password_profile.setText(password);
 
     }
-
     public void saveUserInfo(ActionEvent actionEvent) {
         // Get the updated user information from the form
         String email = email_profile.getText();
@@ -370,6 +373,7 @@ public class LoggedInController implements Initializable {
     }
 
 
+
     public void logout() {
         try {
             alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -399,7 +403,7 @@ public class LoggedInController implements Initializable {
         }
     }
 
-    public void setDefaultDateTime() {
+    public void setDefaultDateTime () {
         // Set the default value for the date picker
         start_date.setValue(LocalDateTime.now().toLocalDate());
 
@@ -430,11 +434,11 @@ public class LoggedInController implements Initializable {
 
                 // Calculate average sleep duration over the past week
                 int avgSleep = (int) Math.round(totalSleepWeek / 7.0); // Average sleep in hours over the past week
-                if (avgSleep < recommendedSleepDurationMin) {
+                if (avgSleep < recommendedSleepDurationMin ) {
                     if (avgSleep == 0) {
                         tf_recommend.setText("It appears that your average sleep duration is 0. This could be because you may not have recorded your sleep hours accurately or consistently last week");
 
-                    } else {
+                    }else {
                         tf_recommend.setText("You are not getting enough sleep. Aim for at least " + recommendedSleepDurationMin + " to " + recommendedSleepDurationMax + " hours of sleep per night for your age category. \n \nThis recommendation is based on your sleep records from the past week. Following list displays these days: \n");
                     }
                     // Get the sleep records for the past week
@@ -460,6 +464,10 @@ public class LoggedInController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+
+
 
 
     public int[] getRecommendedSleepDuration(int age) {
@@ -512,13 +520,10 @@ public class LoggedInController implements Initializable {
     }
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-    }
-
-    public int getAge() {
-        return 0;
     }
 }
 
