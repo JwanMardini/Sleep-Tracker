@@ -2,7 +2,9 @@
 
 # Sleep-Tracker 🛌
 
-<img width="172" alt="Skärmbild 2023-05-18 011247" src="https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/7fc022a4-3bca-4ad9-b296-4a768421c944">
+<p align="center">
+<img width="172" alt="Skärmbild 2023-05-18 011247" src="https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/7fc022a4-3bca-4ad9-b296-4a768421c944" />
+</p>
 
 ## Introduction 
 
