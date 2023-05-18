@@ -7,8 +7,15 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.*;
 import java.time.Duration;
@@ -21,16 +28,14 @@ import java.util.ResourceBundle;
 import javafx.scene.text.Text;
 public class LoggedInController implements Initializable {
 
-    //Home
     @FXML
     private AnchorPane home_form;
     @FXML
     private Button btn_home;
-
-
-    //Record Sleep
     @FXML
     private AnchorPane record_sleep_form;
+    @FXML
+    private AnchorPane resources_form;
     @FXML
     private Button btn_record_sleep;
     @FXML
@@ -45,22 +50,18 @@ public class LoggedInController implements Initializable {
     private Label sleepDurationLabel;
     @FXML
     private Button btn_save;
-
-
-    //History
     @FXML
     private AnchorPane history_form;
     @FXML
     private Button btn_history;
     @FXML
     private BarChart<?, ?> barChart;
-
-
-    //Profile
     @FXML
     private AnchorPane profile_form;
     @FXML
     private Button btn_profile;
+    @FXML
+    private Button btn_resources;
     @FXML
     private Button save_profile;
     @FXML
@@ -72,36 +73,45 @@ public class LoggedInController implements Initializable {
     @FXML
     private TextField username_profile;
 
-
     //Recommendation
     @FXML
     private AnchorPane recommendations_form;
     @FXML
     private Button btn_recommend;
-
     @FXML
     private Text tf_recommend;
-
-
-    //Logout
     @FXML
     private Button btn_logout;
-
-
-    //Welcoming
     @FXML
     private Label label_welcome;
+    @FXML
+    private Hyperlink sleepFoundationLink;
 
-
-    //Other
+    @FXML
+    private Hyperlink sleepEducationLink;
+    @FXML
+    private Hyperlink mentalHealthAmericaLink;
+    @FXML
+    private Hyperlink swedishPsychologicalAssociationLink;
+    @FXML
+    private Hyperlink swedishAssociationForCognitiveTherapiesLink;
+    @FXML
+    private Hyperlink headspaceLink;
+    @FXML
+    private Hyperlink whyWeSleepLink;
+    @FXML
+    private Hyperlink sleepIsYourSuperpowerLink;
+    @FXML
+    private Hyperlink sleepDisordersAndSleepDeprivationLink;
+    @FXML
+    private Hyperlink sleepRevolutionLink;
     @FXML
     private AnchorPane main_form;
     private String userInfo;
     private Alert alert;
     private int userID;
     private int age;
-
-    private  String password;
+    private String password;
 
 
     public void getPassword(String username) {
@@ -233,10 +243,6 @@ public class LoggedInController implements Initializable {
         }
     }
 
-
-
-
-
     public void switchForm(ActionEvent event) {
 
         // Remove "active-button" class from all buttons
@@ -245,6 +251,7 @@ public class LoggedInController implements Initializable {
         btn_history.getStyleClass().remove("active");
         btn_profile.getStyleClass().remove("active");
         btn_recommend.getStyleClass().remove("active");
+        btn_resources.getStyleClass().remove("active");
 
         if (event.getSource() == btn_home) {
             home_form.setVisible(true);
@@ -253,6 +260,7 @@ public class LoggedInController implements Initializable {
             profile_form.setVisible(false);
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
+            resources_form.setVisible(false);
 
             // Add active class to button
             btn_home.getStyleClass().add("active");
@@ -266,6 +274,8 @@ public class LoggedInController implements Initializable {
             profile_form.setVisible(false);
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
+            resources_form.setVisible(false);
+
 
             // Add active class to button
             btn_record_sleep.getStyleClass().add("active");
@@ -279,6 +289,7 @@ public class LoggedInController implements Initializable {
             profile_form.setVisible(false);
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
+            resources_form.setVisible(false);
 
             // Add active class to button
             btn_history.getStyleClass().add("active");
@@ -293,6 +304,7 @@ public class LoggedInController implements Initializable {
             profile_form.setVisible(true);
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
+            resources_form.setVisible(false);
 
             // Add active class to button
             btn_profile.getStyleClass().add("active");
@@ -307,11 +319,24 @@ public class LoggedInController implements Initializable {
             profile_form.setVisible(false);
             main_form.setVisible(false);
             recommendations_form.setVisible(true);
+            resources_form.setVisible(false);
 
             // Add active class to button
             btn_recommend.getStyleClass().add("active");
 
             checkSleepDuration();
+
+        }else if (event.getSource() == btn_resources) {
+            home_form.setVisible(false);
+            history_form.setVisible(false);
+            record_sleep_form.setVisible(false);
+            profile_form.setVisible(false);
+            main_form.setVisible(false);
+            recommendations_form.setVisible(false);
+            resources_form.setVisible(true);
+
+            // Add active class to button
+            btn_resources.getStyleClass().add("active");
 
         }
     }
@@ -371,7 +396,6 @@ public class LoggedInController implements Initializable {
             alert.showAndWait();
         }
     }
-
 
 
     public void logout() {
@@ -466,10 +490,6 @@ public class LoggedInController implements Initializable {
     }
 
 
-
-
-
-
     public int[] getRecommendedSleepDuration(int age) {
         int[] recommendedSleepDuration = new int[2];
 
@@ -519,11 +539,122 @@ public class LoggedInController implements Initializable {
 
     }
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    //methods for the links
+
+
+    @FXML
+    void sleepEducationLinkClicked(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URI(sleepEducationLink.getText()));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+        }
+    }
+
+    @FXML
+    void sleepFoundationLinkClicked(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URI(sleepFoundationLink.getText()));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+        }
+    }
+
+    @FXML
+    void mentalHealthAmericaLinkClicked(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URI(mentalHealthAmericaLink.getText()));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+        }
+    }
+
+    @FXML
+    void swedishPsychologicalAssociationLinkClicked(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URI(swedishPsychologicalAssociationLink.getText()));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+        }
+    }
+
+    @FXML
+    void SwedishAssociationForCognitiveTherapiesLinkClicked(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URI(swedishAssociationForCognitiveTherapiesLink.getText()));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace(); // Print the stack trace for debugging purposes
+            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+        }
+    }
+
+    @FXML
+    void headspaceLinkClicked(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URI(headspaceLink.getText()));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+        }
+    }
+
+    @FXML
+    void whyWeSleepLinkClicked(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URI(whyWeSleepLink.getText()));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+        }
+    }
+
+    @FXML
+    void sleepIsYourSuperpowerLinkClicked(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URI(sleepIsYourSuperpowerLink.getText()));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+        }
+    }
+
+    @FXML
+    void SleepDisordersAndSleepDeprivationLinkClicked(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URI(sleepDisordersAndSleepDeprivationLink.getText()));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+        }
+    }
+
+    @FXML
+    void SleepRevolutionLinkClicked(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URI(sleepRevolutionLink.getText()));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+        }
+    }
+
+
+
+    private void showAlert(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
 

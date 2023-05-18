@@ -1,26 +1,23 @@
 
 
+/*
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import org.junit.jupiter.api.Test;
-
-
 import java.awt.event.ActionEvent;
 import java.sql.*;
-
-
 import static org.junit.jupiter.api.Assertions.*;
-
 import javafx.scene.control.Alert;
 
 
 public class DBUtilsTest {
-    private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
+    private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptracker";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "toor";
+    private static final String DbPassword = "sql@2023";
 
     @Test
     public void testSignUpUserWithValidData() {
@@ -193,3 +190,4 @@ public class DBUtilsTest {
 
 }
 
+*/

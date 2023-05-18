@@ -4,8 +4,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
-
-
 public class Main extends Application {
     private static Stage stg;
     @Override

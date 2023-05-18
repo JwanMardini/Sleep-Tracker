@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -63,7 +62,6 @@ public class LoginController implements Initializable {
     private PasswordField tf_confResetPass;
     @FXML
     private PasswordField tf_resetPass;
-
 
     private Alert alert;
     private Connection connect;
@@ -224,4 +222,5 @@ public class LoginController implements Initializable {
 
 
     }
+
 }
