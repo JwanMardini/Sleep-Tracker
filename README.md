@@ -1,11 +1,20 @@
-# Sleep-Tracker
 
-## Introduction
+
+# Sleep-Tracker 🛌
+
+<p align="center">
+<img width="172" alt="Skärmbild 2023-05-18 011247" src="https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/7fc022a4-3bca-4ad9-b296-4a768421c944" />
+</p>
+
+## Introduction <img src="https://github.com/Alloush95/test/assets/125370944/adeebf6c-9099-4b74-a346-a482f0b1061c" width="40" />
 
 Sleep-Tracker is a JavaFX application that allows users to track their sleep patterns and records in a database. This README file provides instructions on how to set up the database and run the application.
 
 
-## Setting up the Database
+
+## Setting up the Database <img src="https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/680abd4c-c840-4bf8-a4df-149db89181da" width="40" />
+
+
 Open the MySQL dump file, which includes the table structure and data for a database named "sleeptrackerlogin". To import this database into your MySQL server, follow these steps:
 
 1. Open MySQL Workbench or any other MySQL client tool.
@@ -21,7 +30,9 @@ Note: Make sure that the MySQL server you are importing the database into has th
 
 
 
-## Running the Application
+
+
+## Running the Application ▶️
 ### Prerequirements:
 You have to have the following things installed on your computer:
 1. Java Development Kit (JDK): To develop and run JavaFX applications, you need to have JDK 8 or later versions installed on your computer.
@@ -31,7 +42,7 @@ You have to have the following things installed on your computer:
 5. IDE: You need an Integrated Development Environment (IDE) to write, test, and run your JavaFX application. Some popular IDEs for JavaFX development include IntelliJ IDEA, Eclipse, and NetBeans.
 
 
-### Connect  JavaFX application to MySQL database:
+### Connect  JavaFX application to MySQL database <img src="https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/8d3ba99d-4544-4121-878e-0f6a0cebeae0" width="40" />
 Steps to connect JavaFX application to MySQL database are:
 1. Open the project in IntelliJ IDEA.
 2. Click on File in the top menu and select Project Structure (or press Ctrl+Alt+Shift+S on Windows/Linux, or Cmd+; on macOS).
