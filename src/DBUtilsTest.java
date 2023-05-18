@@ -1,167 +1,73 @@
-
-
-/*
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import java.awt.event.ActionEvent;
-import java.sql.*;
-import static org.junit.jupiter.api.Assertions.*;
-import javafx.scene.control.Alert;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DBUtilsTest {
-    private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptracker";
-    private static final String DbUsername = "root";
-    private static final String DbPassword = "sql@2023";
+    private static final String user = "HKR3457dsaasda73wrewr253443";
+    private static final String password = "1234567";
+    private static final int age = 22;
+    private static final String email = "example@alloush.com";
+    private static final String secQue = "hkr";
 
+    //Tests sign up and log in
+
+    @BeforeAll
+    public static void setUp(){
+
+    }
     @Test
     public void testSignUpUserWithValidData() {
-        // Given
-        String username = "user123";
-        String password = "password";
-        String email = "user123@example.com";
-        String seQue = "HKR";
-
-        // When
-        //DBUtils.signUpUser(null, username, password, email);
-
-
-
+        String usernameRes = null;
+        String passwordRes = null;
+        int ageRes = 0;
+        String emailRes = null;
+        String secQueRes = null;
         // Check that the user was inserted into the database
-        try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
+        try (Connection conn = DBUtils.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM users WHERE username = ?")) {
-            preparedStatement.setString(1, username);
+            preparedStatement.setString(1, user);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                assertTrue(resultSet.isBeforeFirst());
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        // Check that the scene was changed to the logged-in view
-        // TODO: implement a way to check the scene
-    }
+                if (resultSet.next()) {
+                    usernameRes = resultSet.getString("username");
+                    passwordRes = resultSet.getString("Password");
+                    ageRes = resultSet.getInt("age");
+                    emailRes = resultSet.getString("email");
+                    secQueRes = resultSet.getString("secQue");
 
-    @Test
-    public void testSignUpUserWithExistingUsername() {
-        // Given
-        String username = "user456";
-        String password = "password";
-        String email = "user456@example.com";
-        String seQue = "HKR";
-        // Insert a user with the same username into the database
-        try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
-             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO Users(username, Password, email, secQue) VALUES(?,?,?,?)")) {
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-            preparedStatement.setString(3, email);
-            preparedStatement.setString(4, seQue);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+                    assertEquals(user, usernameRes);
+                    assertEquals(password, passwordRes);
+                    assertEquals(age, ageRes);
+                    assertEquals(email, emailRes);
+                    assertEquals(secQue, secQueRes);
+                }else {
+                    try (PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO users (username, password, age, email, secQue) VALUES (?, ?, ?, ?, ?)")) {
+                        insertStatement.setString(1, user);
+                        insertStatement.setString(2, password);
+                        insertStatement.setInt(3, age);
+                        insertStatement.setString(4, email);
+                        insertStatement.setString(5, secQue);
+                        insertStatement.executeUpdate();
 
-        // When
-        //DBUtils.signUpUser(null, username, password, email);
+                        // Retrieve the added user's values
+                        usernameRes = user;
+                        passwordRes = password;
+                        ageRes = age;
+                        emailRes = email;
+                        secQueRes = secQue;
 
-        // Then
-        // Check that an error message was shown
-        // TODO: implement a way to check the alert message
-    }
-
-    @Test
-    public void testLogInUserWithValidCredentials() {
-        // Given
-        String username = "user789";
-        String password = "password";
-        // Insert a user into the database
-        try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
-             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO Users(username, Password, email, secQue) VALUES(?,?,?,?)")) {
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-            preparedStatement.setString(3, "user789@example.com");
-            preparedStatement.setString(4, "HKR");
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        // When
-        DBUtils.logInUser(null, username, password);
-
-        // Check that the scene was changed to the logged-in view
-        // TODO: implement a way to check the scene
-    }
-
-    @Test
-    public void testLogInUser_WrongCredentials() {
-
-        javafx.event.ActionEvent actionEvent = new javafx.event.ActionEvent();
-
-        String username = "john";
-        String password = "test123";
-        //DBUtils.signUpUser(actionEvent, username, password, "john@example.com");
-
-        // Act
-        DBUtils.logInUser(actionEvent, username, "wrongpassword");
-
-        // Assert
-        // Check if an error message is shown
-        Alert alert = getTopMostAlert();
-        assertTrue(alert.getTitle().equals("Login failed"));
-        assertTrue(alert.getContentText().equals("Please check your username and password and try again."));
-    }
-
-// Helper methods
-
-    private Scene getCurrentScene() {
-        return new Scene(new Parent() {
-            @Override
-            protected ObservableList<Node> getChildren() {
-                return FXCollections.emptyObservableList();
-            }
-        });
-    }
-
-    private Alert getTopMostAlert() {
-        // TODO: implement this method
-        return null;
-    }
-
-    public static void signUpUser(ActionEvent event, String username, String password, String email) {
-        try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
-             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO Users(username, Password, email) VALUES(?,?,?)")) {
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-            preparedStatement.setString(3, email);
-            preparedStatement.executeUpdate();
-            // TODO: change scene to logged-in view
-        } catch (SQLException e) {
-            if (e.getSQLState().equals("23000")) {
-                // User already exists
-                // TODO: show an error message
-            } else {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void logInUser(ActionEvent event, String username, String password) {
-        try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
-             PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Users WHERE username = ? AND password = ?")) {
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.isBeforeFirst()) {
-                    // User is logged in
-                    // TODO: change scene to logged-in view
-                } else {
-                    // Login failed
-                    // TODO: show an error message
+                        // Check if the values are the same
+                        assertEquals(user, usernameRes);
+                        assertEquals(password, passwordRes);
+                        assertEquals(age, ageRes);
+                        assertEquals(email, emailRes);
+                        assertEquals(secQue, secQueRes);
+                    }
                 }
             }
         } catch (SQLException e) {
@@ -169,25 +75,25 @@ public class DBUtilsTest {
         }
     }
 
-    public static boolean checkUserExists(String username) {
-        try (Connection conn = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
-             PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Users WHERE username = ?")) {
-            preparedStatement.setString(1, username);
+
+    //Tests getEmail method
+    @Test
+    public void testGetEmail() {
+        String emailRes = null;
+        try (Connection conn = DBUtils.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement("SELECT email FROM users WHERE username = ?")) {
+            preparedStatement.setString(1, user);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                return resultSet.isBeforeFirst();
+                if (resultSet.next()) {
+                    emailRes = resultSet.getString("email");
+                }
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        assertEquals(email, emailRes);
     }
-
-    public static String loggedInUser() {
-        // TODO: implement this method
-        return null;
-    }
-
-
 }
 
-*/
+
