@@ -293,7 +293,7 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Line endX="154.0" endY="23.0" layoutX="272.0" layoutY="110.0" startX="-150.6000213623047" startY="23.0" stroke="WHITE" strokeWidth="2.0" />
+                                    <Line endX="154.0" endY="23.0" layoutX="272.0" layoutY="101.0" startX="-150.6000213623047" startY="23.0" stroke="WHITE" strokeWidth="2.0" />
                                     <Text fill="WHITE" layoutX="171.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Our sleep tracking application was created by a group of innovative students: Solomon W., Jwan M., Omar Z., Mohamad A., and Rosol H. They developed this project as part of the Agile Development Method course at Kristianstad University in Sweden." wrappingWidth="234.79998779296875">
                                        <font>
                                           <Font size="14.0" />

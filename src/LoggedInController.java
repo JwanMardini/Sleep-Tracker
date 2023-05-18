@@ -72,8 +72,6 @@ public class LoggedInController implements Initializable {
     private PasswordField password_profile;
     @FXML
     private TextField username_profile;
-
-    //Recommendation
     @FXML
     private AnchorPane recommendations_form;
     @FXML
@@ -86,7 +84,6 @@ public class LoggedInController implements Initializable {
     private Label label_welcome;
     @FXML
     private Hyperlink sleepFoundationLink;
-
     @FXML
     private Hyperlink sleepEducationLink;
     @FXML
@@ -144,7 +141,6 @@ public class LoggedInController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
 
     public void setUserInfo(String userInfo) {
@@ -265,8 +261,6 @@ public class LoggedInController implements Initializable {
             // Add active class to button
             btn_home.getStyleClass().add("active");
 
-
-
         } else if (event.getSource() == btn_record_sleep) {
             home_form.setVisible(false);
             history_form.setVisible(false);
@@ -275,7 +269,6 @@ public class LoggedInController implements Initializable {
             main_form.setVisible(false);
             recommendations_form.setVisible(false);
             resources_form.setVisible(false);
-
 
             // Add active class to button
             btn_record_sleep.getStyleClass().add("active");
@@ -296,7 +289,6 @@ public class LoggedInController implements Initializable {
 
             displayChart();
 
-
         } else if (event.getSource() == btn_profile) {
             home_form.setVisible(false);
             history_form.setVisible(false);
@@ -310,7 +302,6 @@ public class LoggedInController implements Initializable {
             btn_profile.getStyleClass().add("active");
 
             setProfileInfo();
-
 
         } else if (event.getSource() == btn_recommend) {
             home_form.setVisible(false);
@@ -536,7 +527,6 @@ public class LoggedInController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
@@ -545,7 +535,6 @@ public class LoggedInController implements Initializable {
     }
 
     //methods for the links
-
 
     @FXML
     void sleepEducationLinkClicked(ActionEvent event) {
@@ -646,7 +635,6 @@ public class LoggedInController implements Initializable {
             showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
         }
     }
-
 
 
     private void showAlert(String title, String header, String content) {
