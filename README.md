@@ -6,12 +6,15 @@
 <img width="172" alt="Skärmbild 2023-05-18 011247" src="https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/7fc022a4-3bca-4ad9-b296-4a768421c944" />
 </p>
 
-## Introduction 
+## Introduction <img src="https://github.com/Alloush95/test/assets/125370944/adeebf6c-9099-4b74-a346-a482f0b1061c" width="40" />
 
 Sleep-Tracker is a JavaFX application that allows users to track their sleep patterns and records in a database. This README file provides instructions on how to set up the database and run the application.
 
 
-## Setting up the Database 
+
+## Setting up the Database <img src="https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/680abd4c-c840-4bf8-a4df-149db89181da" width="40" />
+
+
 Open the MySQL dump file, which includes the table structure and data for a database named "sleeptrackerlogin". To import this database into your MySQL server, follow these steps:
 
 1. Open MySQL Workbench or any other MySQL client tool.
