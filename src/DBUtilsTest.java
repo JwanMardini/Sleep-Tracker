@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -17,10 +16,6 @@ public class DBUtilsTest {
 
     //Tests sign up and log in
 
-    @BeforeAll
-    public static void setUp(){
-
-    }
     @Test
     public void testSignUpUserWithValidData() {
         String usernameRes = null;
