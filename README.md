@@ -41,7 +41,6 @@ You have to have the following things installed on your computer:
 4. MySQL Connector/J: You need to download and add the MySQL Connector/J library to your project's classpath. This library is needed to connect to the MySQL database from your JavaFX application.
 5. IDE: You need an Integrated Development Environment (IDE) to write, test, and run your JavaFX application. Some popular IDEs for JavaFX development include IntelliJ IDEA, Eclipse, and NetBeans.
 
-![backend](https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/17d2eedd-6ea0-4c1d-a60c-84e644c28d55)
 
 ### Connect  JavaFX application to MySQL database <img src="https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/17d2eedd-6ea0-4c1d-a60c-84e644c28d55" width="40" />
 Steps to connect JavaFX application to MySQL database are:
