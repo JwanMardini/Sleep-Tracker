@@ -42,7 +42,7 @@ You have to have the following things installed on your computer:
 5. IDE: You need an Integrated Development Environment (IDE) to write, test, and run your JavaFX application. Some popular IDEs for JavaFX development include IntelliJ IDEA, Eclipse, and NetBeans.
 
 
-### Connect  JavaFX application to MySQL database <img src="https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/17d2eedd-6ea0-4c1d-a60c-84e644c28d55" width="40" />
+### Connect  JavaFX application to MySQL database <img src="https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/8d3ba99d-4544-4121-878e-0f6a0cebeae0" width="40" />
 Steps to connect JavaFX application to MySQL database are:
 1. Open the project in IntelliJ IDEA.
 2. Click on File in the top menu and select Project Structure (or press Ctrl+Alt+Shift+S on Windows/Linux, or Cmd+; on macOS).
