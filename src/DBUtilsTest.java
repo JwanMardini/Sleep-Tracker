@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -15,6 +16,17 @@ public class DBUtilsTest {
     private static final String secQue = "hkr";
 
     //Tests sign up and log in
+
+    @Before
+    public static void setUp (){
+        try(Connection conn = DBUtils.getConnection();
+        PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM Users WHERE username = ?")){
+            preparedStatement.setString(1, user);
+            int rowDel = preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
 
     @Test
     public void testSignUpUserWithValidData() {
