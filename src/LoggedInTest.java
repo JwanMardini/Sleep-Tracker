@@ -1,12 +1,15 @@
+import oracle.ucp.proxy.annotation.Pre;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import static junit.framework.Assert.assertEquals;
 
 public class LoggedInTest {
+    private static int id = 0;
     private static final String user = "HKR3";
     private static final String password = "1237";
     private static final int age = 22;

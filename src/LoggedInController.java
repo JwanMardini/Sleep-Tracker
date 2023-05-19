@@ -128,7 +128,7 @@ public class LoggedInController implements Initializable {
     }
 
 
-    public void setUserID(String username) {
+    public int setUserID(String username) {
 
         String query = "SELECT id FROM users WHERE username = ?";
         try (Connection connection = DBUtils.getConnection();
@@ -141,6 +141,7 @@ public class LoggedInController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return this.userID;
     }
 
 
