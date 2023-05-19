@@ -45,4 +45,22 @@ public class LoggedInTest {
         String passRes = loggedInController.getPassword(user);
         assertEquals(password, passRes);
     }
+    @Test
+    public void testGetUserId(){
+        try(Connection conn = DBUtils.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT id FROM users WHERE username = ?")){
+            preparedStatement.setString(1, user);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                id = resultSet.getInt("id");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        LoggedInController loggedInController = new LoggedInController();
+        int idRes = loggedInController.setUserID(user);
+
+        assertEquals(id, idRes);
+    }
 }
