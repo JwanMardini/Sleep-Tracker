@@ -26,8 +26,8 @@ import java.time.format.DateTimeParseException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.text.Text;
-public class LoggedInController implements Initializable {
 
+public class LoggedInController implements Initializable {
     @FXML
     private AnchorPane home_form;
     @FXML
@@ -193,7 +193,8 @@ public class LoggedInController implements Initializable {
                             alert.setTitle("Saved!");
 
                             alert.setHeaderText(null);
-                            alert.setContentText("Your sleep record has been saved successfully. \nYour sleep duration is: " + duration.toHours() + " hours " + (duration.toMinutes() % 60) + " minutes");
+                            alert.setContentText("Your sleep record has been saved successfully. \nYour sleep duration is: " +
+                                    duration.toHours() + " hours " + (duration.toMinutes() % 60) + " minutes");
                             alert.showAndWait();
 
                             // Handle invalid date/time format
@@ -222,7 +223,8 @@ public class LoggedInController implements Initializable {
         XYChart.Series chartData = new XYChart.Series();
         Connection connection = DBUtils.getConnection();
         try {
-            PreparedStatement psChartSql = connection.prepareStatement("SELECT end_date, SUM(duration) FROM DateTime WHERE user_id = ? GROUP BY end_date ORDER BY TIMESTAMP(end_date) ASC LIMIT 8");
+            PreparedStatement psChartSql = connection.prepareStatement("SELECT end_date, SUM(duration) FROM DateTime WHERE user_id = ? " +
+                    "GROUP BY end_date ORDER BY TIMESTAMP(end_date) ASC LIMIT 8");
             psChartSql.setInt(1, userID);
             ResultSet rs = psChartSql.executeQuery();
 
@@ -328,7 +330,6 @@ public class LoggedInController implements Initializable {
 
             // Add active class to button
             btn_resources.getStyleClass().add("active");
-
         }
     }
     public  void setProfileInfo() {
@@ -380,11 +381,13 @@ public class LoggedInController implements Initializable {
         } catch (SQLException e) {
             // Handle any errors that occur during the update process
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
+            showAlert("Error", null, "An error occurred while updating user information.");
+
+/*            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("An error occurred while updating user information.");
-            alert.showAndWait();
+            alert.showAndWait();*/
         }
     }
 
@@ -441,7 +444,8 @@ public class LoggedInController implements Initializable {
             int recommendedSleepDurationMax = recommendedSleepDuration[1];
 
             // Get the total sleep duration for the user over the past week
-            PreparedStatement psSleepSql = connection.prepareStatement("SELECT SUM(duration) FROM DateTime WHERE user_id = ? AND end_date BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW()");
+            PreparedStatement psSleepSql = connection.prepareStatement("SELECT SUM(duration) FROM DateTime WHERE user_id = ? " +
+                                                              "AND end_date BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW()");
             psSleepSql.setInt(1, userID);
             ResultSet sleepRs = psSleepSql.executeQuery();
             if (sleepRs.next()) {
@@ -451,10 +455,14 @@ public class LoggedInController implements Initializable {
                 int avgSleep = (int) Math.round(totalSleepWeek / 7.0); // Average sleep in hours over the past week
                 if (avgSleep < recommendedSleepDurationMin ) {
                     if (avgSleep == 0) {
-                        tf_recommend.setText("It appears that your average sleep duration is 0. This could be because you may not have recorded your sleep hours accurately or consistently last week");
+                        tf_recommend.setText("It appears that your average sleep duration is 0. This could be because " +
+                                "you may not have recorded your sleep hours accurately or consistently last week");
 
                     }else {
-                        tf_recommend.setText("You are not getting enough sleep. Aim for at least " + recommendedSleepDurationMin + " to " + recommendedSleepDurationMax + " hours of sleep per night for your age category. \n \nThis recommendation is based on your sleep records from the past week. Following list displays these days: \n");
+                        tf_recommend.setText("You are not getting enough sleep. Aim for at least " + recommendedSleepDurationMin +
+                                " to " + recommendedSleepDurationMax + " hours of sleep per night for your age category. \n" +
+                                 "\nTo get professional advice or counseling service, please visit the 'Resources' page. \n" +
+                                "\nThis recommendation is based on your sleep records from the past week. The Following list displays these days: \n");
                     }
                     // Get the sleep records for the past week
                     PreparedStatement psSleepRecordsSql = connection.prepareStatement("SELECT start_time, end_time, duration FROM DateTime WHERE user_id = ? AND end_date BETWEEN DATE_SUB(NOW(), INTERVAL 7 DAY) AND NOW() ORDER BY end_date DESC");
