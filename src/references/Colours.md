@@ -19,7 +19,7 @@
 16.	Navy Blue: Navy blue is a timeless and classic color that is often associated with authority, stability, and strength.
 17.	Maroon: Maroon is a rich and warm color that is often associated with passion, intensity, and confidence.
 
-## References ❕
+## references ❕
 
 1.	Yellow: happiness, optimism, positivity, warmth
 •	Reference: "The Psychological Effects of Color" by Verywell Mind

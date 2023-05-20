@@ -111,7 +111,7 @@ public class LoggedInController implements Initializable {
     private String password;
 
 
-    public void getPassword(String username) {
+    public String getPassword(String username) {
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement pstmt = conn.prepareStatement("SELECT Password FROM users WHERE username = ?");
@@ -124,10 +124,11 @@ public class LoggedInController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return this.password;
     }
 
 
-    public void setUserID(String username) {
+    public int setUserID(String username) {
 
         String query = "SELECT id FROM users WHERE username = ?";
         try (Connection connection = DBUtils.getConnection();
@@ -140,6 +141,7 @@ public class LoggedInController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return this.userID;
     }
 
 

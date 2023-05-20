@@ -38,23 +38,35 @@ public class SignUpController implements Initializable {
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 // convert the input to an integer
               try {
                   String ageString = tf_age.getText();
                   int age = Integer.parseInt(ageString);
 
-
-                  if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_email.getText().trim().isEmpty() && !secQue.getText().trim().isEmpty() && !tf_age.getText().trim().isEmpty()) {
+                  if (!tf_username.getText().trim().isEmpty() && !tf_password.getText().trim().isEmpty() && !tf_email.getText().trim().isEmpty() && !secQue.getText().trim().isEmpty() && !tf_age.getText().trim().isEmpty() && isPasswordValid(tf_password.getText()) && isEmailValid(tf_email.getText())) {
                       DBUtils.signUpUser(actionEvent, tf_username.getText(), tf_password.getText(), tf_email.getText(), secQue.getText(), age);
-                  } else {
-                      System.out.println("Please fill in all information");
-                      Alert alert = new Alert(Alert.AlertType.ERROR);
+
+                  }else if(tf_username.getText().trim().isEmpty() || tf_password.getText().trim().isEmpty() || tf_email.getText().trim().isEmpty() || secQue.getText().trim().isEmpty() || tf_age.getText().trim().isEmpty()){
+                      alert.setTitle("Error");
+                      alert.setHeaderText(null);
                       alert.setContentText("Please fill in all information to sign up!");
+                      alert.show();
+
+                  }else if (!isPasswordValid(tf_password.getText())){
+                      alert.setTitle("Invalid Password");
+                      alert.setHeaderText(null);
+                      alert.setContentText("Invalid password. Please make sure your password is at least 8 characters long and contains at least one digit.");
+                      alert.show();
+                  } else if (!isEmailValid(tf_email.getText())) {
+                      alert.setTitle("Invalid Password");
+                      alert.setHeaderText(null);
+                      alert.setContentText("Invalid email address. Please enter a valid email address.");
                       alert.show();
                   }
               } catch (NumberFormatException e) {
                   // handle the exception by displaying an error message
-                  Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid age.");
+                  alert.setContentText("Please enter a valid age.");
                   alert.showAndWait();
               }
 
@@ -67,4 +79,17 @@ public class SignUpController implements Initializable {
             }
         });
     }
+
+    public boolean isPasswordValid(String password) {
+        if (password.length() >= 8 && password.matches(".*\\d.*")) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isEmailValid(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+        return email.matches(emailRegex);
+    }
+
 }

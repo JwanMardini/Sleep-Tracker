@@ -1,4 +1,4 @@
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -17,16 +17,27 @@ public class DBUtilsTest {
 
     //Tests sign up and log in
 
-    @Before
-    public static void setUp (){
-        try(Connection conn = DBUtils.getConnection();
-        PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM Users WHERE username = ?")){
-            preparedStatement.setString(1, user);
-            int rowDel = preparedStatement.executeUpdate();
-        }catch (SQLException e){
+    @BeforeAll
+    public static void setUp() {
+        try (Connection conn = DBUtils.getConnection();
+             PreparedStatement deleteStatement = conn.prepareStatement("DELETE FROM Users WHERE username = ?");
+             PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO users (username, password, age, email, secQue) VALUES (?, ?, ?, ?, ?)")) {
+
+            deleteStatement.setString(1, user);
+            int rowsDeleted = deleteStatement.executeUpdate();
+
+            insertStatement.setString(1, user);
+            insertStatement.setString(2, password);
+            insertStatement.setInt(3, age);
+            insertStatement.setString(4, email);
+            insertStatement.setString(5, secQue);
+            insertStatement.executeUpdate();
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     @Test
     public void testSignUpUserWithValidData() {
@@ -52,29 +63,6 @@ public class DBUtilsTest {
                     assertEquals(age, ageRes);
                     assertEquals(email, emailRes);
                     assertEquals(secQue, secQueRes);
-                }else {
-                    try (PreparedStatement insertStatement = conn.prepareStatement("INSERT INTO users (username, password, age, email, secQue) VALUES (?, ?, ?, ?, ?)")) {
-                        insertStatement.setString(1, user);
-                        insertStatement.setString(2, password);
-                        insertStatement.setInt(3, age);
-                        insertStatement.setString(4, email);
-                        insertStatement.setString(5, secQue);
-                        insertStatement.executeUpdate();
-
-                        // Retrieve the added user's values
-                        usernameRes = user;
-                        passwordRes = password;
-                        ageRes = age;
-                        emailRes = email;
-                        secQueRes = secQue;
-
-                        // Check if the values are the same
-                        assertEquals(user, usernameRes);
-                        assertEquals(password, passwordRes);
-                        assertEquals(age, ageRes);
-                        assertEquals(email, emailRes);
-                        assertEquals(secQue, secQueRes);
-                    }
                 }
             }
         } catch (SQLException e) {
@@ -86,19 +74,7 @@ public class DBUtilsTest {
     //Tests getEmail method
     @Test
     public void testGetEmail() {
-        String emailRes = null;
-        try (Connection conn = DBUtils.getConnection();
-             PreparedStatement preparedStatement = conn.prepareStatement("SELECT email FROM users WHERE username = ?")) {
-            preparedStatement.setString(1, user);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                if (resultSet.next()) {
-                    emailRes = resultSet.getString("email");
-                }
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        String emailRes = DBUtils.getEmail(user);
         assertEquals(email, emailRes);
     }
 }
