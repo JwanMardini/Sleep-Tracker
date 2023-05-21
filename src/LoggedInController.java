@@ -390,7 +390,6 @@ public class LoggedInController implements Initializable {
                 stage.setScene(scene);
                 stage.show();
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

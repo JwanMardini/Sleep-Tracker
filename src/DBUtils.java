@@ -58,7 +58,6 @@ public class DBUtils {
 
                 } else { // If the user doesn't exist, insert the user into the database and change the scene to the logged-in view.
 
-
                     try (PreparedStatement psInsert = connection.prepareStatement("INSERT INTO Users(username, Password, email, secQue, age) VALUES(?,?,?,?,?)")) {
                         psInsert.setString(1, username);
                         psInsert.setString(2, password);
@@ -105,7 +104,6 @@ public class DBUtils {
             e.printStackTrace();
         }
     }
-
 
     public static Connection getConnection() {
         Connection conn = null;

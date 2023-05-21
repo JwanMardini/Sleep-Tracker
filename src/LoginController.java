@@ -108,7 +108,6 @@ public class LoginController implements Initializable {
             }
         }
     }
-
     @FXML
     private void togglePasswordVisibility() {
         if (showPasswordCheckBox.isSelected()) {
