@@ -30,12 +30,9 @@ public class SignUpController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        LoggedInController errorAlert = new LoggedInController();
-
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
                 // convert the input to an integer
               try {
                   String ageString = tf_age.getText();
