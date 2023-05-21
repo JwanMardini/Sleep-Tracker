@@ -1,5 +1,3 @@
-//Class to communicate with our DB
-//Sign in + sign up and changing view or scene
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -8,15 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.*;
 
 public class DBUtils {
     private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
     private static final String DbUsername = "root";
-    private static final String DbPassword = "";
-
+    private static final String DbPassword = "sql@2023";
 
     // This method changes the scene to the specified FXML file with a given title and username.
     public static void changeScene(ActionEvent actionEvent, String fxmlFile, String title, String username) {
@@ -58,13 +54,11 @@ public class DBUtils {
             psCheckUserExists.setString(1, username);
             try (ResultSet resultSet = psCheckUserExists.executeQuery()) {
                 if (resultSet.isBeforeFirst()) {  // If the user already exists, show an error message.
-                    System.out.println("User already exists! ");
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("User already exists");
-                    alert.setHeaderText(null);
-                    alert.setContentText("You cannot use this username.");
-                    alert.show();
+                    showErrorAlert("User already exists", null, "You cannot use this username.");
+
                 } else { // If the user doesn't exist, insert the user into the database and change the scene to the logged-in view.
+
+
                     try (PreparedStatement psInsert = connection.prepareStatement("INSERT INTO Users(username, Password, email, secQue, age) VALUES(?,?,?,?,?)")) {
                         psInsert.setString(1, username);
                         psInsert.setString(2, password);
@@ -83,7 +77,6 @@ public class DBUtils {
         }
     }
 
-
     public static void logInUser(ActionEvent actionEvent, String username, String password) {
         // to close the ResultSet, PreparedStatements, and Connection once the execution is done
         try (Connection connection = DriverManager.getConnection(DbUrl, DbUsername, DbPassword);
@@ -91,23 +84,19 @@ public class DBUtils {
             preparedStatement.setString(1, username);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (!resultSet.isBeforeFirst()) {
-                    System.out.println("User not found in the database!");
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Incorrect Credentials Message");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Provided Credentials are incorrect!");
-                    alert.show();
+                    showErrorAlert("Incorrect Credentials Message", null, "Provided Credentials are incorrect!");
+
                 } else {
                     while (resultSet.next()) {
-                        String retrievePassword = resultSet.getString("Password");
+
+
+                       String retrievePassword = resultSet.getString("Password");
                         if (retrievePassword.equals(password)) {
+
                             changeScene(actionEvent, "resources/logged-in.fxml", "Welcome!", username);
                         } else {
-                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Incorrect Credentials Message");
-                            alert.setHeaderText(null);
-                            alert.setContentText("The provided credentials are incorrect!");
-                            alert.show();
+                            showErrorAlert("Incorrect Credentials Message", null,"The provided credentials are incorrect!" );
+
                         }
                     }
                 }
@@ -142,6 +131,22 @@ public class DBUtils {
             e.printStackTrace();
         }
         return email;
+    }
+
+    public static void showErrorAlert(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    public static void showMessageAlert(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
 }

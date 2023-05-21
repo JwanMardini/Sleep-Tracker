@@ -10,31 +10,28 @@ import java.util.ResourceBundle;
 
 
 public class SignUpController implements Initializable {
-
     @FXML
     Button btn_signup;
-
     @FXML
     Button btn_log_in;
-
     @FXML
     TextField tf_username;
-
     @FXML
     TextField tf_email;
-
     @FXML
     TextField tf_password;
-
     @FXML
     TextField tf_age;
-
-
     @FXML
     TextField secQue;
 
+    DBUtils errorMessage = new DBUtils();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        LoggedInController errorAlert = new LoggedInController();
+
         btn_signup.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -48,28 +45,18 @@ public class SignUpController implements Initializable {
                       DBUtils.signUpUser(actionEvent, tf_username.getText(), tf_password.getText(), tf_email.getText(), secQue.getText(), age);
 
                   }else if(tf_username.getText().trim().isEmpty() || tf_password.getText().trim().isEmpty() || tf_email.getText().trim().isEmpty() || secQue.getText().trim().isEmpty() || tf_age.getText().trim().isEmpty()){
-                      alert.setTitle("Error");
-                      alert.setHeaderText(null);
-                      alert.setContentText("Please fill in all information to sign up!");
-                      alert.show();
+                      errorMessage.showErrorAlert("Error", null, "Please fill in all information to sign up!");
 
                   }else if (!isPasswordValid(tf_password.getText())){
-                      alert.setTitle("Invalid Password");
-                      alert.setHeaderText(null);
-                      alert.setContentText("Invalid password. Please make sure your password is at least 8 characters long and contains at least one digit.");
-                      alert.show();
+                      errorMessage.showErrorAlert("Invalid Password", null, "Invalid password. Please make sure your password is at least 8 characters long and contains at least one digit.");
+
                   } else if (!isEmailValid(tf_email.getText())) {
-                      alert.setTitle("Invalid Password");
-                      alert.setHeaderText(null);
-                      alert.setContentText("Invalid email address. Please enter a valid email address.");
-                      alert.show();
+                      errorMessage.showErrorAlert("Invalid Password", null, "Invalid email address. Please enter a valid email address.");
                   }
               } catch (NumberFormatException e) {
                   // handle the exception by displaying an error message
-                  alert.setContentText("Please enter a valid age.");
-                  alert.showAndWait();
+                  errorMessage.showErrorAlert("Error!", null, "Please enter valid entry.");
               }
-
             }
         });
         btn_log_in.setOnAction(new EventHandler<ActionEvent>() {

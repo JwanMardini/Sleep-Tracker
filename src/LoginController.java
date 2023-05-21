@@ -8,10 +8,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.Date;
 import java.util.ResourceBundle;
-
 
 public class LoginController implements Initializable {
 
@@ -28,17 +25,12 @@ public class LoginController implements Initializable {
     private TextField tf_username;
     @FXML
     private TextField tf_password;
-
     @FXML
     private TextField tf_passwordShow;
-
     @FXML
     private Hyperlink forgot_password;
     @FXML
     private CheckBox showPasswordCheckBox;
-
-
-    //Forgot Password
     @FXML
     private AnchorPane forgotPass_form;
     @FXML
@@ -46,18 +38,11 @@ public class LoginController implements Initializable {
     @FXML
     private Button back_btn;
     @FXML
-    private Button forgotPass_send_btn;
-    @FXML
     private TextField secQue;
     @FXML
     private TextField tf_username_forgot;
-
-
-    //Reset Password
     @FXML
     private AnchorPane resetPass_form;
-    @FXML
-    private Button resetPass_btn;
     @FXML
     private PasswordField tf_confResetPass;
     @FXML
@@ -67,7 +52,7 @@ public class LoginController implements Initializable {
     private Connection connect;
     private PreparedStatement prepare;
     private ResultSet result;
-
+    DBUtils errorMessage = new DBUtils();
 
     public void switchForm(ActionEvent event) {
 
@@ -77,7 +62,6 @@ public class LoginController implements Initializable {
             forgotPass_form.setVisible(true);
             pass_left_form.setVisible(true);
             resetPass_form.setVisible(false);
-
 
         }   else if (event.getSource() == back_btn) {
             login_form.setVisible(true);
@@ -91,11 +75,8 @@ public class LoginController implements Initializable {
     public void forgotPassword(ActionEvent actionEvent) {
 
         if (tf_username_forgot.getText().isEmpty() || secQue.getText().isEmpty()) {
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Blank fields");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill all blank fields");
-            alert.show();
+            errorMessage.showMessageAlert("Blank fields",null, "Please fill all blank fields");
+
         } else {
 
             String checkData = "SELECT username, secQue FROM users "
@@ -118,21 +99,15 @@ public class LoginController implements Initializable {
                     resetPass_form.setVisible(true);
 
                 } else {
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText(null);
-                    alert.setContentText("Incorrect information");
-                    alert.show();
+                    errorMessage.showErrorAlert(null,null,"Incorrect information");
+
                 }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
-
     }
-
-
 
     @FXML
     private void togglePasswordVisibility() {
@@ -152,18 +127,13 @@ public class LoginController implements Initializable {
 
         // CHECK ALL FIELDS IF EMPTY OR NOT
         if(tf_resetPass.getText().isEmpty() || tf_confResetPass.getText().isEmpty()){
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Blank fields");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill all blank fields");
-            alert.show();
+
+            errorMessage.showErrorAlert("Blank fields",null, "Please fill all blank fields");
+
         }else if(!tf_resetPass.getText().equals(tf_confResetPass.getText())){
             // CHECK IF THE PASSWORD AND CONFIRMATION ARE NOT MATCH
-            alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Password does not match");
-            alert.show();
+            errorMessage.showErrorAlert("Error", null, "Password does not match");
+
         }else{
             // USERNAME IS OUR REFERENCE TO UPDATE THE DATA OF THE USER
             String updateData = "UPDATE users SET password = ? WHERE username = ?";
@@ -174,11 +144,8 @@ public class LoginController implements Initializable {
                 prepare.setString(2, tf_username_forgot.getText());
                 int rowsUpdated = prepare.executeUpdate();
                 if (rowsUpdated > 0) {
-                    alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Done!");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Successfully changed Password");
-                    alert.show();
+                    errorMessage.showMessageAlert("Done!",null, "Successfully changed Password");
+
                     // LOGIN FORM WILL APPEAR
                     login_form.setVisible(true);
                     login_left_form.setVisible(true);
@@ -189,10 +156,7 @@ public class LoginController implements Initializable {
             }catch(Exception e){
                 e.printStackTrace();
             }
-
-
         }
-
     }
 
 
@@ -210,7 +174,8 @@ public class LoginController implements Initializable {
             public void handle(ActionEvent actionEvent) {
                 DBUtils.changeScene(actionEvent, "resources/signup.fxml", "Sign up!", null);
             }
-        });
+        }
+        );
 
         showPasswordCheckBox.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -218,9 +183,5 @@ public class LoginController implements Initializable {
                 togglePasswordVisibility();
             }
         });
-
-
-
     }
-
 }

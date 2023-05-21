@@ -49,8 +49,6 @@ public class LoggedInController implements Initializable {
     @FXML
     private Label sleepDurationLabel;
     @FXML
-    private Button btn_save;
-    @FXML
     private AnchorPane history_form;
     @FXML
     private Button btn_history;
@@ -110,6 +108,7 @@ public class LoggedInController implements Initializable {
     private int age;
     private String password;
 
+    DBUtils errorMessage = new DBUtils();
 
     public String getPassword(String username) {
         try {
@@ -127,9 +126,7 @@ public class LoggedInController implements Initializable {
         return this.password;
     }
 
-
     public int setUserID(String username) {
-
         String query = "SELECT id FROM users WHERE username = ?";
         try (Connection connection = DBUtils.getConnection();
              PreparedStatement ps = connection.prepareStatement(query)) {
@@ -144,14 +141,12 @@ public class LoggedInController implements Initializable {
         return this.userID;
     }
 
-
     public void setUserInfo(String userInfo) {
         this.userInfo = userInfo;
         if (label_welcome != null) {
             label_welcome.setText("Welcome " + userInfo + "!");
         }
     }
-
 
     public void handleSaveButton(ActionEvent actionEvent) {
         try {
@@ -172,11 +167,8 @@ public class LoggedInController implements Initializable {
 
                             // Check if duration is negative
                             if (duration.isNegative()) {
-                                Alert alert = new Alert(Alert.AlertType.ERROR);
-                                alert.setTitle("Error");
-                                alert.setHeaderText(null);
-                                alert.setContentText("The sleep duration cannot be negative. Please enter valid date/time values.");
-                                alert.showAndWait();
+                                errorMessage.showMessageAlert("Error", null,"The sleep duration cannot be negative. Please enter valid date/time values.");
+
                                 return; // Exit the method without inserting the new row
                             }
 
@@ -201,11 +193,7 @@ public class LoggedInController implements Initializable {
 
                             // Handle invalid date/time format
                         }catch (DateTimeParseException e) {
-                            Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setTitle("Error");
-                            alert.setHeaderText(null);
-                            alert.setContentText("Please enter valid date/time values.");
-                            alert.showAndWait();
+                            errorMessage.showErrorAlert("Error", null,"Please enter valid date/time values.");
                         }
                     }
                 } catch (SQLException e) {
@@ -352,14 +340,9 @@ public class LoggedInController implements Initializable {
 
         // Check if any of the fields are empty
         if (email.isEmpty() || ageString.isEmpty() || userNAME.isEmpty() || password.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("Please fill out all fields.");
-            alert.showAndWait();
+            errorMessage.showErrorAlert("Error", null, "Please fill out all fields.");
             return;
         }
-
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement pstmt = conn.prepareStatement("UPDATE users SET username=?, age=?, email=?, password=? WHERE username=?");
@@ -374,22 +357,12 @@ public class LoggedInController implements Initializable {
             this.userInfo = userNAME;
             this.age = ageInt;
 
-            // Show confirmation message
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText(null);
-            alert.setContentText("User information updated successfully.");
-            alert.showAndWait();
+            errorMessage.showMessageAlert("Success", null, "User information updated successfully.");
+
         } catch (SQLException e) {
             // Handle any errors that occur during the update process
             e.printStackTrace();
-            showAlert("Error", null, "An error occurred while updating user information.");
-
-/*            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("An error occurred while updating user information.");
-            alert.showAndWait();*/
+            errorMessage.showErrorAlert("Error", null, "An error occurred while updating user information.");
         }
     }
 
@@ -397,7 +370,7 @@ public class LoggedInController implements Initializable {
     public void logout() {
         try {
             alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Error Message");
+            alert.setTitle("Warning");
             alert.setHeaderText(null);
             alert.setContentText("Are you sure you want to logout?");
             Optional<ButtonType> option = alert.showAndWait();
@@ -544,15 +517,13 @@ public class LoggedInController implements Initializable {
 
     }
 
-    //methods for the links
-
     @FXML
     void sleepEducationLinkClicked(ActionEvent event) {
         try {
             Desktop.getDesktop().browse(new URI(sleepEducationLink.getText()));
         } catch (IOException | URISyntaxException ex) {
             ex.printStackTrace();
-            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+            errorMessage.showErrorAlert("Error", "Failed to open link", "An error occurred while opening the link.");
         }
     }
 
@@ -562,7 +533,7 @@ public class LoggedInController implements Initializable {
             Desktop.getDesktop().browse(new URI(sleepFoundationLink.getText()));
         } catch (IOException | URISyntaxException ex) {
             ex.printStackTrace();
-            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+            errorMessage.showErrorAlert("Error", "Failed to open link", "An error occurred while opening the link.");
         }
     }
 
@@ -572,7 +543,7 @@ public class LoggedInController implements Initializable {
             Desktop.getDesktop().browse(new URI(mentalHealthAmericaLink.getText()));
         } catch (IOException | URISyntaxException ex) {
             ex.printStackTrace();
-            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+            errorMessage.showErrorAlert("Error", "Failed to open link", "An error occurred while opening the link.");
         }
     }
 
@@ -582,7 +553,7 @@ public class LoggedInController implements Initializable {
             Desktop.getDesktop().browse(new URI(swedishPsychologicalAssociationLink.getText()));
         } catch (IOException | URISyntaxException ex) {
             ex.printStackTrace();
-            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+            errorMessage.showErrorAlert("Error", "Failed to open link", "An error occurred while opening the link.");
         }
     }
 
@@ -592,17 +563,16 @@ public class LoggedInController implements Initializable {
             Desktop.getDesktop().browse(new URI(swedishAssociationForCognitiveTherapiesLink.getText()));
         } catch (IOException | URISyntaxException ex) {
             ex.printStackTrace(); // Print the stack trace for debugging purposes
-            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+            errorMessage.showErrorAlert("Error", "Failed to open link", "An error occurred while opening the link.");
         }
     }
-
     @FXML
     void headspaceLinkClicked(ActionEvent event) {
         try {
             Desktop.getDesktop().browse(new URI(headspaceLink.getText()));
         } catch (IOException | URISyntaxException ex) {
             ex.printStackTrace();
-            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+            errorMessage.showErrorAlert("Error", "Failed to open link", "An error occurred while opening the link.");
         }
     }
 
@@ -612,7 +582,7 @@ public class LoggedInController implements Initializable {
             Desktop.getDesktop().browse(new URI(whyWeSleepLink.getText()));
         } catch (IOException | URISyntaxException ex) {
             ex.printStackTrace();
-            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+            errorMessage.showErrorAlert("Error", "Failed to open link", "An error occurred while opening the link.");
         }
     }
 
@@ -622,7 +592,7 @@ public class LoggedInController implements Initializable {
             Desktop.getDesktop().browse(new URI(sleepIsYourSuperpowerLink.getText()));
         } catch (IOException | URISyntaxException ex) {
             ex.printStackTrace();
-            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+            errorMessage.showErrorAlert("Error", "Failed to open link", "An error occurred while opening the link.");
         }
     }
 
@@ -632,7 +602,7 @@ public class LoggedInController implements Initializable {
             Desktop.getDesktop().browse(new URI(sleepDisordersAndSleepDeprivationLink.getText()));
         } catch (IOException | URISyntaxException ex) {
             ex.printStackTrace();
-            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+            errorMessage.showErrorAlert("Error", "Failed to open link", "An error occurred while opening the link.");
         }
     }
 
@@ -642,18 +612,10 @@ public class LoggedInController implements Initializable {
             Desktop.getDesktop().browse(new URI(sleepRevolutionLink.getText()));
         } catch (IOException | URISyntaxException ex) {
             ex.printStackTrace();
-            showAlert("Error", "Failed to open link", "An error occurred while opening the link.");
+            errorMessage.showErrorAlert("Error", "Failed to open link", "An error occurred while opening the link.");
         }
     }
 
-
-    private void showAlert(String title, String header, String content) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
-        alert.setHeaderText(header);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
 }
 
 
