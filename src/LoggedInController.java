@@ -170,6 +170,9 @@ public class LoggedInController implements Initializable {
                                 errorMessage.showMessageAlert("Error", null,"The sleep duration cannot be negative. Please enter valid date/time values.");
 
                                 return; // Exit the method without inserting the new row
+                            } else if (duration.toHours() > 24) {
+                                errorMessage.showMessageAlert("Error", null, "The sleep duration cannot exceed 24 hours. Please enter valid date/time values.");
+                                return; // Exit the method without inserting the new row
                             }
 
                             // Insert a new row into the DateTime table with the date, time, duration, and user ID
