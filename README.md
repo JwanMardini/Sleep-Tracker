@@ -2,13 +2,10 @@
 
 # Sleep-Tracker 🛌
 
-<p align="center">
-<img width="172" alt="Skärmbild 2023-05-18 011247" src="https://github.com/JwanMardini/Sleep-Tracker/assets/125370944/7fc022a4-3bca-4ad9-b296-4a768421c944" />
-</p>
 
 ## Introduction <img src="https://github.com/Alloush95/test/assets/125370944/adeebf6c-9099-4b74-a346-a482f0b1061c" width="40" />
 
-Sleep-Tracker is a JavaFX application that allows users to track their sleep patterns and records in a database. This README file provides instructions on how to set up the database and run the application.
+Our sleep tracking application was created by a group of innovative students: Solomon W., Jwan M., Omar Z., Mohamad A., and Rosol H. We developed this project as part of the Agile Development Method course at Kristianstad University in Sweden.
 
 
 
@@ -70,4 +67,37 @@ Make sure to replace "/path/to/javafx-sdk-17.0.1" with the actual path to your J
 6. Click on the "Apply" button to save the configuration.
 
 After that, you can run the application with the configured VM options by clicking on the "Run" button.
+
+
+## ScreenShots:
+
+### Login
+![Login](https://github.com/OmarZarifa/Sleep-Tracker/blob/main/ScreenShots/Login.png?raw=true)
+
+### Sign-UP
+![Sign-UP](https://github.com/OmarZarifa/Sleep-Tracker/blob/main/ScreenShots/Sign-up.png?raw=true)
+
+### Forget Password
+![Forget Password](https://github.com/OmarZarifa/Sleep-Tracker/blob/main/ScreenShots/Forget%20Password.png?raw=true)
+
+### Reset Password
+![Reset Password](https://github.com/OmarZarifa/Sleep-Tracker/blob/main/ScreenShots/Reset%20Password.png?raw=true)
+
+### Home
+![Home](https://github.com/OmarZarifa/Sleep-Tracker/blob/main/ScreenShots/Home.png?raw=true)
+
+### Record Sleep
+![Record Sleep](https://github.com/OmarZarifa/Sleep-Tracker/blob/main/ScreenShots/Record%20Sleep.png?raw=true)
+
+### History
+![History](https://github.com/OmarZarifa/Sleep-Tracker/blob/main/ScreenShots/History.png?raw=true)
+
+### Recommendations
+![Recommendations](https://github.com/OmarZarifa/Sleep-Tracker/blob/main/ScreenShots/Recommendations.png?raw=true)
+
+### Resources
+![Resources](https://github.com/OmarZarifa/Sleep-Tracker/blob/main/ScreenShots/Resources.png?raw=true)
+
+### My Profile
+![My Profile](https://github.com/OmarZarifa/Sleep-Tracker/blob/main/ScreenShots/My%20Profile.png?raw=true)
 
