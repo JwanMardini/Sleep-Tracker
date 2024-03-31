@@ -1,0 +1,72 @@
+.gradient {
+    -fx-background-color: linear-gradient(to bottom right, #0f6789, #813FA9);
+}
+
+.textfield {
+    -fx-background-color: transparent;
+    -fx-border-color: linear-gradient(to bottom right, #0f6789, #813FA9);
+    -fx-border-width: .5px;
+}
+
+.textfield:focused {
+    -fx-border-width: 1px;
+}
+
+.head-label {
+    -fx-border-color: #813FA9;
+    -fx-border-width: 0 0 0 3px;
+    -fx-padding: 0 0 0 5px;
+}
+
+.login-btn {
+    -fx-background-color: linear-gradient(to bottom right, #098c53, #813FA9);
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+}
+
+.login-btn:hover {
+    -fx-background-color: linear-gradient(to bottom right, #9a7bb8, #831ceb);
+}
+
+.signup-btn {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-border-color: #fff;
+    -fx-border-width: 1px;
+
+}
+
+.signup-btn:hover {
+    -fx-background-color: #fff;
+    -fx-text-fill: #000;
+}
+
+.textfield-selected {
+    -fx-background-color:  linear-gradient(to bottom right, #098c53, #813FA9);
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-border-color: #fff;
+    -fx-border-width: 1px;
+
+}
+
+.textfield-selected:focused {
+    -fx-border-width: 2px;
+}
+
+.background {
+    -fx-background-color:  linear-gradient(to bottom right, #30619d, #fff);
+}
+.active-button {
+    background-color: #007bff; /* Blue color */
+    color: #fff; /* White text */
+}
+
+.button:pressed, .button.active {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+}
+

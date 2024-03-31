@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Sleep-Tracker.iml" filepath="$PROJECT_DIR$/.idea/Sleep-Tracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Sleep-Tracker.iml" filepath="$PROJECT_DIR$/Sleep-Tracker.iml" />
     </modules>
   </component>
 </project>
