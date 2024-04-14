@@ -1,3 +1,6 @@
+import app.DBUtils;
+import app.LoggedInController;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.sql.Connection;
@@ -5,7 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static junit.framework.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class LoggedInTest {
     private static int id = 0;
@@ -42,7 +46,7 @@ public class LoggedInTest {
     public void testGetPassword(){
         LoggedInController loggedInController = new LoggedInController();
         String passRes = loggedInController.getPassword(user);
-        assertEquals(password, passRes);
+        Assertions.assertEquals(password, passRes);
     }
     @Test
     public void testGetUserId(){
@@ -60,6 +64,6 @@ public class LoggedInTest {
         LoggedInController loggedInController = new LoggedInController();
         int idRes = loggedInController.setUserID(user);
 
-        assertEquals(id, idRes);
+        Assertions.assertEquals(id, idRes);
     }
 }

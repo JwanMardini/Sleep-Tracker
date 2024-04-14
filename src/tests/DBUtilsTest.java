@@ -1,6 +1,5 @@
-package tests;
-
 import app.DBUtils;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -62,11 +61,11 @@ public class DBUtilsTest {
                     emailRes = resultSet.getString("email");
                     secQueRes = resultSet.getString("secQue");
 
-                    assertEquals(user, usernameRes);
-                    assertEquals(password, passwordRes);
-                    assertEquals(age, ageRes);
-                    assertEquals(email, emailRes);
-                    assertEquals(secQue, secQueRes);
+                    Assertions.assertEquals(user, usernameRes);
+                    Assertions.assertEquals(password, passwordRes);
+                    Assertions.assertEquals(age, ageRes);
+                    Assertions.assertEquals(email, emailRes);
+                    Assertions.assertEquals(secQue, secQueRes);
                 }
             }
         } catch (SQLException e) {
@@ -79,7 +78,7 @@ public class DBUtilsTest {
     @Test
     public void testGetEmail() {
         String emailRes = DBUtils.getEmail(user);
-        assertEquals(email, emailRes);
+        Assertions.assertEquals(email, emailRes);
     }
 }
 

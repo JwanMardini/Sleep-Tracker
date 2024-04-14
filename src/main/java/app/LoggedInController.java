@@ -386,7 +386,7 @@ public class LoggedInController implements Initializable {
                 // TO HIDE MAIN FORM
                 btn_logout.getScene().getWindow().hide();
 
-                Parent root = FXMLLoader.load(getClass().getResource("resources/login.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("/login.fxml"));
 
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);

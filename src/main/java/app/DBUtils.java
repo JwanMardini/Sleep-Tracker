@@ -21,33 +21,34 @@ public class DBUtils {
     public static void changeScene(ActionEvent actionEvent, String fxmlFile, String title, String username) {
         Parent root = null;
 
-        if (username != null) { // If a username is provided, load the FXML file and set user information
-            try {
-                FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
-                root = loader.load();
+        try {
+            FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fxmlFile));
+            root = loader.load();
+
+            if (username != null) { // If a username is provided, set user information
                 LoggedInController loggedInController = loader.getController();
                 loggedInController.setUserInfo(username);
                 loggedInController.setUserID(username);
                 loggedInController.setUserAge(username);
                 loggedInController.getPassword(username);
+            }
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else { // If no username is provided, simply load the FXML file.
-            try {
-                root = FXMLLoader.load(DBUtils.class.getResource(fxmlFile));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        // Set the stage title, scene, and show the stage.
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle(title);
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.show();
+
+        if (root != null) {
+            // Set the stage title, scene, and show the stage.
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.show();
+        } else {
+            System.out.println("Failed to load FXML file: " + fxmlFile);
+        }
     }
+
 
     // This method signs up a user with the specified username and password.
     public static void signUpUser(ActionEvent actionEvent, String username, String password, String email, String secQue, int age) {
@@ -95,7 +96,7 @@ public class DBUtils {
                        String retrievePassword = resultSet.getString("Password");
                         if (retrievePassword.equals(password)) {
 
-                            changeScene(actionEvent, "resources/logged-in.fxml", "Welcome!", username);
+                            changeScene(actionEvent, "/logged-in.fxml", "Welcome!", username);
                         } else {
                             showErrorAlert("Incorrect Credentials Message", null,"The provided credentials are incorrect!" );
 
