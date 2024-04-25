@@ -9,13 +9,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 public class DBUtils {
-    private static final String DbUrl = "jdbc:mysql://localhost:3306/sleeptrackerlogin";
-    private static final String DbUsername = "root";
-    private static final String DbPassword = "Jwan.joan12";
+    private static final String DbUrl = loadProps().getProperty("url");
+    private static final String DbUsername = loadProps().getProperty("user");
+    private static final String DbPassword = loadProps().getProperty("password");
 
     // This method changes the scene to the specified FXML file with a given title and username.
     public static void changeScene(ActionEvent actionEvent, String fxmlFile, String title, String username) {
@@ -149,6 +152,16 @@ public class DBUtils {
         alert.setHeaderText(header);
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    private static Properties loadProps(){
+        Properties props = new Properties();
+        try{
+            props.load(new FileInputStream("src/main/resources/db.properties"));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return props;
     }
 
 }
