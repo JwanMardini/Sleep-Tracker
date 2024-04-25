@@ -15,11 +15,11 @@ Our sleep tracking application was created by a group of innovative students: So
 Open the MySQL dump file, which includes the table structure and data for a database named "sleeptrackerlogin". To import this database into your MySQL server, follow these steps:
 
 1. Open MySQL Workbench or any other MySQL client tool.
-2. Create a new database with the same name as the one in the dump file ("sleeptrackerlogin").
+2. Create a new database with the name sleeptracker.
 3. In the MySQL client tool, go to the "Server" menu and select "Data Import".
 4. In the "Import Options" section, select "Import from Self-Contained File".
 5. Click on the "..." button to browse and select the dump file.
-6. In the "Default Target Schema" field, select the database you created in step 2 ("sleeptrackerlogin").
+6. In the "Default Target Schema" field, select the database you created in step 2 "sleeptracker".
 7. Click on the "Start Import" button to begin the import process.
 8. Once the import is completed, you can view the database structure and data in the MySQL client tool.
 
@@ -30,7 +30,6 @@ Note: Make sure that the MySQL server you are importing the database into has th
 ### Prerequirements:
 You have to have the following things installed on your computer:
 1. Java Development Kit (JDK): To develop and run JavaFX applications, you need to have JDK 8 or later versions installed on your computer.
-2. JavaFX SDK: You need to download and install the JavaFX SDK, which contains the necessary libraries and tools to build JavaFX applications.
 3. MySQL database: You need to have MySQL installed on your computer or server. You can download and install MySQL from the official website.
 4. IDE: You need an Integrated Development Environment (IDE) to write, test, and run your JavaFX application. Some popular IDEs for JavaFX development include IntelliJ IDEA, Eclipse, and NetBeans.
 
